@@ -26,7 +26,7 @@ def mask_key(k):
         return "***"
     return k[:6] + "..." + k[-4:]
 
-print(f"  LLM 配置: {API_URL} | {MODEL} | Key: {mask_key(API_KEY)}")
+print(f"  LLM 配置: {API_URL} | {MODEL} | Key: [configured]")
 
 # ===== Key 校验 =====
 if not API_KEY:
@@ -88,8 +88,8 @@ def chat(messages, temperature=0.7, max_tokens=2048):
             max_tokens=max_tokens,
         )
         return resp.choices[0].message.content
-    except Exception as e:
-        return f"【API 调用失败】{str(e)}"
+    except Exception:
+        return "【API 调用失败】请稍后重试"
 
 
 if __name__ == "__main__":

@@ -4,26 +4,72 @@
 
 # 环境变量（含 API Key）
 .env
+.env.local
+.env.*.local
+backend/.env
+backend/.env.local
 
 # Python
 __pycache__/
 *.py[cod]
+*.pyd
+*.so
 *.egg-info/
+*.egg
+.Python
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.dmypy.json
+dmypy.json
 dist/
 build/
 .venv/
+env/
 venv/
-*.egg
+ENV/
+env.bak/
+venv.bak/
+pip-log.txt
+pip-delete-this-directory.txt
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
+*.sw?
+*~
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
 
 # OS
 .DS_Store
 Thumbs.db
+Desktop.ini
 
 # 项目运行时
 *.log
+logs/
+uploads/
+test_output/
+
+# 数据文件（根据情况决定是否提交）
+dataset/parsed_resume/
+dataset/resumes/
+dataset/interview/
+dataset/jobs/
+dataset/knowledge/
+
+# 临时文件
+*.tmp
+*.temp
+*.pdf
+*.docx
+!test_resume.pdf
+*.zip
+*.tar.gz
