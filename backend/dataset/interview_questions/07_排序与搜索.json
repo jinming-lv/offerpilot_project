@@ -1,0 +1,353 @@
+[
+  {
+    "id": "704",
+    "title": "Binary Search",
+    "title_slug": "binary-search",
+    "difficulty": "Easy",
+    "tags": [
+      "Array",
+      "Binary Search"
+    ],
+    "tag_slugs": [
+      "array",
+      "binary-search"
+    ],
+    "ac_rate": "61.2%",
+    "leetcode_url": "https://leetcode.com/problems/binary-search/",
+    "description": "Given an array of integers `nums` which is sorted in ascending order, and an integer `target`, write a function to search `target` in `nums`. If `target` exists, then return its index. Otherwise, return `-1`.\n\nYou must write an algorithm with `O(log n)` runtime complexity.\n\n \n\nExample 1:**\n\n```\n\n**Input:** nums = [-1,0,3,5,9,12], target = 9\n**Output:** 4\n**Explanation:** 9 exists in nums and its index is 4\n\n```\n\nExample 2:**\n\n```\n\n**Input:** nums = [-1,0,3,5,9,12], target = 2\n**Output:** -1\n**Explanation:** 2 does not exist in nums so return -1\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 4`\n\t- `-104 4`\n\t- All the integers in `nums` are **unique**.\n\t- `nums` is sorted in ascending order.",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int search(vector<int>& nums, int target) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int search(int[] nums, int target) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def search(self, nums, target):\n        \"\"\"\n        :type nums: List[int]\n        :type target: int\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[]} nums\n * @param {number} target\n * @return {number}\n */\nvar search = function(nums, target) {\n    \n};",
+      "C": "int search(int* nums, int numsSize, int target) {\n    \n}",
+      "Go": "func search(nums []int, target int) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "07_排序与搜索"
+  },
+  {
+    "id": "33",
+    "title": "Search in Rotated Sorted Array",
+    "title_slug": "search-in-rotated-sorted-array",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Binary Search"
+    ],
+    "tag_slugs": [
+      "array",
+      "binary-search"
+    ],
+    "ac_rate": "45.3%",
+    "leetcode_url": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+    "description": "There is an integer array `nums` sorted in ascending order (with **distinct** values).\n\nPrior to being passed to your function, `nums` is **possibly left rotated** at an unknown index `k` (`1 Example 1:**\n\n```\n**Input:** nums = [4,5,6,7,0,1,2], target = 0\n**Output:** 4\n\n```\n\nExample 2:**\n\n```\n**Input:** nums = [4,5,6,7,0,1,2], target = 3\n**Output:** -1\n\n```\n\nExample 3:**\n\n```\n**Input:** nums = [1], target = 0\n**Output:** -1\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 4 4`\n\t- All values of `nums` are **unique**.\n\t- `nums` is an ascending array that is possibly rotated.\n\t- `-104 4`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int search(vector<int>& nums, int target) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int search(int[] nums, int target) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def search(self, nums, target):\n        \"\"\"\n        :type nums: List[int]\n        :type target: int\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[]} nums\n * @param {number} target\n * @return {number}\n */\nvar search = function(nums, target) {\n    \n};",
+      "C": "int search(int* nums, int numsSize, int target) {\n    \n}",
+      "Go": "func search(nums []int, target int) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "07_排序与搜索"
+  },
+  {
+    "id": "34",
+    "title": "Find First and Last Position of Element in Sorted Array",
+    "title_slug": "find-first-and-last-position-of-element-in-sorted-array",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Binary Search"
+    ],
+    "tag_slugs": [
+      "array",
+      "binary-search"
+    ],
+    "ac_rate": "49.3%",
+    "leetcode_url": "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/",
+    "description": "Given an array of integers `nums` sorted in non-decreasing order, find the starting and ending position of a given `target` value.\n\nIf `target` is not found in the array, return `[-1, -1]`.\n\nYou must write an algorithm with `O(log n)` runtime complexity.\n\n \n\nExample 1:**\n\n```\n**Input:** nums = [5,7,7,8,8,10], target = 8\n**Output:** [3,4]\n\n```\n\nExample 2:**\n\n```\n**Input:** nums = [5,7,7,8,8,10], target = 6\n**Output:** [-1,-1]\n\n```\n\nExample 3:**\n\n```\n**Input:** nums = [], target = 0\n**Output:** [-1,-1]\n\n```\n\n \n\n**Constraints:**\n\n\t- `0 5`\n\t- `-109 9`\n\t- `nums` is a non-decreasing array.\n\t- `-109 9`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    vector<int> searchRange(vector<int>& nums, int target) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int[] searchRange(int[] nums, int target) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def searchRange(self, nums, target):\n        \"\"\"\n        :type nums: List[int]\n        :type target: int\n        :rtype: List[int]\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[]} nums\n * @param {number} target\n * @return {number[]}\n */\nvar searchRange = function(nums, target) {\n    \n};",
+      "C": "/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nint* searchRange(int* nums, int numsSize, int target, int* returnSize) {\n    \n}",
+      "Go": "func searchRange(nums []int, target int) []int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "07_排序与搜索"
+  },
+  {
+    "id": "35",
+    "title": "Search Insert Position",
+    "title_slug": "search-insert-position",
+    "difficulty": "Easy",
+    "tags": [
+      "Array",
+      "Binary Search"
+    ],
+    "tag_slugs": [
+      "array",
+      "binary-search"
+    ],
+    "ac_rate": "51.7%",
+    "leetcode_url": "https://leetcode.com/problems/search-insert-position/",
+    "description": "Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.\n\nYou must write an algorithm with `O(log n)` runtime complexity.\n\n \n\nExample 1:**\n\n```\n\n**Input:** nums = [1,3,5,6], target = 5\n**Output:** 2\n\n```\n\nExample 2:**\n\n```\n\n**Input:** nums = [1,3,5,6], target = 2\n**Output:** 1\n\n```\n\nExample 3:**\n\n```\n\n**Input:** nums = [1,3,5,6], target = 7\n**Output:** 4\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 4`\n\t- `-104 4`\n\t- `nums` contains **distinct** values sorted in **ascending** order.\n\t- `-104 4`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int searchInsert(vector<int>& nums, int target) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int searchInsert(int[] nums, int target) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def searchInsert(self, nums, target):\n        \"\"\"\n        :type nums: List[int]\n        :type target: int\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[]} nums\n * @param {number} target\n * @return {number}\n */\nvar searchInsert = function(nums, target) {\n    \n};",
+      "C": "int searchInsert(int* nums, int numsSize, int target) {\n    \n}",
+      "Go": "func searchInsert(nums []int, target int) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "07_排序与搜索"
+  },
+  {
+    "id": "69",
+    "title": "Sqrt(x)",
+    "title_slug": "sqrtx",
+    "difficulty": "Easy",
+    "tags": [
+      "Math",
+      "Binary Search"
+    ],
+    "tag_slugs": [
+      "math",
+      "binary-search"
+    ],
+    "ac_rate": "42.1%",
+    "leetcode_url": "https://leetcode.com/problems/sqrtx/",
+    "description": "Given a non-negative integer `x`, return *the square root of *`x`* rounded down to the nearest integer*. The returned integer should be **non-negative** as well.\n\nYou **must not use** any built-in exponent function or operator.\n\n\t- For example, do not use `pow(x, 0.5)` in c++ or `x ** 0.5` in python.\n\n \n\nExample 1:**\n\n```\n\n**Input:** x = 4\n**Output:** 2\n**Explanation:** The square root of 4 is 2, so we return 2.\n\n```\n\nExample 2:**\n\n```\n\n**Input:** x = 8\n**Output:** 2\n**Explanation:** The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned.\n\n```\n\n \n\n**Constraints:**\n\n\t- `0 31 - 1`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int mySqrt(int x) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int mySqrt(int x) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def mySqrt(self, x):\n        \"\"\"\n        :type x: int\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number} x\n * @return {number}\n */\nvar mySqrt = function(x) {\n    \n};",
+      "C": "int mySqrt(int x) {\n    \n}",
+      "Go": "func mySqrt(x int) int {\n    \n}"
+    },
+    "hints": [
+      "Try exploring all integers. (Credits: @annujoshi)",
+      "Use the sorted property of integers to reduced the search space. (Credits: @annujoshi)"
+    ],
+    "source_category": "07_排序与搜索"
+  },
+  {
+    "id": "4",
+    "title": "Median of Two Sorted Arrays",
+    "title_slug": "median-of-two-sorted-arrays",
+    "difficulty": "Hard",
+    "tags": [
+      "Array",
+      "Binary Search",
+      "Divide and Conquer"
+    ],
+    "tag_slugs": [
+      "array",
+      "binary-search",
+      "divide-and-conquer"
+    ],
+    "ac_rate": "47.1%",
+    "leetcode_url": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
+    "description": "Given two sorted arrays `nums1` and `nums2` of size `m` and `n` respectively, return **the median** of the two sorted arrays.\n\nThe overall run time complexity should be `O(log (m+n))`.\n\n \n\nExample 1:**\n\n```\n\n**Input:** nums1 = [1,3], nums2 = [2]\n**Output:** 2.00000\n**Explanation:** merged array = [1,2,3] and median is 2.\n\n```\n\nExample 2:**\n\n```\n\n**Input:** nums1 = [1,2], nums2 = [3,4]\n**Output:** 2.50000\n**Explanation:** merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.\n\n```\n\n \n\n**Constraints:**\n\n\t- `nums1.length == m`\n\t- `nums2.length == n`\n\t- `0 6 6`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public double findMedianSortedArrays(int[] nums1, int[] nums2) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def findMedianSortedArrays(self, nums1, nums2):\n        \"\"\"\n        :type nums1: List[int]\n        :type nums2: List[int]\n        :rtype: float\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[]} nums1\n * @param {number[]} nums2\n * @return {number}\n */\nvar findMedianSortedArrays = function(nums1, nums2) {\n    \n};",
+      "C": "double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size) {\n    \n}",
+      "Go": "func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "07_排序与搜索"
+  },
+  {
+    "id": "875",
+    "title": "Koko Eating Bananas",
+    "title_slug": "koko-eating-bananas",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Binary Search"
+    ],
+    "tag_slugs": [
+      "array",
+      "binary-search"
+    ],
+    "ac_rate": "50.3%",
+    "leetcode_url": "https://leetcode.com/problems/koko-eating-bananas/",
+    "description": "Koko loves to eat bananas. There are `n` piles of bananas, the `ith` pile has `piles[i]` bananas. The guards have gone and will come back in `h` hours.\n\nKoko can decide her bananas-per-hour eating speed of `k`. Each hour, she chooses some pile of bananas and eats `k` bananas from that pile. If the pile has less than `k` bananas, she eats all of them instead and will not eat any more bananas during this hour.\n\nKoko likes to eat slowly but still wants to finish eating all the bananas before the guards return.\n\nReturn *the minimum integer* `k` *such that she can eat all the bananas within* `h` *hours*.\n\n \n\nExample 1:**\n\n```\n\n**Input:** piles = [3,6,7,11], h = 8\n**Output:** 4\n\n```\n\nExample 2:**\n\n```\n\n**Input:** piles = [30,11,23,4,20], h = 5\n**Output:** 30\n\n```\n\nExample 3:**\n\n```\n\n**Input:** piles = [30,11,23,4,20], h = 6\n**Output:** 23\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 4`\n\t- `piles.length 9`\n\t- `1 9`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int minEatingSpeed(vector<int>& piles, int h) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int minEatingSpeed(int[] piles, int h) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def minEatingSpeed(self, piles, h):\n        \"\"\"\n        :type piles: List[int]\n        :type h: int\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[]} piles\n * @param {number} h\n * @return {number}\n */\nvar minEatingSpeed = function(piles, h) {\n    \n};",
+      "C": "int minEatingSpeed(int* piles, int pilesSize, int h) {\n    \n}",
+      "Go": "func minEatingSpeed(piles []int, h int) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "07_排序与搜索"
+  },
+  {
+    "id": "153",
+    "title": "Find Minimum in Rotated Sorted Array",
+    "title_slug": "find-minimum-in-rotated-sorted-array",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Binary Search"
+    ],
+    "tag_slugs": [
+      "array",
+      "binary-search"
+    ],
+    "ac_rate": "55.0%",
+    "leetcode_url": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
+    "description": "Suppose an array of length `n` sorted in ascending order is **rotated** between `1` and `n` times. For example, the array `nums = [0,1,2,4,5,6,7]` might become:\n\n\t- `[4,5,6,7,0,1,2]` if it was rotated `4` times.\n\t- `[0,1,2,4,5,6,7]` if it was rotated `7` times.\n\nNotice that **rotating** an array `[a[0], a[1], a[2], ..., a[n-1]]` 1 time results in the array `[a[n-1], a[0], a[1], a[2], ..., a[n-2]]`.\n\nGiven the sorted rotated array `nums` of **unique** elements, return *the minimum element of this array*.\n\nYou must write an algorithm that runs in `O(log n) time`.\n\n \n\nExample 1:**\n\n```\n\n**Input:** nums = [3,4,5,1,2]\n**Output:** 1\n**Explanation:** The original array was [1,2,3,4,5] rotated 3 times.\n\n```\n\nExample 2:**\n\n```\n\n**Input:** nums = [4,5,6,7,0,1,2]\n**Output:** 0\n**Explanation:** The original array was [0,1,2,4,5,6,7] and it was rotated 4 times.\n\n```\n\nExample 3:**\n\n```\n\n**Input:** nums = [11,13,15,17]\n**Output:** 11\n**Explanation:** The original array was [11,13,15,17] and it was rotated 4 times. \n\n```\n\n \n\n**Constraints:**\n\n\t- `n == nums.length`\n\t- `1 <= n <= 5000`\n\t- `-5000 <= nums[i] <= 5000`\n\t- All the integers of `nums` are **unique**.\n\t- `nums` is sorted and rotated between `1` and `n` times.",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int findMin(vector<int>& nums) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int findMin(int[] nums) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def findMin(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[]} nums\n * @return {number}\n */\nvar findMin = function(nums) {\n    \n};",
+      "C": "int findMin(int* nums, int numsSize) {\n    \n}",
+      "Go": "func findMin(nums []int) int {\n    \n}"
+    },
+    "hints": [
+      "Array was originally in ascending order. Now that the array is rotated, there would be a point in the array where there is a small deflection from the increasing sequence. eg. The array would be something like [4, 5, 6, 7, 0, 1, 2].",
+      "You can divide the search space into two and see which direction to go.\r\nCan you think of an algorithm which has O(logN) search complexity?",
+      "<ol>\r\n<li>All the elements to the left of inflection point > first element of the array.</li>\r\n<li>All the elements to the right of inflection point < first element of the array.</li>\r\n<ol>"
+    ],
+    "source_category": "07_排序与搜索"
+  },
+  {
+    "id": "912",
+    "title": "Sort an Array",
+    "title_slug": "sort-an-array",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Divide and Conquer",
+      "Sorting",
+      "Heap (Priority Queue)",
+      "Merge Sort",
+      "Bucket Sort",
+      "Radix Sort",
+      "Counting Sort"
+    ],
+    "tag_slugs": [
+      "array",
+      "divide-and-conquer",
+      "sorting",
+      "heap-priority-queue",
+      "merge-sort",
+      "bucket-sort",
+      "radix-sort",
+      "counting-sort"
+    ],
+    "ac_rate": "55.9%",
+    "leetcode_url": "https://leetcode.com/problems/sort-an-array/",
+    "description": "Given an array of integers `nums`, sort the array in ascending order and return it.\n\nYou must solve the problem **without using any built-in** functions in `O(nlog(n))` time complexity and with the smallest space complexity possible.\n\n \n\nExample 1:**\n\n```\n\n**Input:** nums = [5,2,3,1]\n**Output:** [1,2,3,5]\n**Explanation:** After sorting the array, the positions of some numbers are not changed (for example, 2 and 3), while the positions of other numbers are changed (for example, 1 and 5).\n\n```\n\nExample 2:**\n\n```\n\n**Input:** nums = [5,1,1,2,0,0]\n**Output:** [0,0,1,1,2,5]\n**Explanation:** Note that the values of nums are not necessarily unique.\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 4`\n\t- `-5 * 104 4`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    vector<int> sortArray(vector<int>& nums) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int[] sortArray(int[] nums) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def sortArray(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: List[int]\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[]} nums\n * @return {number[]}\n */\nvar sortArray = function(nums) {\n    \n};",
+      "C": "/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nint* sortArray(int* nums, int numsSize, int* returnSize) {\n    \n}",
+      "Go": "func sortArray(nums []int) []int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "07_排序与搜索"
+  },
+  {
+    "id": "56",
+    "title": "Merge Intervals",
+    "title_slug": "merge-intervals",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Sorting"
+    ],
+    "tag_slugs": [
+      "array",
+      "sorting"
+    ],
+    "ac_rate": "52.3%",
+    "leetcode_url": "https://leetcode.com/problems/merge-intervals/",
+    "description": "Given an array of `intervals` where `intervals[i] = [starti, endi]`, merge all overlapping intervals, and return *an array of the non-overlapping intervals that cover all the intervals in the input*.\n\n \n\nExample 1:**\n\n```\n\n**Input:** intervals = [[1,3],[2,6],[8,10],[15,18]]\n**Output:** [[1,6],[8,10],[15,18]]\n**Explanation:** Since intervals [1,3] and [2,6] overlap, merge them into [1,6].\n\n```\n\nExample 2:**\n\n```\n\n**Input:** intervals = [[1,4],[4,5]]\n**Output:** [[1,5]]\n**Explanation:** Intervals [1,4] and [4,5] are considered overlapping.\n\n```\n\nExample 3:**\n\n```\n\n**Input:** intervals = [[4,7],[1,4]]\n**Output:** [[1,7]]\n**Explanation:** Intervals [1,4] and [4,7] are considered overlapping.\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 4`\n\t- `intervals[i].length == 2`\n\t- `0 i i 4`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    vector<vector<int>> merge(vector<vector<int>>& intervals) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int[][] merge(int[][] intervals) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def merge(self, intervals):\n        \"\"\"\n        :type intervals: List[List[int]]\n        :rtype: List[List[int]]\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[][]} intervals\n * @return {number[][]}\n */\nvar merge = function(intervals) {\n    \n};",
+      "C": "/**\n * Return an array of arrays of size *returnSize.\n * The sizes of the arrays are returned as *returnColumnSizes array.\n * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().\n */\nint** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* returnSize, int** returnColumnSizes) {\n    \n}",
+      "Go": "func merge(intervals [][]int) [][]int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "07_排序与搜索"
+  },
+  {
+    "id": "57",
+    "title": "Insert Interval",
+    "title_slug": "insert-interval",
+    "difficulty": "Medium",
+    "tags": [
+      "Array"
+    ],
+    "tag_slugs": [
+      "array"
+    ],
+    "ac_rate": "45.6%",
+    "leetcode_url": "https://leetcode.com/problems/insert-interval/",
+    "description": "You are given an array of non-overlapping intervals `intervals` where `intervals[i] = [starti, endi]` represent the start and the end of the `ith` interval and `intervals` is sorted in ascending order by `starti`. You are also given an interval `newInterval = [start, end]` that represents the start and end of another interval.\n\nInsert `newInterval` into `intervals` such that `intervals` is still sorted in ascending order by `starti` and `intervals` still does not have any overlapping intervals (merge overlapping intervals if necessary).\n\nReturn `intervals`* after the insertion*.\n\n**Note** that you don&#39;t need to modify `intervals` in-place. You can make a new array and return it.\n\n \n\nExample 1:**\n\n```\n\n**Input:** intervals = [[1,3],[6,9]], newInterval = [2,5]\n**Output:** [[1,5],[6,9]]\n\n```\n\nExample 2:**\n\n```\n\n**Input:** intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]\n**Output:** [[1,2],[3,10],[12,16]]\n**Explanation:** Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].\n\n```\n\n \n\n**Constraints:**\n\n\t- `0 4`\n\t- `intervals[i].length == 2`\n\t- `0 i i 5`\n\t- `intervals` is sorted by `starti` in **ascending** order.\n\t- `newInterval.length == 2`\n\t- `0 5`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int[][] insert(int[][] intervals, int[] newInterval) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def insert(self, intervals, newInterval):\n        \"\"\"\n        :type intervals: List[List[int]]\n        :type newInterval: List[int]\n        :rtype: List[List[int]]\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[][]} intervals\n * @param {number[]} newInterval\n * @return {number[][]}\n */\nvar insert = function(intervals, newInterval) {\n    \n};",
+      "C": "/**\n * Return an array of arrays of size *returnSize.\n * The sizes of the arrays are returned as *returnColumnSizes array.\n * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().\n */\nint** insert(int** intervals, int intervalsSize, int* intervalsColSize, int* newInterval, int newIntervalSize, int* returnSize, int** returnColumnSizes) {\n    \n}",
+      "Go": "func insert(intervals [][]int, newInterval []int) [][]int {\n    \n}"
+    },
+    "hints": [
+      "Intervals Array is sorted. Can you use Binary Search to find the correct position to insert the new Interval.?",
+      "Can you try merging the overlapping intervals while inserting the new interval?",
+      "This can be done by comparing the end of the last interval with the start of the new interval and vice versa."
+    ],
+    "source_category": "07_排序与搜索"
+  },
+  {
+    "id": "435",
+    "title": "Non-overlapping Intervals",
+    "title_slug": "non-overlapping-intervals",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Dynamic Programming",
+      "Greedy",
+      "Sorting"
+    ],
+    "tag_slugs": [
+      "array",
+      "dynamic-programming",
+      "greedy",
+      "sorting"
+    ],
+    "ac_rate": "57.4%",
+    "leetcode_url": "https://leetcode.com/problems/non-overlapping-intervals/",
+    "description": "Given an array of intervals `intervals` where `intervals[i] = [starti, endi]`, return *the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping*.\n\n**Note** that intervals which only touch at a point are **non-overlapping**. For example, `[1, 2]` and `[2, 3]` are non-overlapping.\n\n \n\nExample 1:**\n\n```\n\n**Input:** intervals = [[1,2],[2,3],[3,4],[1,3]]\n**Output:** 1\n**Explanation:** [1,3] can be removed and the rest of the intervals are non-overlapping.\n\n```\n\nExample 2:**\n\n```\n\n**Input:** intervals = [[1,2],[1,2],[1,2]]\n**Output:** 2\n**Explanation:** You need to remove two [1,2] to make the rest of the intervals non-overlapping.\n\n```\n\nExample 3:**\n\n```\n\n**Input:** intervals = [[1,2],[2,3]]\n**Output:** 0\n**Explanation:** You don&#39;t need to remove any of the intervals since they&#39;re already non-overlapping.\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 5`\n\t- `intervals[i].length == 2`\n\t- `-5 * 104 i i 4`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int eraseOverlapIntervals(vector<vector<int>>& intervals) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int eraseOverlapIntervals(int[][] intervals) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def eraseOverlapIntervals(self, intervals):\n        \"\"\"\n        :type intervals: List[List[int]]\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[][]} intervals\n * @return {number}\n */\nvar eraseOverlapIntervals = function(intervals) {\n    \n};",
+      "C": "int eraseOverlapIntervals(int** intervals, int intervalsSize, int* intervalsColSize) {\n    \n}",
+      "Go": "func eraseOverlapIntervals(intervals [][]int) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "07_排序与搜索"
+  }
+]
