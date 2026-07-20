@@ -1,0 +1,413 @@
+[
+  {
+    "id": "70",
+    "title": "Climbing Stairs",
+    "title_slug": "climbing-stairs",
+    "difficulty": "Easy",
+    "tags": [
+      "Math",
+      "Dynamic Programming",
+      "Memoization"
+    ],
+    "tag_slugs": [
+      "math",
+      "dynamic-programming",
+      "memoization"
+    ],
+    "ac_rate": "54.2%",
+    "leetcode_url": "https://leetcode.com/problems/climbing-stairs/",
+    "description": "You are climbing a staircase. It takes `n` steps to reach the top.\n\nEach time you can either climb `1` or `2` steps. In how many distinct ways can you climb to the top?\n\n \n\nExample 1:**\n\n```\n\n**Input:** n = 2\n**Output:** 2\n**Explanation:** There are two ways to climb to the top.\n1. 1 step + 1 step\n2. 2 steps\n\n```\n\nExample 2:**\n\n```\n\n**Input:** n = 3\n**Output:** 3\n**Explanation:** There are three ways to climb to the top.\n1. 1 step + 1 step + 1 step\n2. 1 step + 2 steps\n3. 2 steps + 1 step\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 <= n <= 45`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int climbStairs(int n) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int climbStairs(int n) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def climbStairs(self, n):\n        \"\"\"\n        :type n: int\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number} n\n * @return {number}\n */\nvar climbStairs = function(n) {\n    \n};",
+      "C": "int climbStairs(int n) {\n    \n}",
+      "Go": "func climbStairs(n int) int {\n    \n}"
+    },
+    "hints": [
+      "To reach nth step, what could have been your previous steps? (Think about the step sizes)"
+    ],
+    "source_category": "05_动态规划"
+  },
+  {
+    "id": "121",
+    "title": "Best Time to Buy and Sell Stock",
+    "title_slug": "best-time-to-buy-and-sell-stock",
+    "difficulty": "Easy",
+    "tags": [
+      "Array",
+      "Dynamic Programming"
+    ],
+    "tag_slugs": [
+      "array",
+      "dynamic-programming"
+    ],
+    "ac_rate": "57.1%",
+    "leetcode_url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+    "description": "You are given an array `prices` where `prices[i]` is the price of a given stock on the `ith` day.\n\nYou want to maximize your profit by choosing a **single day** to buy one stock and choosing a **different day in the future** to sell that stock.\n\nReturn *the maximum profit you can achieve from this transaction*. If you cannot achieve any profit, return `0`.\n\n \n\nExample 1:**\n\n```\n\n**Input:** prices = [7,1,5,3,6,4]\n**Output:** 5\n**Explanation:** Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.\nNote that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.\n\n```\n\nExample 2:**\n\n```\n\n**Input:** prices = [7,6,4,3,1]\n**Output:** 0\n**Explanation:** In this case, no transactions are done and the max profit = 0.\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 5`\n\t- `0 4`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int maxProfit(vector<int>& prices) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int maxProfit(int[] prices) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def maxProfit(self, prices):\n        \"\"\"\n        :type prices: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[]} prices\n * @return {number}\n */\nvar maxProfit = function(prices) {\n    \n};",
+      "C": "int maxProfit(int* prices, int pricesSize) {\n    \n}",
+      "Go": "func maxProfit(prices []int) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "05_动态规划"
+  },
+  {
+    "id": "53",
+    "title": "Maximum Subarray",
+    "title_slug": "maximum-subarray",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Divide and Conquer",
+      "Dynamic Programming"
+    ],
+    "tag_slugs": [
+      "array",
+      "divide-and-conquer",
+      "dynamic-programming"
+    ],
+    "ac_rate": "53.6%",
+    "leetcode_url": "https://leetcode.com/problems/maximum-subarray/",
+    "description": "Given an integer array `nums`, find the subarray with the largest sum, and return *its sum*.\n\n \n\nExample 1:**\n\n```\n\n**Input:** nums = [-2,1,-3,4,-1,2,1,-5,4]\n**Output:** 6\n**Explanation:** The subarray [4,-1,2,1] has the largest sum 6.\n\n```\n\nExample 2:**\n\n```\n\n**Input:** nums = [1]\n**Output:** 1\n**Explanation:** The subarray [1] has the largest sum 1.\n\n```\n\nExample 3:**\n\n```\n\n**Input:** nums = [5,4,-1,7,8]\n**Output:** 23\n**Explanation:** The subarray [5,4,-1,7,8] has the largest sum 23.\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 5`\n\t- `-104 4`\n\n \n\n**Follow up:** If you have figured out the `O(n)` solution, try coding another solution using the **divide and conquer** approach, which is more subtle.",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int maxSubArray(vector<int>& nums) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int maxSubArray(int[] nums) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def maxSubArray(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[]} nums\n * @return {number}\n */\nvar maxSubArray = function(nums) {\n    \n};",
+      "C": "int maxSubArray(int* nums, int numsSize) {\n    \n}",
+      "Go": "func maxSubArray(nums []int) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "05_动态规划"
+  },
+  {
+    "id": "198",
+    "title": "House Robber",
+    "title_slug": "house-robber",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Dynamic Programming"
+    ],
+    "tag_slugs": [
+      "array",
+      "dynamic-programming"
+    ],
+    "ac_rate": "53.4%",
+    "leetcode_url": "https://leetcode.com/problems/house-robber/",
+    "description": "You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police if two adjacent houses were broken into on the same night.\n\nGiven an integer array `nums` representing the amount of money of each house, return *the maximum amount of money you can rob tonight without alerting the police*.\n\n \n\nExample 1:**\n\n```\n\n**Input:** nums = [1,2,3,1]\n**Output:** 4\n**Explanation:** Rob house 1 (money = 1) and then rob house 3 (money = 3).\nTotal amount you can rob = 1 + 3 = 4.\n\n```\n\nExample 2:**\n\n```\n\n**Input:** nums = [2,7,9,3,1]\n**Output:** 12\n**Explanation:** Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).\nTotal amount you can rob = 2 + 9 + 1 = 12.\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 <= nums.length <= 100`\n\t- `0 <= nums[i] <= 400`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int rob(vector<int>& nums) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int rob(int[] nums) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def rob(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[]} nums\n * @return {number}\n */\nvar rob = function(nums) {\n    \n};",
+      "C": "int rob(int* nums, int numsSize) {\n    \n}",
+      "Go": "func rob(nums []int) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "05_动态规划"
+  },
+  {
+    "id": "322",
+    "title": "Coin Change",
+    "title_slug": "coin-change",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Dynamic Programming",
+      "Breadth-First Search"
+    ],
+    "tag_slugs": [
+      "array",
+      "dynamic-programming",
+      "breadth-first-search"
+    ],
+    "ac_rate": "48.8%",
+    "leetcode_url": "https://leetcode.com/problems/coin-change/",
+    "description": "You are given an integer array `coins` representing coins of different denominations and an integer `amount` representing a total amount of money.\n\nReturn *the fewest number of coins that you need to make up that amount*. If that amount of money cannot be made up by any combination of the coins, return `-1`.\n\nYou may assume that you have an infinite number of each kind of coin.\n\n \n\nExample 1:**\n\n```\n\n**Input:** coins = [1,2,5], amount = 11\n**Output:** 3\n**Explanation:** 11 = 5 + 5 + 1\n\n```\n\nExample 2:**\n\n```\n\n**Input:** coins = [2], amount = 3\n**Output:** -1\n\n```\n\nExample 3:**\n\n```\n\n**Input:** coins = [1], amount = 0\n**Output:** 0\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 31 - 1`\n\t- `0 4`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int coinChange(vector<int>& coins, int amount) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int coinChange(int[] coins, int amount) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def coinChange(self, coins, amount):\n        \"\"\"\n        :type coins: List[int]\n        :type amount: int\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[]} coins\n * @param {number} amount\n * @return {number}\n */\nvar coinChange = function(coins, amount) {\n    \n};",
+      "C": "int coinChange(int* coins, int coinsSize, int amount) {\n    \n}",
+      "Go": "func coinChange(coins []int, amount int) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "05_动态规划"
+  },
+  {
+    "id": "300",
+    "title": "Longest Increasing Subsequence",
+    "title_slug": "longest-increasing-subsequence",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Binary Search",
+      "Dynamic Programming"
+    ],
+    "tag_slugs": [
+      "array",
+      "binary-search",
+      "dynamic-programming"
+    ],
+    "ac_rate": "59.7%",
+    "leetcode_url": "https://leetcode.com/problems/longest-increasing-subsequence/",
+    "description": "Given an integer array `nums`, return *the length of the longest **strictly increasing ******subsequence***.\n\n \n\nExample 1:**\n\n```\n\n**Input:** nums = [10,9,2,5,3,7,101,18]\n**Output:** 4\n**Explanation:** The longest increasing subsequence is [2,3,7,101], therefore the length is 4.\n\n```\n\nExample 2:**\n\n```\n\n**Input:** nums = [0,1,0,3,2,3]\n**Output:** 4\n\n```\n\nExample 3:**\n\n```\n\n**Input:** nums = [7,7,7,7,7,7,7]\n**Output:** 1\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 4 4`\n\n \n\nFollow up: Can you come up with an algorithm that runs in `O(n log(n))` time complexity?",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int lengthOfLIS(vector<int>& nums) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int lengthOfLIS(int[] nums) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def lengthOfLIS(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[]} nums\n * @return {number}\n */\nvar lengthOfLIS = function(nums) {\n    \n};",
+      "C": "int lengthOfLIS(int* nums, int numsSize) {\n    \n}",
+      "Go": "func lengthOfLIS(nums []int) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "05_动态规划"
+  },
+  {
+    "id": "1143",
+    "title": "Longest Common Subsequence",
+    "title_slug": "longest-common-subsequence",
+    "difficulty": "Medium",
+    "tags": [
+      "String",
+      "Dynamic Programming"
+    ],
+    "tag_slugs": [
+      "string",
+      "dynamic-programming"
+    ],
+    "ac_rate": "59.4%",
+    "leetcode_url": "https://leetcode.com/problems/longest-common-subsequence/",
+    "description": "Given two strings `text1` and `text2`, return *the length of their longest **common subsequence**. *If there is no **common subsequence**, return `0`.\n\nA **subsequence** of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.\n\n\t- For example, `&quot;ace&quot;` is a subsequence of `&quot;abcde&quot;`.\n\nA **common subsequence** of two strings is a subsequence that is common to both strings.\n\n \n\nExample 1:**\n\n```\n\n**Input:** text1 = &quot;abcde&quot;, text2 = &quot;ace&quot; \n**Output:** 3  \n**Explanation:** The longest common subsequence is &quot;ace&quot; and its length is 3.\n\n```\n\nExample 2:**\n\n```\n\n**Input:** text1 = &quot;abc&quot;, text2 = &quot;abc&quot;\n**Output:** 3\n**Explanation:** The longest common subsequence is &quot;abc&quot; and its length is 3.\n\n```\n\nExample 3:**\n\n```\n\n**Input:** text1 = &quot;abc&quot;, text2 = &quot;def&quot;\n**Output:** 0\n**Explanation:** There is no such common subsequence, so the result is 0.\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 <= text1.length, text2.length <= 1000`\n\t- `text1` and `text2` consist of only lowercase English characters.",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int longestCommonSubsequence(string text1, string text2) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int longestCommonSubsequence(String text1, String text2) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def longestCommonSubsequence(self, text1, text2):\n        \"\"\"\n        :type text1: str\n        :type text2: str\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {string} text1\n * @param {string} text2\n * @return {number}\n */\nvar longestCommonSubsequence = function(text1, text2) {\n    \n};",
+      "C": "int longestCommonSubsequence(char* text1, char* text2) {\n    \n}",
+      "Go": "func longestCommonSubsequence(text1 string, text2 string) int {\n    \n}"
+    },
+    "hints": [
+      "Try dynamic programming. \r\nDP[i][j] represents the longest common subsequence of text1[0 ... i] & text2[0 ... j].",
+      "DP[i][j] = DP[i - 1][j - 1] + 1 , if text1[i] == text2[j]\r\nDP[i][j] = max(DP[i - 1][j], DP[i][j - 1]) , otherwise"
+    ],
+    "source_category": "05_动态规划"
+  },
+  {
+    "id": "72",
+    "title": "Edit Distance",
+    "title_slug": "edit-distance",
+    "difficulty": "Medium",
+    "tags": [
+      "String",
+      "Dynamic Programming"
+    ],
+    "tag_slugs": [
+      "string",
+      "dynamic-programming"
+    ],
+    "ac_rate": "60.9%",
+    "leetcode_url": "https://leetcode.com/problems/edit-distance/",
+    "description": "Given two strings `word1` and `word2`, return *the minimum number of operations required to convert `word1` to `word2`*.\n\nYou have the following three operations permitted on a word:\n\n\t- Insert a character\n\t- Delete a character\n\t- Replace a character\n\n \n\nExample 1:**\n\n```\n\n**Input:** word1 = &quot;horse&quot;, word2 = &quot;ros&quot;\n**Output:** 3\n**Explanation:** \nhorse -> rorse (replace &#39;h&#39; with &#39;r&#39;)\nrorse -> rose (remove &#39;r&#39;)\nrose -> ros (remove &#39;e&#39;)\n\n```\n\nExample 2:**\n\n```\n\n**Input:** word1 = &quot;intention&quot;, word2 = &quot;execution&quot;\n**Output:** 5\n**Explanation:** \nintention -> inention (remove &#39;t&#39;)\ninention -> enention (replace &#39;i&#39; with &#39;e&#39;)\nenention -> exention (replace &#39;n&#39; with &#39;x&#39;)\nexention -> exection (replace &#39;n&#39; with &#39;c&#39;)\nexection -> execution (insert &#39;u&#39;)\n\n```\n\n \n\n**Constraints:**\n\n\t- `0 <= word1.length, word2.length <= 500`\n\t- `word1` and `word2` consist of lowercase English letters.",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int minDistance(string word1, string word2) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int minDistance(String word1, String word2) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def minDistance(self, word1, word2):\n        \"\"\"\n        :type word1: str\n        :type word2: str\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {string} word1\n * @param {string} word2\n * @return {number}\n */\nvar minDistance = function(word1, word2) {\n    \n};",
+      "C": "int minDistance(char* word1, char* word2) {\n    \n}",
+      "Go": "func minDistance(word1 string, word2 string) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "05_动态规划"
+  },
+  {
+    "id": "62",
+    "title": "Unique Paths",
+    "title_slug": "unique-paths",
+    "difficulty": "Medium",
+    "tags": [
+      "Math",
+      "Dynamic Programming",
+      "Combinatorics"
+    ],
+    "tag_slugs": [
+      "math",
+      "dynamic-programming",
+      "combinatorics"
+    ],
+    "ac_rate": "67.1%",
+    "leetcode_url": "https://leetcode.com/problems/unique-paths/",
+    "description": "There is a robot on an `m x n` grid. The robot is initially located at the **top-left corner** (i.e., `grid[0][0]`). The robot tries to move to the **bottom-right corner** (i.e., `grid[m - 1][n - 1]`). The robot can only move either down or right at any point in time.\n\nGiven the two integers `m` and `n`, return *the number of possible unique paths that the robot can take to reach the bottom-right corner*.\n\nThe test cases are generated so that the answer will be less than or equal to `2 * 109`.\n\n \n\nExample 1:**\n\n```\n\n**Input:** m = 3, n = 7\n**Output:** 28\n\n```\n\nExample 2:**\n\n```\n\n**Input:** m = 3, n = 2\n**Output:** 3\n**Explanation:** From the top-left corner, there are a total of 3 ways to reach the bottom-right corner:\n1. Right -> Down -> Down\n2. Down -> Down -> Right\n3. Down -> Right -> Down\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 <= m, n <= 100`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int uniquePaths(int m, int n) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int uniquePaths(int m, int n) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def uniquePaths(self, m, n):\n        \"\"\"\n        :type m: int\n        :type n: int\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number} m\n * @param {number} n\n * @return {number}\n */\nvar uniquePaths = function(m, n) {\n    \n};",
+      "C": "int uniquePaths(int m, int n) {\n    \n}",
+      "Go": "func uniquePaths(m int, n int) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "05_动态规划"
+  },
+  {
+    "id": "64",
+    "title": "Minimum Path Sum",
+    "title_slug": "minimum-path-sum",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Dynamic Programming",
+      "Matrix"
+    ],
+    "tag_slugs": [
+      "array",
+      "dynamic-programming",
+      "matrix"
+    ],
+    "ac_rate": "68.6%",
+    "leetcode_url": "https://leetcode.com/problems/minimum-path-sum/",
+    "description": "Given a `m x n` `grid` filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.\n\n**Note:** You can only move either down or right at any point in time.\n\n \n\nExample 1:**\n\n```\n\n**Input:** grid = [[1,3,1],[1,5,1],[4,2,1]]\n**Output:** 7\n**Explanation:** Because the path 1 &rarr; 3 &rarr; 1 &rarr; 1 &rarr; 1 minimizes the sum.\n\n```\n\nExample 2:**\n\n```\n\n**Input:** grid = [[1,2,3],[4,5,6]]\n**Output:** 12\n\n```\n\n \n\n**Constraints:**\n\n\t- `m == grid.length`\n\t- `n == grid[i].length`\n\t- `1 <= m, n <= 200`\n\t- `0 <= grid[i][j] <= 200`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int minPathSum(vector<vector<int>>& grid) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int minPathSum(int[][] grid) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def minPathSum(self, grid):\n        \"\"\"\n        :type grid: List[List[int]]\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[][]} grid\n * @return {number}\n */\nvar minPathSum = function(grid) {\n    \n};",
+      "C": "int minPathSum(int** grid, int gridSize, int* gridColSize) {\n    \n}",
+      "Go": "func minPathSum(grid [][]int) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "05_动态规划"
+  },
+  {
+    "id": "647",
+    "title": "Palindromic Substrings",
+    "title_slug": "palindromic-substrings",
+    "difficulty": "Medium",
+    "tags": [
+      "Two Pointers",
+      "String",
+      "Dynamic Programming"
+    ],
+    "tag_slugs": [
+      "two-pointers",
+      "string",
+      "dynamic-programming"
+    ],
+    "ac_rate": "73.0%",
+    "leetcode_url": "https://leetcode.com/problems/palindromic-substrings/",
+    "description": "Given a string `s`, return *the number of **palindromic substrings** in it*.\n\nA string is a **palindrome** when it reads the same backward as forward.\n\nA **substring** is a contiguous sequence of characters within the string.\n\n \n\nExample 1:**\n\n```\n\n**Input:** s = &quot;abc&quot;\n**Output:** 3\n**Explanation:** Three palindromic strings: &quot;a&quot;, &quot;b&quot;, &quot;c&quot;.\n\n```\n\nExample 2:**\n\n```\n\n**Input:** s = &quot;aaa&quot;\n**Output:** 6\n**Explanation:** Six palindromic strings: &quot;a&quot;, &quot;a&quot;, &quot;a&quot;, &quot;aa&quot;, &quot;aa&quot;, &quot;aaa&quot;.\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 <= s.length <= 1000`\n\t- `s` consists of lowercase English letters.",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int countSubstrings(string s) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int countSubstrings(String s) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def countSubstrings(self, s):\n        \"\"\"\n        :type s: str\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {string} s\n * @return {number}\n */\nvar countSubstrings = function(s) {\n    \n};",
+      "C": "int countSubstrings(char* s) {\n    \n}",
+      "Go": "func countSubstrings(s string) int {\n    \n}"
+    },
+    "hints": [
+      "How can we reuse a previously computed palindrome to compute a larger palindrome?",
+      "If “aba” is a palindrome, is “xabax” a palindrome? Similarly is “xabay” a palindrome?",
+      "Complexity based hint:</br>\r\nIf we use brute force and check whether for every start and end position a substring is a palindrome we have O(n^2) start - end pairs and O(n) palindromic checks. Can we reduce the time for palindromic checks to O(1) by reusing some previous computation?"
+    ],
+    "source_category": "05_动态规划"
+  },
+  {
+    "id": "139",
+    "title": "Word Break",
+    "title_slug": "word-break",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Hash Table",
+      "String",
+      "Dynamic Programming",
+      "Trie",
+      "Memoization"
+    ],
+    "tag_slugs": [
+      "array",
+      "hash-table",
+      "string",
+      "dynamic-programming",
+      "trie",
+      "memoization"
+    ],
+    "ac_rate": "49.7%",
+    "leetcode_url": "https://leetcode.com/problems/word-break/",
+    "description": "Given a string `s` and a dictionary of strings `wordDict`, return `true` if `s` can be segmented into a space-separated sequence of one or more dictionary words.\n\n**Note** that the same word in the dictionary may be reused multiple times in the segmentation.\n\n \n\nExample 1:**\n\n```\n\n**Input:** s = &quot;leetcode&quot;, wordDict = [&quot;leet&quot;,&quot;code&quot;]\n**Output:** true\n**Explanation:** Return true because &quot;leetcode&quot; can be segmented as &quot;leet code&quot;.\n\n```\n\nExample 2:**\n\n```\n\n**Input:** s = &quot;applepenapple&quot;, wordDict = [&quot;apple&quot;,&quot;pen&quot;]\n**Output:** true\n**Explanation:** Return true because &quot;applepenapple&quot; can be segmented as &quot;apple pen apple&quot;.\nNote that you are allowed to reuse a dictionary word.\n\n```\n\nExample 3:**\n\n```\n\n**Input:** s = &quot;catsandog&quot;, wordDict = [&quot;cats&quot;,&quot;dog&quot;,&quot;sand&quot;,&quot;and&quot;,&quot;cat&quot;]\n**Output:** false\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 <= s.length <= 300`\n\t- `1 <= wordDict.length <= 1000`\n\t- `1 <= wordDict[i].length <= 20`\n\t- `s` and `wordDict[i]` consist of only lowercase English letters.\n\t- All the strings of `wordDict` are **unique**.",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    bool wordBreak(string s, vector<string>& wordDict) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public boolean wordBreak(String s, List<String> wordDict) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def wordBreak(self, s, wordDict):\n        \"\"\"\n        :type s: str\n        :type wordDict: List[str]\n        :rtype: bool\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {string} s\n * @param {string[]} wordDict\n * @return {boolean}\n */\nvar wordBreak = function(s, wordDict) {\n    \n};",
+      "C": "bool wordBreak(char* s, char** wordDict, int wordDictSize) {\n    \n}",
+      "Go": "func wordBreak(s string, wordDict []string) bool {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "05_动态规划"
+  },
+  {
+    "id": "416",
+    "title": "Partition Equal Subset Sum",
+    "title_slug": "partition-equal-subset-sum",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Dynamic Programming"
+    ],
+    "tag_slugs": [
+      "array",
+      "dynamic-programming"
+    ],
+    "ac_rate": "49.7%",
+    "leetcode_url": "https://leetcode.com/problems/partition-equal-subset-sum/",
+    "description": "Given an integer array `nums`, return `true` *if you can partition the array into two subsets such that the sum of the elements in both subsets is equal or *`false`* otherwise*.\n\n \n\nExample 1:**\n\n```\n\n**Input:** nums = [1,5,11,5]\n**Output:** true\n**Explanation:** The array can be partitioned as [1, 5, 5] and [11].\n\n```\n\nExample 2:**\n\n```\n\n**Input:** nums = [1,2,3,5]\n**Output:** false\n**Explanation:** The array cannot be partitioned into equal sum subsets.\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 <= nums.length <= 200`\n\t- `1 <= nums[i] <= 100`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    bool canPartition(vector<int>& nums) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public boolean canPartition(int[] nums) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def canPartition(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: bool\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[]} nums\n * @return {boolean}\n */\nvar canPartition = function(nums) {\n    \n};",
+      "C": "bool canPartition(int* nums, int numsSize) {\n    \n}",
+      "Go": "func canPartition(nums []int) bool {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "05_动态规划"
+  },
+  {
+    "id": "494",
+    "title": "Target Sum",
+    "title_slug": "target-sum",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Dynamic Programming",
+      "Backtracking"
+    ],
+    "tag_slugs": [
+      "array",
+      "dynamic-programming",
+      "backtracking"
+    ],
+    "ac_rate": "52.5%",
+    "leetcode_url": "https://leetcode.com/problems/target-sum/",
+    "description": "You are given an integer array `nums` and an integer `target`.\n\nYou want to build an **expression** out of nums by adding one of the symbols `&#39;+&#39;` and `&#39;-&#39;` before each integer in nums and then concatenate all the integers.\n\n\t- For example, if `nums = [2, 1]`, you can add a `&#39;+&#39;` before `2` and a `&#39;-&#39;` before `1` and concatenate them to build the expression `&quot;+2-1&quot;`.\n\nReturn the number of different **expressions** that you can build, which evaluates to `target`.\n\n \n\nExample 1:**\n\n```\n\n**Input:** nums = [1,1,1,1,1], target = 3\n**Output:** 5\n**Explanation:** There are 5 ways to assign symbols to make the sum of nums be target 3.\n-1 + 1 + 1 + 1 + 1 = 3\n+1 - 1 + 1 + 1 + 1 = 3\n+1 + 1 - 1 + 1 + 1 = 3\n+1 + 1 + 1 - 1 + 1 = 3\n+1 + 1 + 1 + 1 - 1 = 3\n\n```\n\nExample 2:**\n\n```\n\n**Input:** nums = [1], target = 1\n**Output:** 1\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 <= nums.length <= 20`\n\t- `0 <= nums[i] <= 1000`\n\t- `0 <= sum(nums[i]) <= 1000`\n\t- `-1000 <= target <= 1000`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int findTargetSumWays(vector<int>& nums, int target) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int findTargetSumWays(int[] nums, int target) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def findTargetSumWays(self, nums, target):\n        \"\"\"\n        :type nums: List[int]\n        :type target: int\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[]} nums\n * @param {number} target\n * @return {number}\n */\nvar findTargetSumWays = function(nums, target) {\n    \n};",
+      "C": "int findTargetSumWays(int* nums, int numsSize, int target) {\n    \n}",
+      "Go": "func findTargetSumWays(nums []int, target int) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "05_动态规划"
+  }
+]
