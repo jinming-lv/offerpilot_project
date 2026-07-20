@@ -26,7 +26,7 @@ def mask_key(k):
         return "***"
     return k[:6] + "..." + k[-4:]
 
-print(f"  LLM 配置: {API_URL} | {MODEL} | Key: {mask_key(API_KEY)}")
+print(f"  LLM 配置: {API_URL} | {MODEL} | Key: [configured]")
 
 # ===== Key 校验 =====
 if not API_KEY:

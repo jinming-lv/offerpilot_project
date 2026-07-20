@@ -6,7 +6,7 @@ FastAPI + DeepSeek
 import os
 import sys
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -19,10 +19,12 @@ from agents.interview.interview_agent import (
 )
 from agents.learning.learning_planner import generate_learning_plan
 from agents.utils.knowledge_loader import get_question_count
+from utils.logger import get_logger
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 app = FastAPI(title="CareerPilot - OfferPilot", version="1.0")
+logger = get_logger(__name__)
 
 app.add_middleware(
     CORSMiddleware,
@@ -76,58 +78,74 @@ def question_count():
 
 @app.post("/api/interview/questions")
 def interview_questions(req: InterviewRequest):
-    questions = start_interview(
-        position=req.position,
-        difficulty=req.difficulty,
-        tags=req.tags if req.tags else None,
-    )
-    results = []
-    for q in questions:
-        question_text = generate_question_text(q, position=req.position)
-        results.append(
-            {
-                "id": q.get("id"),
-                "title": q.get("title"),
-                "difficulty": q.get("difficulty"),
-                "tags": q.get("tags"),
-                "description": q.get("description", "")[:300],
-                "interviewer_text": question_text,
-                "code_templates": q.get("code_templates", {}),
-                "leetcode_url": q.get("leetcode_url", ""),
-            }
+    try:
+        questions = start_interview(
+            position=req.position,
+            difficulty=req.difficulty,
+            tags=req.tags if req.tags else None,
         )
-    return {
-        "success": True,
-        "data": {
-            "questions": results,
-            "total": len(results),
-            "position": req.position,
-            "difficulty": req.difficulty,
-        },
-    }
+        results = []
+        for q in questions:
+            question_text = generate_question_text(q, position=req.position)
+            results.append(
+                {
+                    "id": q.get("id"),
+                    "title": q.get("title"),
+                    "difficulty": q.get("difficulty"),
+                    "tags": q.get("tags"),
+                    "description": q.get("description", "")[:300],
+                    "interviewer_text": question_text,
+                    "code_templates": q.get("code_templates", {}),
+                    "leetcode_url": q.get("leetcode_url", ""),
+                }
+            )
+        return {
+            "success": True,
+            "data": {
+                "questions": results,
+                "total": len(results),
+                "position": req.position,
+                "difficulty": req.difficulty,
+            },
+        }
+    except Exception:
+        logger.exception("Failed to generate interview questions")
+        raise HTTPException(status_code=500, detail="面试题生成失败")
 
 
 @app.post("/api/interview/score")
 def interview_score(req: ScoreRequest):
-    score = score_answer(req.question, req.answer)
-    return {"success": True, "data": score}
+    try:
+        score = score_answer(req.question, req.answer)
+        return {"success": True, "data": score}
+    except Exception:
+        logger.exception("Failed to score interview answer")
+        raise HTTPException(status_code=500, detail="面试评分失败")
 
 
 @app.post("/api/interview/summary")
 def interview_summary(req: SummaryRequest):
-    summary = generate_summary(req.records)
-    return {"success": True, "data": {"summary": summary}}
+    try:
+        summary = generate_summary(req.records)
+        return {"success": True, "data": {"summary": summary}}
+    except Exception:
+        logger.exception("Failed to generate interview summary")
+        raise HTTPException(status_code=500, detail="面试总结生成失败")
 
 
 @app.post("/api/learning/path")
 def learning_path(req: LearningRequest):
-    plan = generate_learning_plan(
-        position=req.position,
-        level="junior",
-        interview_records=[],
-        duration=req.duration,
-    )
-    return {"success": True, "data": plan}
+    try:
+        plan = generate_learning_plan(
+            position=req.position,
+            level="junior",
+            interview_records=[],
+            duration=req.duration,
+        )
+        return {"success": True, "data": plan}
+    except Exception:
+        logger.exception("Failed to generate learning path")
+        raise HTTPException(status_code=500, detail="学习路径生成失败")
 
 
 if __name__ == "__main__":
