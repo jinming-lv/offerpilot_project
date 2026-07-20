@@ -1,0 +1,448 @@
+[
+  {
+    "id": "191",
+    "title": "Number of 1 Bits",
+    "title_slug": "number-of-1-bits",
+    "difficulty": "Easy",
+    "tags": [
+      "Divide and Conquer",
+      "Bit Manipulation"
+    ],
+    "tag_slugs": [
+      "divide-and-conquer",
+      "bit-manipulation"
+    ],
+    "ac_rate": "77.2%",
+    "leetcode_url": "https://leetcode.com/problems/number-of-1-bits/",
+    "description": "Given a positive integer `n`, write a function that returns the number of set bits in its binary representation (also known as the Hamming weight).\n\n \n\nExample 1:**\n\n**Input:** n = 11\n\n**Output:** 3\n\n**Explanation:**\n\nThe input binary string **1011** has a total of three set bits.\n\nExample 2:**\n\n**Input:** n = 128\n\n**Output:** 1\n\n**Explanation:**\n\nThe input binary string **10000000** has a total of one set bit.\n\nExample 3:**\n\n**Input:** n = 2147483645\n\n**Output:** 30\n\n**Explanation:**\n\nThe input binary string **1111111111111111111111111111101** has a total of thirty set bits.\n\n \n\n**Constraints:**\n\n\t- `1 31 - 1`\n\n \n\n**Follow up:** If this function is called many times, how would you optimize it?",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int hammingWeight(int n) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int hammingWeight(int n) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def hammingWeight(self, n):\n        \"\"\"\n        :type n: int\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number} n\n * @return {number}\n */\nvar hammingWeight = function(n) {\n    \n};",
+      "C": "int hammingWeight(int n) {\n    \n}",
+      "Go": "func hammingWeight(n int) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "08_其他经典"
+  },
+  {
+    "id": "190",
+    "title": "Reverse Bits",
+    "title_slug": "reverse-bits",
+    "difficulty": "Easy",
+    "tags": [
+      "Divide and Conquer",
+      "Bit Manipulation"
+    ],
+    "tag_slugs": [
+      "divide-and-conquer",
+      "bit-manipulation"
+    ],
+    "ac_rate": "68.9%",
+    "leetcode_url": "https://leetcode.com/problems/reverse-bits/",
+    "description": "Reverse bits of a given 32 bits signed integer.\n\n \n\nExample 1:**\n\n**Input:** n = 43261596\n\n**Output:** 964176192\n\n**Explanation:**\n\n\t\n\t\t\n\t\t\tInteger\n\t\t\tBinary\n\t\t\n\t\t\n\t\t\t43261596\n\t\t\t00000010100101000001111010011100\n\t\t\n\t\t\n\t\t\t964176192\n\t\t\t00111001011110000010100101000000\n\t\t\n\t\n\nExample 2:**\n\n**Input:** n = 2147483644\n\n**Output:** 1073741822\n\n**Explanation:**\n\n\t\n\t\t\n\t\t\tInteger\n\t\t\tBinary\n\t\t\n\t\t\n\t\t\t2147483644\n\t\t\t01111111111111111111111111111100\n\t\t\n\t\t\n\t\t\t1073741822\n\t\t\t00111111111111111111111111111110\n\t\t\n\t\n\n \n\n**Constraints:**\n\n\t- `0 31 - 2`\n\t- `n` is even.\n\n \n\n**Follow up:** If this function is called many times, how would you optimize it?",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int reverseBits(int n) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int reverseBits(int n) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def reverseBits(self, n):\n        \"\"\"\n        :type n: int\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number} n\n * @return {number}\n */\nvar reverseBits = function(n) {\n    \n};",
+      "C": "int reverseBits(int n) {\n    \n}",
+      "Go": "func reverseBits(n int) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "08_其他经典"
+  },
+  {
+    "id": "231",
+    "title": "Power of Two",
+    "title_slug": "power-of-two",
+    "difficulty": "Easy",
+    "tags": [
+      "Math",
+      "Bit Manipulation",
+      "Recursion"
+    ],
+    "tag_slugs": [
+      "math",
+      "bit-manipulation",
+      "recursion"
+    ],
+    "ac_rate": "50.3%",
+    "leetcode_url": "https://leetcode.com/problems/power-of-two/",
+    "description": "Given an integer `n`, return *`true` if it is a power of two. Otherwise, return `false`*.\n\nAn integer `n` is a power of two, if there exists an integer `x` such that `n == 2x`.\n\n \n\nExample 1:**\n\n```\n\n**Input:** n = 1\n**Output:** true\n**Explanation: **20 = 1\n\n```\n\nExample 2:**\n\n```\n\n**Input:** n = 16\n**Output:** true\n**Explanation: **24 = 16\n\n```\n\nExample 3:**\n\n```\n\n**Input:** n = 3\n**Output:** false\n\n```\n\n \n\n**Constraints:**\n\n\t- `-231 31 - 1`\n\n \n\n**Follow up:** Could you solve it without loops/recursion?",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    bool isPowerOfTwo(int n) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public boolean isPowerOfTwo(int n) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def isPowerOfTwo(self, n):\n        \"\"\"\n        :type n: int\n        :rtype: bool\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number} n\n * @return {boolean}\n */\nvar isPowerOfTwo = function(n) {\n    \n};",
+      "C": "bool isPowerOfTwo(int n) {\n    \n}",
+      "Go": "func isPowerOfTwo(n int) bool {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "08_其他经典"
+  },
+  {
+    "id": "146",
+    "title": "LRU Cache",
+    "title_slug": "lru-cache",
+    "difficulty": "Medium",
+    "tags": [
+      "Hash Table",
+      "Linked List",
+      "Design",
+      "Doubly-Linked List"
+    ],
+    "tag_slugs": [
+      "hash-table",
+      "linked-list",
+      "design",
+      "doubly-linked-list"
+    ],
+    "ac_rate": "47.7%",
+    "leetcode_url": "https://leetcode.com/problems/lru-cache/",
+    "description": "Design a data structure that follows the constraints of a **Least Recently Used (LRU) cache**.\n\nImplement the `LRUCache` class:\n\n\t- `LRUCache(int capacity)` Initialize the LRU cache with **positive** size `capacity`.\n\t- `int get(int key)` Return the value of the `key` if the key exists, otherwise return `-1`.\n\t- `void put(int key, int value)` Update the value of the `key` if the `key` exists. Otherwise, add the `key-value` pair to the cache. If the number of keys exceeds the `capacity` from this operation, **evict** the least recently used key.\n\nThe functions `get` and `put` must each run in `O(1)` average time complexity.\n\n \n\nExample 1:**\n\n```\n\n**Input**\n[&quot;LRUCache&quot;, &quot;put&quot;, &quot;put&quot;, &quot;get&quot;, &quot;put&quot;, &quot;get&quot;, &quot;put&quot;, &quot;get&quot;, &quot;get&quot;, &quot;get&quot;]\n[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]\n**Output**\n[null, null, null, 1, null, -1, null, -1, 3, 4]\n\n**Explanation**\nLRUCache lRUCache = new LRUCache(2);\nlRUCache.put(1, 1); // cache is {1=1}\nlRUCache.put(2, 2); // cache is {1=1, 2=2}\nlRUCache.get(1);    // return 1\nlRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}\nlRUCache.get(2);    // returns -1 (not found)\nlRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}\nlRUCache.get(1);    // return -1 (not found)\nlRUCache.get(3);    // return 3\nlRUCache.get(4);    // return 4\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 4`\n\t- `0 5`\n\t- At most `2 * 105` calls will be made to `get` and `put`.",
+    "code_templates": {
+      "C++": "class LRUCache {\npublic:\n    LRUCache(int capacity) {\n        \n    }\n    \n    int get(int key) {\n        \n    }\n    \n    void put(int key, int value) {\n        \n    }\n};\n\n/**\n * Your LRUCache object will be instantiated and called as such:\n * LRUCache* obj = new LRUCache(capacity);\n * int param_1 = obj->get(key);\n * obj->put(key,value);\n */",
+      "Java": "class LRUCache {\n\n    public LRUCache(int capacity) {\n        \n    }\n    \n    public int get(int key) {\n        \n    }\n    \n    public void put(int key, int value) {\n        \n    }\n}\n\n/**\n * Your LRUCache object will be instantiated and called as such:\n * LRUCache obj = new LRUCache(capacity);\n * int param_1 = obj.get(key);\n * obj.put(key,value);\n */",
+      "Python": "class LRUCache(object):\n\n    def __init__(self, capacity):\n        \"\"\"\n        :type capacity: int\n        \"\"\"\n        \n\n    def get(self, key):\n        \"\"\"\n        :type key: int\n        :rtype: int\n        \"\"\"\n        \n\n    def put(self, key, value):\n        \"\"\"\n        :type key: int\n        :type value: int\n        :rtype: None\n        \"\"\"\n        \n\n\n# Your LRUCache object will be instantiated and called as such:\n# obj = LRUCache(capacity)\n# param_1 = obj.get(key)\n# obj.put(key,value)",
+      "JavaScript": "/**\n * @param {number} capacity\n */\nvar LRUCache = function(capacity) {\n    \n};\n\n/** \n * @param {number} key\n * @return {number}\n */\nLRUCache.prototype.get = function(key) {\n    \n};\n\n/** \n * @param {number} key \n * @param {number} value\n * @return {void}\n */\nLRUCache.prototype.put = function(key, value) {\n    \n};\n\n/** \n * Your LRUCache object will be instantiated and called as such:\n * var obj = new LRUCache(capacity)\n * var param_1 = obj.get(key)\n * obj.put(key,value)\n */",
+      "C": "\n\n\ntypedef struct {\n    \n} LRUCache;\n\n\nLRUCache* lRUCacheCreate(int capacity) {\n    \n}\n\nint lRUCacheGet(LRUCache* obj, int key) {\n    \n}\n\nvoid lRUCachePut(LRUCache* obj, int key, int value) {\n    \n}\n\nvoid lRUCacheFree(LRUCache* obj) {\n    \n}\n\n/**\n * Your LRUCache struct will be instantiated and called as such:\n * LRUCache* obj = lRUCacheCreate(capacity);\n * int param_1 = lRUCacheGet(obj, key);\n \n * lRUCachePut(obj, key, value);\n \n * lRUCacheFree(obj);\n*/",
+      "Go": "type LRUCache struct {\n    \n}\n\n\nfunc Constructor(capacity int) LRUCache {\n    \n}\n\n\nfunc (this *LRUCache) Get(key int) int {\n    \n}\n\n\nfunc (this *LRUCache) Put(key int, value int)  {\n    \n}\n\n\n/**\n * Your LRUCache object will be instantiated and called as such:\n * obj := Constructor(capacity);\n * param_1 := obj.Get(key);\n * obj.Put(key,value);\n */"
+    },
+    "hints": [],
+    "source_category": "08_其他经典"
+  },
+  {
+    "id": "208",
+    "title": "Implement Trie (Prefix Tree)",
+    "title_slug": "implement-trie-prefix-tree",
+    "difficulty": "Medium",
+    "tags": [
+      "Hash Table",
+      "String",
+      "Design",
+      "Trie"
+    ],
+    "tag_slugs": [
+      "hash-table",
+      "string",
+      "design",
+      "trie"
+    ],
+    "ac_rate": "69.8%",
+    "leetcode_url": "https://leetcode.com/problems/implement-trie-prefix-tree/",
+    "description": "A **trie** (pronounced as &quot;try&quot;) or **prefix tree** is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.\n\nImplement the Trie class:\n\n\t- `Trie()` Initializes the trie object.\n\t- `void insert(String word)` Inserts the string `word` into the trie.\n\t- `boolean search(String word)` Returns `true` if the string `word` is in the trie (i.e., was inserted before), and `false` otherwise.\n\t- `boolean startsWith(String prefix)` Returns `true` if there is a previously inserted string `word` that has the prefix `prefix`, and `false` otherwise.\n\n \n\nExample 1:**\n\n```\n\n**Input**\n[&quot;Trie&quot;, &quot;insert&quot;, &quot;search&quot;, &quot;search&quot;, &quot;startsWith&quot;, &quot;insert&quot;, &quot;search&quot;]\n[[], [&quot;apple&quot;], [&quot;apple&quot;], [&quot;app&quot;], [&quot;app&quot;], [&quot;app&quot;], [&quot;app&quot;]]\n**Output**\n[null, null, true, false, true, null, true]\n\n**Explanation**\nTrie trie = new Trie();\ntrie.insert(&quot;apple&quot;);\ntrie.search(&quot;apple&quot;);   // return True\ntrie.search(&quot;app&quot;);     // return False\ntrie.startsWith(&quot;app&quot;); // return True\ntrie.insert(&quot;app&quot;);\ntrie.search(&quot;app&quot;);     // return True\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 4` calls **in total** will be made to `insert`, `search`, and `startsWith`.",
+    "code_templates": {
+      "C++": "class Trie {\npublic:\n    Trie() {\n        \n    }\n    \n    void insert(string word) {\n        \n    }\n    \n    bool search(string word) {\n        \n    }\n    \n    bool startsWith(string prefix) {\n        \n    }\n};\n\n/**\n * Your Trie object will be instantiated and called as such:\n * Trie* obj = new Trie();\n * obj->insert(word);\n * bool param_2 = obj->search(word);\n * bool param_3 = obj->startsWith(prefix);\n */",
+      "Java": "class Trie {\n\n    public Trie() {\n        \n    }\n    \n    public void insert(String word) {\n        \n    }\n    \n    public boolean search(String word) {\n        \n    }\n    \n    public boolean startsWith(String prefix) {\n        \n    }\n}\n\n/**\n * Your Trie object will be instantiated and called as such:\n * Trie obj = new Trie();\n * obj.insert(word);\n * boolean param_2 = obj.search(word);\n * boolean param_3 = obj.startsWith(prefix);\n */",
+      "Python": "class Trie(object):\n\n    def __init__(self):\n        \n\n    def insert(self, word):\n        \"\"\"\n        :type word: str\n        :rtype: None\n        \"\"\"\n        \n\n    def search(self, word):\n        \"\"\"\n        :type word: str\n        :rtype: bool\n        \"\"\"\n        \n\n    def startsWith(self, prefix):\n        \"\"\"\n        :type prefix: str\n        :rtype: bool\n        \"\"\"\n        \n\n\n# Your Trie object will be instantiated and called as such:\n# obj = Trie()\n# obj.insert(word)\n# param_2 = obj.search(word)\n# param_3 = obj.startsWith(prefix)",
+      "JavaScript": "\nvar Trie = function() {\n    \n};\n\n/** \n * @param {string} word\n * @return {void}\n */\nTrie.prototype.insert = function(word) {\n    \n};\n\n/** \n * @param {string} word\n * @return {boolean}\n */\nTrie.prototype.search = function(word) {\n    \n};\n\n/** \n * @param {string} prefix\n * @return {boolean}\n */\nTrie.prototype.startsWith = function(prefix) {\n    \n};\n\n/** \n * Your Trie object will be instantiated and called as such:\n * var obj = new Trie()\n * obj.insert(word)\n * var param_2 = obj.search(word)\n * var param_3 = obj.startsWith(prefix)\n */",
+      "C": "\n\n\ntypedef struct {\n    \n} Trie;\n\n\nTrie* trieCreate() {\n    \n}\n\nvoid trieInsert(Trie* obj, char* word) {\n    \n}\n\nbool trieSearch(Trie* obj, char* word) {\n    \n}\n\nbool trieStartsWith(Trie* obj, char* prefix) {\n    \n}\n\nvoid trieFree(Trie* obj) {\n    \n}\n\n/**\n * Your Trie struct will be instantiated and called as such:\n * Trie* obj = trieCreate();\n * trieInsert(obj, word);\n \n * bool param_2 = trieSearch(obj, word);\n \n * bool param_3 = trieStartsWith(obj, prefix);\n \n * trieFree(obj);\n*/",
+      "Go": "type Trie struct {\n    \n}\n\n\nfunc Constructor() Trie {\n    \n}\n\n\nfunc (this *Trie) Insert(word string)  {\n    \n}\n\n\nfunc (this *Trie) Search(word string) bool {\n    \n}\n\n\nfunc (this *Trie) StartsWith(prefix string) bool {\n    \n}\n\n\n/**\n * Your Trie object will be instantiated and called as such:\n * obj := Constructor();\n * obj.Insert(word);\n * param_2 := obj.Search(word);\n * param_3 := obj.StartsWith(prefix);\n */"
+    },
+    "hints": [],
+    "source_category": "08_其他经典"
+  },
+  {
+    "id": "211",
+    "title": "Design Add and Search Words Data Structure",
+    "title_slug": "design-add-and-search-words-data-structure",
+    "difficulty": "Medium",
+    "tags": [
+      "String",
+      "Depth-First Search",
+      "Design",
+      "Trie"
+    ],
+    "tag_slugs": [
+      "string",
+      "depth-first-search",
+      "design",
+      "trie"
+    ],
+    "ac_rate": "48.8%",
+    "leetcode_url": "https://leetcode.com/problems/design-add-and-search-words-data-structure/",
+    "description": "Design a data structure that supports adding new words and finding if a string matches any previously added string.\n\nImplement the `WordDictionary` class:\n\n\t- `WordDictionary()` Initializes the object.\n\t- `void addWord(word)` Adds `word` to the data structure, it can be matched later.\n\t- `bool search(word)` Returns `true` if there is any string in the data structure that matches `word` or `false` otherwise. `word` may contain dots `&#39;.&#39;` where dots can be matched with any letter.\n\n \n\nExample:**\n\n```\n\n**Input**\n[&quot;WordDictionary&quot;,&quot;addWord&quot;,&quot;addWord&quot;,&quot;addWord&quot;,&quot;search&quot;,&quot;search&quot;,&quot;search&quot;,&quot;search&quot;]\n[[],[&quot;bad&quot;],[&quot;dad&quot;],[&quot;mad&quot;],[&quot;pad&quot;],[&quot;bad&quot;],[&quot;.ad&quot;],[&quot;b..&quot;]]\n**Output**\n[null,null,null,null,false,true,true,true]\n\n**Explanation**\nWordDictionary wordDictionary = new WordDictionary();\nwordDictionary.addWord(&quot;bad&quot;);\nwordDictionary.addWord(&quot;dad&quot;);\nwordDictionary.addWord(&quot;mad&quot;);\nwordDictionary.search(&quot;pad&quot;); // return False\nwordDictionary.search(&quot;bad&quot;); // return True\nwordDictionary.search(&quot;.ad&quot;); // return True\nwordDictionary.search(&quot;b..&quot;); // return True\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 4` calls will be made to `addWord` and `search`.",
+    "code_templates": {
+      "C++": "class WordDictionary {\npublic:\n    WordDictionary() {\n        \n    }\n    \n    void addWord(string word) {\n        \n    }\n    \n    bool search(string word) {\n        \n    }\n};\n\n/**\n * Your WordDictionary object will be instantiated and called as such:\n * WordDictionary* obj = new WordDictionary();\n * obj->addWord(word);\n * bool param_2 = obj->search(word);\n */",
+      "Java": "class WordDictionary {\n\n    public WordDictionary() {\n        \n    }\n    \n    public void addWord(String word) {\n        \n    }\n    \n    public boolean search(String word) {\n        \n    }\n}\n\n/**\n * Your WordDictionary object will be instantiated and called as such:\n * WordDictionary obj = new WordDictionary();\n * obj.addWord(word);\n * boolean param_2 = obj.search(word);\n */",
+      "Python": "class WordDictionary(object):\n\n    def __init__(self):\n        \n\n    def addWord(self, word):\n        \"\"\"\n        :type word: str\n        :rtype: None\n        \"\"\"\n        \n\n    def search(self, word):\n        \"\"\"\n        :type word: str\n        :rtype: bool\n        \"\"\"\n        \n\n\n# Your WordDictionary object will be instantiated and called as such:\n# obj = WordDictionary()\n# obj.addWord(word)\n# param_2 = obj.search(word)",
+      "JavaScript": "\nvar WordDictionary = function() {\n    \n};\n\n/** \n * @param {string} word\n * @return {void}\n */\nWordDictionary.prototype.addWord = function(word) {\n    \n};\n\n/** \n * @param {string} word\n * @return {boolean}\n */\nWordDictionary.prototype.search = function(word) {\n    \n};\n\n/** \n * Your WordDictionary object will be instantiated and called as such:\n * var obj = new WordDictionary()\n * obj.addWord(word)\n * var param_2 = obj.search(word)\n */",
+      "C": "\n\n\ntypedef struct {\n    \n} WordDictionary;\n\n\nWordDictionary* wordDictionaryCreate() {\n    \n}\n\nvoid wordDictionaryAddWord(WordDictionary* obj, char* word) {\n    \n}\n\nbool wordDictionarySearch(WordDictionary* obj, char* word) {\n    \n}\n\nvoid wordDictionaryFree(WordDictionary* obj) {\n    \n}\n\n/**\n * Your WordDictionary struct will be instantiated and called as such:\n * WordDictionary* obj = wordDictionaryCreate();\n * wordDictionaryAddWord(obj, word);\n \n * bool param_2 = wordDictionarySearch(obj, word);\n \n * wordDictionaryFree(obj);\n*/",
+      "Go": "type WordDictionary struct {\n    \n}\n\n\nfunc Constructor() WordDictionary {\n    \n}\n\n\nfunc (this *WordDictionary) AddWord(word string)  {\n    \n}\n\n\nfunc (this *WordDictionary) Search(word string) bool {\n    \n}\n\n\n/**\n * Your WordDictionary object will be instantiated and called as such:\n * obj := Constructor();\n * obj.AddWord(word);\n * param_2 := obj.Search(word);\n */"
+    },
+    "hints": [
+      "You should be familiar with how a Trie works. If not, please work on this problem: <a href=\"https://leetcode.com/problems/implement-trie-prefix-tree/\">Implement Trie (Prefix Tree)</a> first."
+    ],
+    "source_category": "08_其他经典"
+  },
+  {
+    "id": "202",
+    "title": "Happy Number",
+    "title_slug": "happy-number",
+    "difficulty": "Easy",
+    "tags": [
+      "Hash Table",
+      "Math",
+      "Two Pointers"
+    ],
+    "tag_slugs": [
+      "hash-table",
+      "math",
+      "two-pointers"
+    ],
+    "ac_rate": "60.0%",
+    "leetcode_url": "https://leetcode.com/problems/happy-number/",
+    "description": "Write an algorithm to determine if a number `n` is happy.\n\nA **happy number** is a number defined by the following process:\n\n\t- Starting with any positive integer, replace the number by the sum of the squares of its digits.\n\t- Repeat the process until the number equals 1 (where it will stay), or it **loops endlessly in a cycle** which does not include 1.\n\t- Those numbers for which this process **ends in 1** are happy.\n\nReturn `true` *if* `n` *is a happy number, and* `false` *if not*.\n\n \n\nExample 1:**\n\n```\n\n**Input:** n = 19\n**Output:** true\n**Explanation:**\n12 + 92 = 82\n82 + 22 = 68\n62 + 82 = 100\n12 + 02 + 02 = 1\n\n```\n\nExample 2:**\n\n```\n\n**Input:** n = 2\n**Output:** false\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 31 - 1`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    bool isHappy(int n) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public boolean isHappy(int n) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def isHappy(self, n):\n        \"\"\"\n        :type n: int\n        :rtype: bool\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number} n\n * @return {boolean}\n */\nvar isHappy = function(n) {\n    \n};",
+      "C": "bool isHappy(int n) {\n    \n}",
+      "Go": "func isHappy(n int) bool {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "08_其他经典"
+  },
+  {
+    "id": "13",
+    "title": "Roman to Integer",
+    "title_slug": "roman-to-integer",
+    "difficulty": "Easy",
+    "tags": [
+      "Hash Table",
+      "Math",
+      "String"
+    ],
+    "tag_slugs": [
+      "hash-table",
+      "math",
+      "string"
+    ],
+    "ac_rate": "66.9%",
+    "leetcode_url": "https://leetcode.com/problems/roman-to-integer/",
+    "description": "Roman numerals are represented by seven different symbols: `I`, `V`, `X`, `L`, `C`, `D` and `M`.\n\n```\n\n**Symbol**       **Value**\nI             1\nV             5\nX             10\nL             50\nC             100\nD             500\nM             1000\n```\n\nFor example, `2` is written as `II` in Roman numeral, just two ones added together. `12` is written as `XII`, which is simply `X + II`. The number `27` is written as `XXVII`, which is `XX + V + II`.\n\nRoman numerals are usually written largest to smallest from left to right. However, the numeral for four is not `IIII`. Instead, the number four is written as `IV`. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as `IX`. There are six instances where subtraction is used:\n\n\t- `I` can be placed before `V` (5) and `X` (10) to make 4 and 9. \n\t- `X` can be placed before `L` (50) and `C` (100) to make 40 and 90. \n\t- `C` can be placed before `D` (500) and `M` (1000) to make 400 and 900.\n\nGiven a roman numeral, convert it to an integer.\n\n \n\nExample 1:**\n\n```\n\n**Input:** s = &quot;III&quot;\n**Output:** 3\n**Explanation:** III = 3.\n\n```\n\nExample 2:**\n\n```\n\n**Input:** s = &quot;LVIII&quot;\n**Output:** 58\n**Explanation:** L = 50, V= 5, III = 3.\n\n```\n\nExample 3:**\n\n```\n\n**Input:** s = &quot;MCMXCIV&quot;\n**Output:** 1994\n**Explanation:** M = 1000, CM = 900, XC = 90 and IV = 4.\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 <= s.length <= 15`\n\t- `s` contains only the characters `(&#39;I&#39;, &#39;V&#39;, &#39;X&#39;, &#39;L&#39;, &#39;C&#39;, &#39;D&#39;, &#39;M&#39;)`.\n\t- It is **guaranteed** that `s` is a valid roman numeral in the range `[1, 3999]`.",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int romanToInt(string s) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int romanToInt(String s) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def romanToInt(self, s):\n        \"\"\"\n        :type s: str\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {string} s\n * @return {number}\n */\nvar romanToInt = function(s) {\n    \n};",
+      "C": "int romanToInt(char* s) {\n    \n}",
+      "Go": "func romanToInt(s string) int {\n    \n}"
+    },
+    "hints": [
+      "Problem is simpler to solve by working the string from back to front and using a map."
+    ],
+    "source_category": "08_其他经典"
+  },
+  {
+    "id": "12",
+    "title": "Integer to Roman",
+    "title_slug": "integer-to-roman",
+    "difficulty": "Medium",
+    "tags": [
+      "Hash Table",
+      "Math",
+      "String"
+    ],
+    "tag_slugs": [
+      "hash-table",
+      "math",
+      "string"
+    ],
+    "ac_rate": "71.3%",
+    "leetcode_url": "https://leetcode.com/problems/integer-to-roman/",
+    "description": "Seven different symbols represent Roman numerals with the following values:\n\n\t\n\t\t\n\t\t\tSymbol\n\t\t\tValue\n\t\t\n\t\n\t\n\t\t\n\t\t\tI\n\t\t\t1\n\t\t\n\t\t\n\t\t\tV\n\t\t\t5\n\t\t\n\t\t\n\t\t\tX\n\t\t\t10\n\t\t\n\t\t\n\t\t\tL\n\t\t\t50\n\t\t\n\t\t\n\t\t\tC\n\t\t\t100\n\t\t\n\t\t\n\t\t\tD\n\t\t\t500\n\t\t\n\t\t\n\t\t\tM\n\t\t\t1000\n\t\t\n\t\n\nRoman numerals are formed by appending the conversions of decimal place values from highest to lowest. Converting a decimal place value into a Roman numeral has the following rules:\n\n\t- If the value does not start with 4 or 9, select the symbol of the maximal value that can be subtracted from the input, append that symbol to the result, subtract its value, and convert the remainder to a Roman numeral.\n\t- If the value starts with 4 or 9 use the **subtractive form** representing one symbol subtracted from the following symbol, for example, 4 is 1 (`I`) less than 5 (`V`): `IV` and 9 is 1 (`I`) less than 10 (`X`): `IX`. Only the following subtractive forms are used: 4 (`IV`), 9 (`IX`), 40 (`XL`), 90 (`XC`), 400 (`CD`) and 900 (`CM`).\n\t- Only powers of 10 (`I`, `X`, `C`, `M`) can be appended consecutively at most 3 times to represent multiples of 10. You cannot append 5 (`V`), 50 (`L`), or 500 (`D`) multiple times. If you need to append a symbol 4 times use the **subtractive form**.\n\nGiven an integer, convert it to a Roman numeral.\n\n \n\nExample 1:**\n\n**Input:** num = 3749\n\n**Output:** &quot;MMMDCCXLIX&quot;\n\n**Explanation:**\n\n```\n\n3000 = MMM as 1000 (M) + 1000 (M) + 1000 (M)\n 700 = DCC as 500 (D) + 100 (C) + 100 (C)\n  40 = XL as 10 (X) less of 50 (L)\n   9 = IX as 1 (I) less of 10 (X)\nNote: 49 is not 1 (I) less of 50 (L) because the conversion is based on decimal places\n\n```\n\nExample 2:**\n\n**Input:** num = 58\n\n**Output:** &quot;LVIII&quot;\n\n**Explanation:**\n\n```\n\n50 = L\n 8 = VIII\n\n```\n\nExample 3:**\n\n**Input:** num = 1994\n\n**Output:** &quot;MCMXCIV&quot;\n\n**Explanation:**\n\n```\n\n1000 = M\n 900 = CM\n  90 = XC\n   4 = IV\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 <= num <= 3999`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    string intToRoman(int num) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public String intToRoman(int num) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def intToRoman(self, num):\n        \"\"\"\n        :type num: int\n        :rtype: str\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number} num\n * @return {string}\n */\nvar intToRoman = function(num) {\n    \n};",
+      "C": "char* intToRoman(int num) {\n    \n}",
+      "Go": "func intToRoman(num int) string {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "08_其他经典"
+  },
+  {
+    "id": "412",
+    "title": "Fizz Buzz",
+    "title_slug": "fizz-buzz",
+    "difficulty": "Easy",
+    "tags": [
+      "Math",
+      "String",
+      "Simulation"
+    ],
+    "tag_slugs": [
+      "math",
+      "string",
+      "simulation"
+    ],
+    "ac_rate": "75.7%",
+    "leetcode_url": "https://leetcode.com/problems/fizz-buzz/",
+    "description": "Given an integer `n`, return *a string array *`answer`* (**1-indexed**) where*:\n\n\t- `answer[i] == &quot;FizzBuzz&quot;` if `i` is divisible by `3` and `5`.\n\t- `answer[i] == &quot;Fizz&quot;` if `i` is divisible by `3`.\n\t- `answer[i] == &quot;Buzz&quot;` if `i` is divisible by `5`.\n\t- `answer[i] == i` (as a string) if none of the above conditions are true.\n\n \n\nExample 1:**\n\n```\n**Input:** n = 3\n**Output:** [\"1\",\"2\",\"Fizz\"]\n\n```\n\nExample 2:**\n\n```\n**Input:** n = 5\n**Output:** [\"1\",\"2\",\"Fizz\",\"4\",\"Buzz\"]\n\n```\n\nExample 3:**\n\n```\n**Input:** n = 15\n**Output:** [\"1\",\"2\",\"Fizz\",\"4\",\"Buzz\",\"Fizz\",\"7\",\"8\",\"Fizz\",\"Buzz\",\"11\",\"Fizz\",\"13\",\"14\",\"FizzBuzz\"]\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 4`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    vector<string> fizzBuzz(int n) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public List<String> fizzBuzz(int n) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def fizzBuzz(self, n):\n        \"\"\"\n        :type n: int\n        :rtype: List[str]\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number} n\n * @return {string[]}\n */\nvar fizzBuzz = function(n) {\n    \n};",
+      "C": "/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nchar** fizzBuzz(int n, int* returnSize) {\n    \n}",
+      "Go": "func fizzBuzz(n int) []string {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "08_其他经典"
+  },
+  {
+    "id": "48",
+    "title": "Rotate Image",
+    "title_slug": "rotate-image",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Math",
+      "Matrix"
+    ],
+    "tag_slugs": [
+      "array",
+      "math",
+      "matrix"
+    ],
+    "ac_rate": "80.4%",
+    "leetcode_url": "https://leetcode.com/problems/rotate-image/",
+    "description": "You are given an `n x n` 2D `matrix` representing an image, rotate the image by **90** degrees (clockwise).\n\nYou have to rotate the image **in-place**, which means you have to modify the input 2D matrix directly. **DO NOT** allocate another 2D matrix and do the rotation.\n\n \n\nExample 1:**\n\n```\n\n**Input:** matrix = [[1,2,3],[4,5,6],[7,8,9]]\n**Output:** [[7,4,1],[8,5,2],[9,6,3]]\n\n```\n\nExample 2:**\n\n```\n\n**Input:** matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]\n**Output:** [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]\n\n```\n\n \n\n**Constraints:**\n\n\t- `n == matrix.length == matrix[i].length`\n\t- `1 <= n <= 20`\n\t- `-1000 <= matrix[i][j] <= 1000`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    void rotate(vector<vector<int>>& matrix) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public void rotate(int[][] matrix) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def rotate(self, matrix):\n        \"\"\"\n        :type matrix: List[List[int]]\n        :rtype: None Do not return anything, modify matrix in-place instead.\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[][]} matrix\n * @return {void} Do not return anything, modify matrix in-place instead.\n */\nvar rotate = function(matrix) {\n    \n};",
+      "C": "void rotate(int** matrix, int matrixSize, int* matrixColSize) {\n    \n}",
+      "Go": "func rotate(matrix [][]int)  {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "08_其他经典"
+  },
+  {
+    "id": "54",
+    "title": "Spiral Matrix",
+    "title_slug": "spiral-matrix",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Matrix",
+      "Simulation"
+    ],
+    "tag_slugs": [
+      "array",
+      "matrix",
+      "simulation"
+    ],
+    "ac_rate": "57.3%",
+    "leetcode_url": "https://leetcode.com/problems/spiral-matrix/",
+    "description": "Given an `m x n` `matrix`, return *all elements of the* `matrix` *in spiral order*.\n\n \n\nExample 1:**\n\n```\n\n**Input:** matrix = [[1,2,3],[4,5,6],[7,8,9]]\n**Output:** [1,2,3,6,9,8,7,4,5]\n\n```\n\nExample 2:**\n\n```\n\n**Input:** matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]\n**Output:** [1,2,3,4,8,12,11,10,9,5,6,7]\n\n```\n\n \n\n**Constraints:**\n\n\t- `m == matrix.length`\n\t- `n == matrix[i].length`\n\t- `1 <= m, n <= 10`\n\t- `-100 <= matrix[i][j] <= 100`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    vector<int> spiralOrder(vector<vector<int>>& matrix) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public List<Integer> spiralOrder(int[][] matrix) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def spiralOrder(self, matrix):\n        \"\"\"\n        :type matrix: List[List[int]]\n        :rtype: List[int]\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[][]} matrix\n * @return {number[]}\n */\nvar spiralOrder = function(matrix) {\n    \n};",
+      "C": "/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nint* spiralOrder(int** matrix, int matrixSize, int* matrixColSize, int* returnSize) {\n    \n}",
+      "Go": "func spiralOrder(matrix [][]int) []int {\n    \n}"
+    },
+    "hints": [
+      "Well for some problems, the best way really is to come up with some algorithms for simulation. Basically, you need to simulate what the problem asks us to do.",
+      "We go boundary by boundary and move inwards. That is the essential operation. First row, last column, last row, first column, and then we move inwards by 1 and repeat. That's all. That is all the simulation that we need.",
+      "Think about when you want to switch the progress on one of the indexes. If you progress on i out of [i, j], you'll shift in the same column. Similarly, by changing values for j, you'd be shifting in the same row.\r\nAlso, keep track of the end of a boundary so that you can move inwards and then keep repeating. It's always best to simulate edge cases like a single column or a single row to see if anything breaks or not."
+    ],
+    "source_category": "08_其他经典"
+  },
+  {
+    "id": "73",
+    "title": "Set Matrix Zeroes",
+    "title_slug": "set-matrix-zeroes",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Hash Table",
+      "Matrix"
+    ],
+    "tag_slugs": [
+      "array",
+      "hash-table",
+      "matrix"
+    ],
+    "ac_rate": "63.3%",
+    "leetcode_url": "https://leetcode.com/problems/set-matrix-zeroes/",
+    "description": "Given an `m x n` integer matrix `matrix`, if an element is `0`, set its entire row and column to `0`&#39;s.\n\nYou must do it in place.\n\n \n\nExample 1:**\n\n```\n\n**Input:** matrix = [[1,1,1],[1,0,1],[1,1,1]]\n**Output:** [[1,0,1],[0,0,0],[1,0,1]]\n\n```\n\nExample 2:**\n\n```\n\n**Input:** matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]\n**Output:** [[0,0,0,0],[0,4,5,0],[0,3,1,0]]\n\n```\n\n \n\n**Constraints:**\n\n\t- `m == matrix.length`\n\t- `n == matrix[0].length`\n\t- `1 31 31 - 1`\n\n \n\n**Follow up:**\n\n\t- A straightforward solution using `O(mn)` space is probably a bad idea.\n\t- A simple improvement uses `O(m + n)` space, but still not the best solution.\n\t- Could you devise a constant space solution?",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    void setZeroes(vector<vector<int>>& matrix) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public void setZeroes(int[][] matrix) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def setZeroes(self, matrix):\n        \"\"\"\n        :type matrix: List[List[int]]\n        :rtype: None Do not return anything, modify matrix in-place instead.\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[][]} matrix\n * @return {void} Do not return anything, modify matrix in-place instead.\n */\nvar setZeroes = function(matrix) {\n    \n};",
+      "C": "void setZeroes(int** matrix, int matrixSize, int* matrixColSize) {\n    \n}",
+      "Go": "func setZeroes(matrix [][]int)  {\n    \n}"
+    },
+    "hints": [
+      "If any cell of the matrix has a zero we can record its row and column number using additional memory.\r\nBut if you don't want to use extra memory then you can manipulate the array instead. i.e. simulating exactly what the question says.",
+      "Setting cell values to zero on the fly while iterating might lead to discrepancies. What if you use some other integer value as your marker?\r\nThere is still a better approach for this problem with O(1) space.",
+      "We could have used 2 sets to keep a record of rows/columns which need to be set to zero. But for an O(1) space solution, you can use one of the rows and and one of the columns to keep track of this information.",
+      "We can use the first cell of every row and column as a flag. This flag would determine whether a row or column has been set to zero."
+    ],
+    "source_category": "08_其他经典"
+  },
+  {
+    "id": "134",
+    "title": "Gas Station",
+    "title_slug": "gas-station",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Greedy"
+    ],
+    "tag_slugs": [
+      "array",
+      "greedy"
+    ],
+    "ac_rate": "48.4%",
+    "leetcode_url": "https://leetcode.com/problems/gas-station/",
+    "description": "There are `n` gas stations along a circular route, where the amount of gas at the `ith` station is `gas[i]`.\n\nYou have a car with an unlimited gas tank and it costs `cost[i]` of gas to travel from the `ith` station to its next `(i + 1)th` station. You begin the journey with an empty tank at one of the gas stations.\n\nGiven two integer arrays `gas` and `cost`, return *the starting gas station&#39;s index if you can travel around the circuit once in the clockwise direction, otherwise return* `-1`. If there exists a solution, it is **guaranteed** to be **unique**.\n\n \n\nExample 1:**\n\n```\n\n**Input:** gas = [1,2,3,4,5], cost = [3,4,5,1,2]\n**Output:** 3\n**Explanation:**\nStart at station 3 (index 3) and fill up with 4 unit of gas. Your tank = 0 + 4 = 4\nTravel to station 4. Your tank = 4 - 1 + 5 = 8\nTravel to station 0. Your tank = 8 - 2 + 1 = 7\nTravel to station 1. Your tank = 7 - 3 + 2 = 6\nTravel to station 2. Your tank = 6 - 4 + 3 = 5\nTravel to station 3. The cost is 5. Your gas is just enough to travel back to station 3.\nTherefore, return 3 as the starting index.\n\n```\n\nExample 2:**\n\n```\n\n**Input:** gas = [2,3,4], cost = [3,4,3]\n**Output:** -1\n**Explanation:**\nYou can&#39;t start at station 0 or 1, as there is not enough gas to travel to the next station.\nLet&#39;s start at station 2 and fill up with 4 unit of gas. Your tank = 0 + 4 = 4\nTravel to station 0. Your tank = 4 - 3 + 2 = 3\nTravel to station 1. Your tank = 3 - 3 + 3 = 3\nYou cannot travel back to station 2, as it requires 4 unit of gas but you only have 3.\nTherefore, you can&#39;t travel around the circuit once no matter where you start.\n\n```\n\n \n\n**Constraints:**\n\n\t- `n == gas.length == cost.length`\n\t- `1 5`\n\t- `0 4`\n\t- The input is generated such that the answer is unique.",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int canCompleteCircuit(int[] gas, int[] cost) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def canCompleteCircuit(self, gas, cost):\n        \"\"\"\n        :type gas: List[int]\n        :type cost: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[]} gas\n * @param {number[]} cost\n * @return {number}\n */\nvar canCompleteCircuit = function(gas, cost) {\n    \n};",
+      "C": "int canCompleteCircuit(int* gas, int gasSize, int* cost, int costSize) {\n    \n}",
+      "Go": "func canCompleteCircuit(gas []int, cost []int) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "08_其他经典"
+  },
+  {
+    "id": "135",
+    "title": "Candy",
+    "title_slug": "candy",
+    "difficulty": "Hard",
+    "tags": [
+      "Array",
+      "Greedy"
+    ],
+    "tag_slugs": [
+      "array",
+      "greedy"
+    ],
+    "ac_rate": "48.8%",
+    "leetcode_url": "https://leetcode.com/problems/candy/",
+    "description": "There are `n` children standing in a line. Each child is assigned a rating value given in the integer array `ratings`.\n\nYou are giving candies to these children subjected to the following requirements:\n\n\t- Each child must have at least one candy.\n\t- Children with a higher rating get more candies than their neighbors.\n\nReturn *the minimum number of candies you need to have to distribute the candies to the children*.\n\n \n\nExample 1:**\n\n```\n\n**Input:** ratings = [1,0,2]\n**Output:** 5\n**Explanation:** You can allocate to the first, second and third child with 2, 1, 2 candies respectively.\n\n```\n\nExample 2:**\n\n```\n\n**Input:** ratings = [1,2,2]\n**Output:** 4\n**Explanation:** You can allocate to the first, second and third child with 1, 2, 1 candies respectively.\nThe third child gets 1 candy because it satisfies the above two conditions.\n\n```\n\n \n\n**Constraints:**\n\n\t- `n == ratings.length`\n\t- `1 4`\n\t- `0 4`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int candy(vector<int>& ratings) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int candy(int[] ratings) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def candy(self, ratings):\n        \"\"\"\n        :type ratings: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number[]} ratings\n * @return {number}\n */\nvar candy = function(ratings) {\n    \n};",
+      "C": "int candy(int* ratings, int ratingsSize) {\n    \n}",
+      "Go": "func candy(ratings []int) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "08_其他经典"
+  }
+]
