@@ -1,0 +1,57 @@
+{
+  "basic_info": {
+    "name": "李明",
+    "education": "本科",
+    "major": "计算机科学与技术",
+    "email": "liming@example.com",
+    "phone": "13066668888"
+  },
+  "skills": [
+    "Python",
+    "Java",
+    "C++",
+    "Spring Boot",
+    "Flask",
+    "Django",
+    "MySQL",
+    "PostgreSQL",
+    "Redis",
+    "Docker",
+    "Kubernetes",
+    "Linux",
+    "Vue.js",
+    "React"
+  ],
+  "projects": [
+    {
+      "project_name": "智能物流管理系统",
+      "role": "全栈开发工程师",
+      "description": "负责系统架构设计与核心模块开发，包括订单管理、路径规划、实时追踪等功能",
+      "tech_stack": [
+        "Spring Boot",
+        "MySQL",
+        "Redis",
+        "Vue.js"
+      ]
+    },
+    {
+      "project_name": "开源博客平台",
+      "role": "后端开发",
+      "description": "开发高性能博客系统，支持文章管理、用户认证、评论互动等功能",
+      "tech_stack": [
+        "Django",
+        "PostgreSQL",
+        "Docker",
+        "Nginx"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "ABC科技有限公司",
+      "position": "后端开发工程师",
+      "duration": "2024.02-2024.05"
+    }
+  ],
+  "resume_id": "resume_test_resume_20260720155405"
+}
