@@ -29,6 +29,51 @@ client = OpenAI(
 )
 # =====================================================
 
+# 技能同义词映射表
+SKILL_SYNONYMS = {
+    # 语言/框架
+    "javascript": ["js", "javascript", "ecmascript"],
+    "typescript": ["ts", "typescript"],
+    "python": ["python", "py"],
+    "java": ["java", "j2se"],
+    "c++": ["c++", "cpp", "cplusplus"],
+    "c#": ["c#", "csharp"],
+    "go": ["go", "golang"],
+    
+    # 前端框架
+    "react": ["react", "react.js", "reactjs", "react-js"],
+    "vue": ["vue", "vue.js", "vuejs", "vue-js"],
+    "angular": ["angular", "angular.js", "angularjs"],
+    
+    # 后端框架
+    "spring": ["spring", "spring boot", "spring-boot", "springboot"],
+    "django": ["django", "django framework"],
+    "flask": ["flask", "flask framework"],
+    
+    # 数据库
+    "mysql": ["mysql", "my sql"],
+    "postgresql": ["postgresql", "postgres", "pg"],
+    "mongodb": ["mongodb", "mongo", "mongo-db"],
+    "redis": ["redis", "redis cache"],
+    
+    # DevOps/云
+    "docker": ["docker", "docker container"],
+    "kubernetes": ["kubernetes", "k8s", "kube"],
+    "aws": ["aws", "amazon web services"],
+    "linux": ["linux", "linux os", "unix"],
+    
+    # 数据/AI
+    "pandas": ["pandas", "pd"],
+    "numpy": ["numpy", "np"],
+    "scikit-learn": ["scikit-learn", "sklearn", "scikit"],
+    "tensorflow": ["tensorflow", "tf"],
+    "pytorch": ["pytorch", "torch", "py-torch"],
+    
+    # 工具
+    "git": ["git", "git-scm"],
+    "jenkins": ["jenkins", "jenkins-ci"],
+}
+
 # 支持相对导入和绝对导入两种方式
 try:
     from .job_agent import parse_jd  # 相对导入（作为包运行时）
@@ -37,12 +82,23 @@ except ImportError:
 
 # ============ 匹配度计算（核心算法） ============
 def normalize_skill(skill: str) -> str:
-    """标准化技能名称，用于模糊匹配"""
+    """标准化技能名称，包含同义词映射"""
+    # 1. 转小写并去除空格
     skill = skill.lower().strip()
-    # 移除常见修饰词
+    
+    # 2. 移除常见修饰词（原有的）
     skill = re.sub(r'^(熟悉|掌握|精通|了解|熟练使用|有.*经验|.*开发经验|.*经验)\s*', '', skill)
+    
+    # 3. 移除版本号（如 Python3.8 → Python）
+    skill = re.sub(r'[\d.]+$', '', skill)
+    skill = skill.rstrip('.-')
+    
+    # 4. 同义词映射
+    for canonical, variants in SKILL_SYNONYMS.items():
+        if skill in variants:
+            return canonical
+    
     return skill
-
 
 def calculate_match(
     resume_skills: List[str], 
@@ -366,45 +422,54 @@ def _build_template_result(resume_dict: Dict, jd_text: str, error_reason: str = 
 
 # ============ 测试代码 ============
 if __name__ == "__main__":
-    # 模拟简历数据（由Resume Agent输出）
+    # 测试同义词映射
+    print("=" * 60)
+    print("测试技能同义词映射")
+    print("=" * 60)
+    
+    test_pairs = [
+        ("React.js", "react"),
+        ("Python3.8", "python"),
+        ("Spring Boot", "spring"),
+        ("K8s", "kubernetes"),
+        ("sklearn", "scikit-learn"),
+        ("JavaScript", "javascript"),
+    ]
+    
+    for raw, expected in test_pairs:
+        result = normalize_skill(raw)
+        status = "✅" if result == expected else "❌"
+        print(f"{status} '{raw}' → '{result}' (期望: '{expected}')")
+    
+    print("\n" + "=" * 60)
+    print("完整匹配流程测试（含同义词）")
+    print("=" * 60)
+    
+    # 简历里写的是原始技能，JD里写的是变体
     test_resume = {
-        "name": "张三",
-        "skills": ["Python", "Django", "MySQL", "Linux", "Git"],
-        "education": "本科-计算机科学与技术",
-        "projects": ["电商平台开发", "数据可视化系统"],
-        "experience": "2年Python开发经验"
+        "name": "李明",
+        "skills": ["React", "Python", "Spring", "Kubernetes", "Scikit-learn"],
+        "projects": ["智能物流管理系统"],
+        "experience": "3年开发经验"
     }
     
-    # 测试JD
     test_jd = """
-    岗位名称：Python后端开发工程师
-    经验要求：3-5年
-    学历要求：本科及以上
-    
-    岗位职责：
-    1. 负责公司核心业务系统的后端开发与维护
-    2. 参与系统架构设计和技术选型
-    
+    岗位名称：后端开发工程师
     任职要求：
-    1. 计算机相关专业，本科及以上学历
-    2. 3年以上Python开发经验
-    3. 熟练掌握Django/Flask框架
-    4. 熟悉MySQL、PostgreSQL等关系型数据库
-    5. 熟悉Redis、消息队列（Kafka/RabbitMQ）
-    6. 熟悉Linux环境，能独立部署服务
-    
-    加分项：
-    - 有微服务架构经验
-    - 熟悉Docker/K8s
+    1. 熟悉 React.js
+    2. 3年以上 Python3.8 开发经验
+    3. 熟悉 Spring Boot
+    4. 熟悉 K8s
+    5. 熟悉 sklearn
     """
     
     result = match_full(test_resume, test_jd)
-    
     print("=" * 60)
     print("完整匹配结果：")
     print("=" * 60)
-    print(f"\n【岗位】{result['job_info']['job_title']}")
-    print(f"\n【匹配分数】{result['match']['match_score']}分")
+    print(f"匹配分数: {result['match']['match_score']}分")
+    print(f"匹配到的技能: {result['match']['matched_required']}")
+    print(f"缺失的技能: {result['match']['missing_required']}")
     print(f"\n【匹配详情】")
     print(f"  必须技能总数：{result['match']['total_required']}")
     print(f"  已匹配必须技能：{result['match']['matched_required']}")
@@ -413,3 +478,4 @@ if __name__ == "__main__":
     print(f"\n【分析报告】\n{result['analysis']}")
     print(f"\n【雷达图数据】")
     print(json.dumps(result['radar'], ensure_ascii=False, indent=2))
+   
