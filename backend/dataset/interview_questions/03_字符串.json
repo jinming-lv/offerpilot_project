@@ -1,0 +1,350 @@
+[
+  {
+    "id": "20",
+    "title": "Valid Parentheses",
+    "title_slug": "valid-parentheses",
+    "difficulty": "Easy",
+    "tags": [
+      "String",
+      "Stack"
+    ],
+    "tag_slugs": [
+      "string",
+      "stack"
+    ],
+    "ac_rate": "44.5%",
+    "leetcode_url": "https://leetcode.com/problems/valid-parentheses/",
+    "description": "Given a string `s` containing just the characters `&#39;(&#39;`, `&#39;)&#39;`, `&#39;{&#39;`, `&#39;}&#39;`, `&#39;[&#39;` and `&#39;]&#39;`, determine if the input string is valid.\n\nAn input string is valid if:\n\n\t- Open brackets must be closed by the same type of brackets.\n\t- Open brackets must be closed in the correct order.\n\t- Every close bracket has a corresponding open bracket of the same type.\n\n \n\nExample 1:**\n\n**Input:** s = &quot;()&quot;\n\n**Output:** true\n\nExample 2:**\n\n**Input:** s = &quot;()[]{}&quot;\n\n**Output:** true\n\nExample 3:**\n\n**Input:** s = &quot;(]&quot;\n\n**Output:** false\n\nExample 4:**\n\n**Input:** s = &quot;([])&quot;\n\n**Output:** true\n\nExample 5:**\n\n**Input:** s = &quot;([)]&quot;\n\n**Output:** false\n\n \n\n**Constraints:**\n\n\t- `1 4`\n\t- `s` consists of parentheses only `&#39;()[]{}&#39;`.",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    bool isValid(string s) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public boolean isValid(String s) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def isValid(self, s):\n        \"\"\"\n        :type s: str\n        :rtype: bool\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {string} s\n * @return {boolean}\n */\nvar isValid = function(s) {\n    \n};",
+      "C": "bool isValid(char* s) {\n    \n}",
+      "Go": "func isValid(s string) bool {\n    \n}"
+    },
+    "hints": [
+      "Use a stack of characters.",
+      "When you encounter an opening bracket, push it to the top of the stack.",
+      "When you encounter a closing bracket, check if the top of the stack was the opening for it. If yes, pop it from the stack. Otherwise, return false."
+    ],
+    "source_category": "03_字符串"
+  },
+  {
+    "id": "3",
+    "title": "Longest Substring Without Repeating Characters",
+    "title_slug": "longest-substring-without-repeating-characters",
+    "difficulty": "Medium",
+    "tags": [
+      "Hash Table",
+      "String",
+      "Sliding Window"
+    ],
+    "tag_slugs": [
+      "hash-table",
+      "string",
+      "sliding-window"
+    ],
+    "ac_rate": "39.5%",
+    "leetcode_url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+    "description": "Given a string `s`, find the length of the **longest** **substring** without duplicate characters.\n\n \n\nExample 1:**\n\n```\n\n**Input:** s = &quot;abcabcbb&quot;\n**Output:** 3\n**Explanation:** The answer is &quot;abc&quot;, with the length of 3. Note that `&quot;bca&quot;` and `&quot;cab&quot;` are also correct answers.\n\n```\n\nExample 2:**\n\n```\n\n**Input:** s = &quot;bbbbb&quot;\n**Output:** 1\n**Explanation:** The answer is &quot;b&quot;, with the length of 1.\n\n```\n\nExample 3:**\n\n```\n\n**Input:** s = &quot;pwwkew&quot;\n**Output:** 3\n**Explanation:** The answer is &quot;wke&quot;, with the length of 3.\nNotice that the answer must be a substring, &quot;pwke&quot; is a subsequence and not a substring.\n\n```\n\n \n\n**Constraints:**\n\n\t- `0 4`\n\t- `s` consists of English letters, digits, symbols and spaces.",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int lengthOfLongestSubstring(string s) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def lengthOfLongestSubstring(self, s):\n        \"\"\"\n        :type s: str\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {string} s\n * @return {number}\n */\nvar lengthOfLongestSubstring = function(s) {\n    \n};",
+      "C": "int lengthOfLongestSubstring(char* s) {\n    \n}",
+      "Go": "func lengthOfLongestSubstring(s string) int {\n    \n}"
+    },
+    "hints": [
+      "There are less than 100 unique characters. We can check all substrings with length at most 100 for example. This is a good enough approximation."
+    ],
+    "source_category": "03_字符串"
+  },
+  {
+    "id": "5",
+    "title": "Longest Palindromic Substring",
+    "title_slug": "longest-palindromic-substring",
+    "difficulty": "Medium",
+    "tags": [
+      "Two Pointers",
+      "String",
+      "Dynamic Programming"
+    ],
+    "tag_slugs": [
+      "two-pointers",
+      "string",
+      "dynamic-programming"
+    ],
+    "ac_rate": "38.2%",
+    "leetcode_url": "https://leetcode.com/problems/longest-palindromic-substring/",
+    "description": "Given a string `s`, return *the longest* *palindromic* *substring* in `s`.\n\n \n\nExample 1:**\n\n```\n\n**Input:** s = &quot;babad&quot;\n**Output:** &quot;bab&quot;\n**Explanation:** &quot;aba&quot; is also a valid answer.\n\n```\n\nExample 2:**\n\n```\n\n**Input:** s = &quot;cbbd&quot;\n**Output:** &quot;bb&quot;\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 <= s.length <= 1000`\n\t- `s` consist of only digits and English letters.",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    string longestPalindrome(string s) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public String longestPalindrome(String s) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def longestPalindrome(self, s):\n        \"\"\"\n        :type s: str\n        :rtype: str\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {string} s\n * @return {string}\n */\nvar longestPalindrome = function(s) {\n    \n};",
+      "C": "char* longestPalindrome(char* s) {\n    \n}",
+      "Go": "func longestPalindrome(s string) string {\n    \n}"
+    },
+    "hints": [
+      "How can we reuse a previously computed palindrome to compute a larger palindrome?",
+      "If “aba” is a palindrome, is “xabax” a palindrome? Similarly is “xabay” a palindrome?",
+      "Complexity based hint:</br>\r\nIf we use brute-force and check whether for every start and end position a substring is a palindrome we have O(n^2) start - end pairs and O(n) palindromic checks. Can we reduce the time for palindromic checks to O(1) by reusing some previous computation."
+    ],
+    "source_category": "03_字符串"
+  },
+  {
+    "id": "8",
+    "title": "String to Integer (atoi)",
+    "title_slug": "string-to-integer-atoi",
+    "difficulty": "Medium",
+    "tags": [
+      "String"
+    ],
+    "tag_slugs": [
+      "string"
+    ],
+    "ac_rate": "21.4%",
+    "leetcode_url": "https://leetcode.com/problems/string-to-integer-atoi/",
+    "description": "Implement the `myAtoi(string s)` function, which converts a string to a 32-bit signed integer.\n\nThe algorithm for `myAtoi(string s)` is as follows:\n\n\t- **Whitespace**: Ignore any leading whitespace (`&quot; &quot;`).\n\t- **Signedness**: Determine the sign by checking if the next character is `&#39;-&#39;` or `&#39;+&#39;`, assuming positivity if neither present.\n\t- **Conversion**: Read the integer by skipping leading zeros until a non-digit character is encountered or the end of the string is reached. If no digits were read, then the result is 0.\n\t- **Rounding**: If the integer is out of the 32-bit signed integer range `[-231, 231 - 1]`, then round the integer to remain in the range. Specifically, integers less than `-231` should be rounded to `-231`, and integers greater than `231 - 1` should be rounded to `231 - 1`.\n\nReturn the integer as the final result.\n\n \n\nExample 1:**\n\n**Input:** s = &quot;42&quot;\n\n**Output:** 42\n\n**Explanation:**\n\n```\n\nThe underlined characters are what is read in and the caret is the current reader position.\nStep 1: &quot;42&quot; (no characters read because there is no leading whitespace)\n         ^\nStep 2: &quot;42&quot; (no characters read because there is neither a &#39;-&#39; nor &#39;+&#39;)\n         ^\nStep 3: &quot;42&quot; (&quot;42&quot; is read in)\n           ^\n\n```\n\nExample 2:**\n\n**Input:** s = &quot; -042&quot;\n\n**Output:** -42\n\n**Explanation:**\n\n```\n\nStep 1: &quot;   -042&quot; (leading whitespace is read and ignored)\n            ^\nStep 2: &quot;   -042&quot; (&#39;-&#39; is read, so the result should be negative)\n             ^\nStep 3: &quot;   -042&quot; (&quot;042&quot; is read in, leading zeros ignored in the result)\n               ^\n\n```\n\nExample 3:**\n\n**Input:** s = &quot;1337c0d3&quot;\n\n**Output:** 1337\n\n**Explanation:**\n\n```\n\nStep 1: &quot;1337c0d3&quot; (no characters read because there is no leading whitespace)\n         ^\nStep 2: &quot;1337c0d3&quot; (no characters read because there is neither a &#39;-&#39; nor &#39;+&#39;)\n         ^\nStep 3: &quot;1337c0d3&quot; (&quot;1337&quot; is read in; reading stops because the next character is a non-digit)\n             ^\n\n```\n\nExample 4:**\n\n**Input:** s = &quot;0-1&quot;\n\n**Output:** 0\n\n**Explanation:**\n\n```\n\nStep 1: &quot;0-1&quot; (no characters read because there is no leading whitespace)\n         ^\nStep 2: &quot;0-1&quot; (no characters read because there is neither a &#39;-&#39; nor &#39;+&#39;)\n         ^\nStep 3: &quot;0-1&quot; (&quot;0&quot; is read in; reading stops because the next character is a non-digit)\n          ^\n\n```\n\nExample 5:**\n\n**Input:** s = &quot;words and 987&quot;\n\n**Output:** 0\n\n**Explanation:**\n\nReading stops at the first non-digit character &#39;w&#39;.\n\n \n\n**Constraints:**\n\n\t- `0 <= s.length <= 200`\n\t- `s` consists of English letters (lower-case and upper-case), digits (`0-9`), `&#39; &#39;`, `&#39;+&#39;`, `&#39;-&#39;`, and `&#39;.&#39;`.",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int myAtoi(string s) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int myAtoi(String s) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def myAtoi(self, s):\n        \"\"\"\n        :type s: str\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {string} s\n * @return {number}\n */\nvar myAtoi = function(s) {\n    \n};",
+      "C": "int myAtoi(char* s) {\n    \n}",
+      "Go": "func myAtoi(s string) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "03_字符串"
+  },
+  {
+    "id": "7",
+    "title": "Reverse Integer",
+    "title_slug": "reverse-integer",
+    "difficulty": "Medium",
+    "tags": [
+      "Math"
+    ],
+    "tag_slugs": [
+      "math"
+    ],
+    "ac_rate": "32.2%",
+    "leetcode_url": "https://leetcode.com/problems/reverse-integer/",
+    "description": "Given a signed 32-bit integer `x`, return `x`* with its digits reversed*. If reversing `x` causes the value to go outside the signed 32-bit integer range `[-231, 231 - 1]`, then return `0`.\n\n**Assume the environment does not allow you to store 64-bit integers (signed or unsigned).**\n\n \n\nExample 1:**\n\n```\n\n**Input:** x = 123\n**Output:** 321\n\n```\n\nExample 2:**\n\n```\n\n**Input:** x = -123\n**Output:** -321\n\n```\n\nExample 3:**\n\n```\n\n**Input:** x = 120\n**Output:** 21\n\n```\n\n \n\n**Constraints:**\n\n\t- `-231 31 - 1`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    int reverse(int x) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public int reverse(int x) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def reverse(self, x):\n        \"\"\"\n        :type x: int\n        :rtype: int\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number} x\n * @return {number}\n */\nvar reverse = function(x) {\n    \n};",
+      "C": "int reverse(int x){\n\n}",
+      "Go": "func reverse(x int) int {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "03_字符串"
+  },
+  {
+    "id": "9",
+    "title": "Palindrome Number",
+    "title_slug": "palindrome-number",
+    "difficulty": "Easy",
+    "tags": [
+      "Math"
+    ],
+    "tag_slugs": [
+      "math"
+    ],
+    "ac_rate": "60.7%",
+    "leetcode_url": "https://leetcode.com/problems/palindrome-number/",
+    "description": "Given an integer `x`, return `true`* if *`x`* is a ****palindrome****, and *`false`* otherwise*.\n\n \n\nExample 1:**\n\n```\n\n**Input:** x = 121\n**Output:** true\n**Explanation:** 121 reads as 121 from left to right and from right to left.\n\n```\n\nExample 2:**\n\n```\n\n**Input:** x = -121\n**Output:** false\n**Explanation:** From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.\n\n```\n\nExample 3:**\n\n```\n\n**Input:** x = 10\n**Output:** false\n**Explanation:** Reads 01 from right to left. Therefore it is not a palindrome.\n\n```\n\n \n\n**Constraints:**\n\n\t- `-231 31 - 1`\n\n \n\n**Follow up:** Could you solve it without converting the integer to a string?",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    bool isPalindrome(int x) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public boolean isPalindrome(int x) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def isPalindrome(self, x):\n        \"\"\"\n        :type x: int\n        :rtype: bool\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number} x\n * @return {boolean}\n */\nvar isPalindrome = function(x) {\n    \n};",
+      "C": "bool isPalindrome(int x) {\n    \n}",
+      "Go": "func isPalindrome(x int) bool {\n    \n}"
+    },
+    "hints": [
+      "Beware of overflow when you reverse the integer."
+    ],
+    "source_category": "03_字符串"
+  },
+  {
+    "id": "14",
+    "title": "Longest Common Prefix",
+    "title_slug": "longest-common-prefix",
+    "difficulty": "Easy",
+    "tags": [
+      "Array",
+      "String",
+      "Trie"
+    ],
+    "tag_slugs": [
+      "array",
+      "string",
+      "trie"
+    ],
+    "ac_rate": "48.0%",
+    "leetcode_url": "https://leetcode.com/problems/longest-common-prefix/",
+    "description": "Write a function to find the longest common prefix string amongst an array of strings.\n\nIf there is no common prefix, return an empty string `&quot;&quot;`.\n\n \n\nExample 1:**\n\n```\n\n**Input:** strs = [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]\n**Output:** &quot;fl&quot;\n\n```\n\nExample 2:**\n\n```\n\n**Input:** strs = [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]\n**Output:** &quot;&quot;\n**Explanation:** There is no common prefix among the input strings.\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 <= strs.length <= 200`\n\t- `0 <= strs[i].length <= 200`\n\t- `strs[i]` consists of only lowercase English letters if it is non-empty.",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    string longestCommonPrefix(vector<string>& strs) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public String longestCommonPrefix(String[] strs) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def longestCommonPrefix(self, strs):\n        \"\"\"\n        :type strs: List[str]\n        :rtype: str\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {string[]} strs\n * @return {string}\n */\nvar longestCommonPrefix = function(strs) {\n    \n};",
+      "C": "char* longestCommonPrefix(char** strs, int strsSize) {\n    \n}",
+      "Go": "func longestCommonPrefix(strs []string) string {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "03_字符串"
+  },
+  {
+    "id": "49",
+    "title": "Group Anagrams",
+    "title_slug": "group-anagrams",
+    "difficulty": "Medium",
+    "tags": [
+      "Array",
+      "Hash Table",
+      "String",
+      "Sorting"
+    ],
+    "tag_slugs": [
+      "array",
+      "hash-table",
+      "string",
+      "sorting"
+    ],
+    "ac_rate": "72.9%",
+    "leetcode_url": "https://leetcode.com/problems/group-anagrams/",
+    "description": "Given an array of strings `strs`, group the anagrams together. You can return the answer in **any order**.\n\n \n\nExample 1:**\n\n**Input:** strs = [&quot;eat&quot;,&quot;tea&quot;,&quot;tan&quot;,&quot;ate&quot;,&quot;nat&quot;,&quot;bat&quot;]\n\n**Output:** [[&quot;bat&quot;],[&quot;nat&quot;,&quot;tan&quot;],[&quot;ate&quot;,&quot;eat&quot;,&quot;tea&quot;]]\n\n**Explanation:**\n\n\t- There is no string in strs that can be rearranged to form `&quot;bat&quot;`.\n\t- The strings `&quot;nat&quot;` and `&quot;tan&quot;` are anagrams as they can be rearranged to form each other.\n\t- The strings `&quot;ate&quot;`, `&quot;eat&quot;`, and `&quot;tea&quot;` are anagrams as they can be rearranged to form each other.\n\nExample 2:**\n\n**Input:** strs = [&quot;&quot;]\n\n**Output:** [[&quot;&quot;]]\n\nExample 3:**\n\n**Input:** strs = [&quot;a&quot;]\n\n**Output:** [[&quot;a&quot;]]\n\n \n\n**Constraints:**\n\n\t- `1 4`\n\t- `0 <= strs[i].length <= 100`\n\t- `strs[i]` consists of lowercase English letters.",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    vector<vector<string>> groupAnagrams(vector<string>& strs) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public List<List<String>> groupAnagrams(String[] strs) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def groupAnagrams(self, strs):\n        \"\"\"\n        :type strs: List[str]\n        :rtype: List[List[str]]\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {string[]} strs\n * @return {string[][]}\n */\nvar groupAnagrams = function(strs) {\n    \n};",
+      "C": "/**\n * Return an array of arrays of size *returnSize.\n * The sizes of the arrays are returned as *returnColumnSizes array.\n * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().\n */\nchar*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnColumnSizes) {\n    \n}",
+      "Go": "func groupAnagrams(strs []string) [][]string {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "03_字符串"
+  },
+  {
+    "id": "43",
+    "title": "Multiply Strings",
+    "title_slug": "multiply-strings",
+    "difficulty": "Medium",
+    "tags": [
+      "Math",
+      "String",
+      "Simulation"
+    ],
+    "tag_slugs": [
+      "math",
+      "string",
+      "simulation"
+    ],
+    "ac_rate": "44.5%",
+    "leetcode_url": "https://leetcode.com/problems/multiply-strings/",
+    "description": "Given two non-negative integers `num1` and `num2` represented as strings, return the product of `num1` and `num2`, also represented as a string.\n\n**Note:** You must not use any built-in BigInteger library or convert the inputs to integer directly.\n\n \n\nExample 1:**\n\n```\n**Input:** num1 = \"2\", num2 = \"3\"\n**Output:** \"6\"\n\n```\n\nExample 2:**\n\n```\n**Input:** num1 = \"123\", num2 = \"456\"\n**Output:** \"56088\"\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 <= num1.length, num2.length <= 200`\n\t- `num1` and `num2` consist of digits only.\n\t- Both `num1` and `num2` do not contain any leading zero, except the number `0` itself.",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    string multiply(string num1, string num2) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public String multiply(String num1, String num2) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def multiply(self, num1, num2):\n        \"\"\"\n        :type num1: str\n        :type num2: str\n        :rtype: str\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {string} num1\n * @param {string} num2\n * @return {string}\n */\nvar multiply = function(num1, num2) {\n    \n};",
+      "C": "char* multiply(char* num1, char* num2) {\n    \n}",
+      "Go": "func multiply(num1 string, num2 string) string {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "03_字符串"
+  },
+  {
+    "id": "394",
+    "title": "Decode String",
+    "title_slug": "decode-string",
+    "difficulty": "Medium",
+    "tags": [
+      "String",
+      "Stack",
+      "Recursion"
+    ],
+    "tag_slugs": [
+      "string",
+      "stack",
+      "recursion"
+    ],
+    "ac_rate": "62.9%",
+    "leetcode_url": "https://leetcode.com/problems/decode-string/",
+    "description": "Given an encoded string, return its decoded string.\n\nThe encoding rule is: `k[encoded_string]`, where the `encoded_string` inside the square brackets is being repeated exactly `k` times. Note that `k` is guaranteed to be a positive integer.\n\nYou may assume that the input string is always valid; there are no extra white spaces, square brackets are well-formed, etc. Furthermore, you may assume that the original data does not contain any digits and that digits are only for those repeat numbers, `k`. For example, there will not be input like `3a` or `2[4]`.\n\nThe test cases are generated so that the length of the output will never exceed `105`.\n\n \n\nExample 1:**\n\n```\n\n**Input:** s = &quot;3[a]2[bc]&quot;\n**Output:** &quot;aaabcbc&quot;\n\n```\n\nExample 2:**\n\n```\n\n**Input:** s = &quot;3[a2[c]]&quot;\n**Output:** &quot;accaccacc&quot;\n\n```\n\nExample 3:**\n\n```\n\n**Input:** s = &quot;2[abc]3[cd]ef&quot;\n**Output:** &quot;abcabccdcdcdef&quot;\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 <= s.length <= 30`\n\t- `s` consists of lowercase English letters, digits, and square brackets `&#39;[]&#39;`.\n\t- `s` is guaranteed to be **a valid** input.\n\t- All the integers in `s` are in the range `[1, 300]`.",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    string decodeString(string s) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public String decodeString(String s) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def decodeString(self, s):\n        \"\"\"\n        :type s: str\n        :rtype: str\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {string} s\n * @return {string}\n */\nvar decodeString = function(s) {\n    \n};",
+      "C": "char* decodeString(char* s) {\n    \n}",
+      "Go": "func decodeString(s string) string {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "03_字符串"
+  },
+  {
+    "id": "17",
+    "title": "Letter Combinations of a Phone Number",
+    "title_slug": "letter-combinations-of-a-phone-number",
+    "difficulty": "Medium",
+    "tags": [
+      "Hash Table",
+      "String",
+      "Backtracking"
+    ],
+    "tag_slugs": [
+      "hash-table",
+      "string",
+      "backtracking"
+    ],
+    "ac_rate": "66.5%",
+    "leetcode_url": "https://leetcode.com/problems/letter-combinations-of-a-phone-number/",
+    "description": "Given a string containing digits from `2-9` inclusive, return all possible letter combinations that the number could represent. Return the answer in **any order**.\n\nA mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.\n\n \n\nExample 1:**\n\n```\n\n**Input:** digits = &quot;23&quot;\n**Output:** [&quot;ad&quot;,&quot;ae&quot;,&quot;af&quot;,&quot;bd&quot;,&quot;be&quot;,&quot;bf&quot;,&quot;cd&quot;,&quot;ce&quot;,&quot;cf&quot;]\n\n```\n\nExample 2:**\n\n```\n\n**Input:** digits = &quot;2&quot;\n**Output:** [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;]\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 <= digits.length <= 4`\n\t- `digits[i]` is a digit in the range `[&#39;2&#39;, &#39;9&#39;]`.",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    vector<string> letterCombinations(string digits) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public List<String> letterCombinations(String digits) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def letterCombinations(self, digits):\n        \"\"\"\n        :type digits: str\n        :rtype: List[str]\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {string} digits\n * @return {string[]}\n */\nvar letterCombinations = function(digits) {\n    \n};",
+      "C": "/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nchar** letterCombinations(char* digits, int* returnSize) {\n    \n}",
+      "Go": "func letterCombinations(digits string) []string {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "03_字符串"
+  },
+  {
+    "id": "22",
+    "title": "Generate Parentheses",
+    "title_slug": "generate-parentheses",
+    "difficulty": "Medium",
+    "tags": [
+      "String",
+      "Dynamic Programming",
+      "Backtracking"
+    ],
+    "tag_slugs": [
+      "string",
+      "dynamic-programming",
+      "backtracking"
+    ],
+    "ac_rate": "78.9%",
+    "leetcode_url": "https://leetcode.com/problems/generate-parentheses/",
+    "description": "Given `n` pairs of parentheses, write a function to *generate all combinations of well-formed parentheses*.\n\n \n\nExample 1:**\n\n```\n**Input:** n = 3\n**Output:** [\"((()))\",\"(()())\",\"(())()\",\"()(())\",\"()()()\"]\n\n```\n\nExample 2:**\n\n```\n**Input:** n = 1\n**Output:** [\"()\"]\n\n```\n\n \n\n**Constraints:**\n\n\t- `1 <= n <= 8`",
+    "code_templates": {
+      "C++": "class Solution {\npublic:\n    vector<string> generateParenthesis(int n) {\n        \n    }\n};",
+      "Java": "class Solution {\n    public List<String> generateParenthesis(int n) {\n        \n    }\n}",
+      "Python": "class Solution(object):\n    def generateParenthesis(self, n):\n        \"\"\"\n        :type n: int\n        :rtype: List[str]\n        \"\"\"\n        ",
+      "JavaScript": "/**\n * @param {number} n\n * @return {string[]}\n */\nvar generateParenthesis = function(n) {\n    \n};",
+      "C": "/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nchar** generateParenthesis(int n, int* returnSize) {\n    \n}",
+      "Go": "func generateParenthesis(n int) []string {\n    \n}"
+    },
+    "hints": [],
+    "source_category": "03_字符串"
+  }
+]
