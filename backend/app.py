@@ -16,6 +16,7 @@ from pydantic import BaseModel
 from agent.resume_agent import ResumeAgent
 from agent.job_agent import parse_jd
 from agent.match_agent import match_full
+from agent.report_agent import ReportAgent, generate_unified_report
 from agents.interview.interview_agent import (
     generate_question_text,
     generate_summary,
@@ -109,6 +110,16 @@ class MatchRequest(BaseModel):
 
 class JDTextRequest(BaseModel):
     job_text: str
+
+
+class ReportRequest(BaseModel):
+    """统一报告生成请求"""
+    resume_data: Optional[dict] = None
+    job_data: Optional[dict] = None
+    match_data: Optional[dict] = None
+    interview_questions: Optional[list] = None
+    interview_summary: Optional[str] = None
+    learning_plan: Optional[dict] = None
 
 
 def adapt_resume_to_match(resume_data: ResumeData) -> dict:
@@ -338,6 +349,27 @@ async def health_check():
 RESUME_SERVICE_URL = os.getenv(
     "RESUME_SERVICE_URL", "http://localhost:8001/api/resume/upload"
 )
+
+
+@app.post("/api/report")
+def generate_report_endpoint(req: ReportRequest):
+    """
+    统一报告生成接口
+    接收各 Agent 输出，整合为前端可用的标准 JSON 报告
+    """
+    try:
+        result = generate_unified_report(
+            resume_data=req.resume_data,
+            job_data=req.job_data,
+            match_data=req.match_data,
+            interview_questions=req.interview_questions,
+            interview_summary=req.interview_summary,
+            learning_plan=req.learning_plan,
+        )
+        return {"success": True, "data": result}
+    except Exception as e:
+        logger.exception("报告生成失败")
+        raise HTTPException(status_code=500, detail=f"报告生成失败: {str(e)}")
 
 
 @app.get("/api/health/full")
