@@ -233,6 +233,7 @@ def learning_path(req: LearningRequest):
 
 @app.post("/api/match")
 async def match_endpoint(request: MatchRequest):
+    """匹配接口 - 调用A的简历服务获取真实简历数据"""
     try:
         resume_payload = request.resume_data
         if not resume_payload and request.resume_id:
@@ -246,7 +247,7 @@ async def match_endpoint(request: MatchRequest):
 
         adapted_resume = adapt_resume_to_match(ResumeData(**resume_payload))
         match_result = match_full(adapted_resume, request.job_text)
-
+        
         return {
             "success": True,
             "data": {
@@ -259,6 +260,8 @@ async def match_endpoint(request: MatchRequest):
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
 
 
 @app.post("/api/match/test")
