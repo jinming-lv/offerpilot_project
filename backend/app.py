@@ -13,6 +13,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
+from agent.resume_agent import ResumeAgent
 from agent.job_agent import parse_jd
 from agent.match_agent import match_full
 from agents.interview.interview_agent import (
@@ -33,6 +34,7 @@ load_project_env()
 
 app = FastAPI(title="CareerPilot - OfferPilot", version="1.0")
 logger = get_logger(__name__)
+resume_store = ResumeAgent(save_to_file=True)
 
 app.add_middleware(
     CORSMiddleware,
@@ -100,8 +102,9 @@ class ResumeData(BaseModel):
 
 
 class MatchRequest(BaseModel):
-    resume_id: str
+    resume_id: str = ""
     job_text: str
+    resume_data: Optional[dict] = None
 
 
 class JDTextRequest(BaseModel):
@@ -232,51 +235,17 @@ def learning_path(req: LearningRequest):
 async def match_endpoint(request: MatchRequest):
     """匹配接口 - 调用A的简历服务获取真实简历数据"""
     try:
-        resume_data = None
-        use_mock = False
-        
-        # ============ 调用 A 的简历服务 ============
-        # A的服务在同一项目，直接调用内部函数即可
-        try:
-            from agent.resume_agent import ResumeAgent
-            resume_agent = ResumeAgent()
-            
-            # 方式1：如果A提供了通过resume_id查询的方法
-            # 需要A在resume_agent.py中添加 load_resume_data(resume_id) 方法
-            resume_data = resume_agent.load_resume_data(request.resume_id)
-            
-            if resume_data:
-                print(f"✅ 成功加载简历数据: {request.resume_id}")
-            else:
-                print(f"⚠️ 未找到简历: {request.resume_id}，使用Mock")
-                use_mock = True
-                
-        except Exception as e:
-            print(f"⚠️ 加载简历失败: {e}，使用Mock")
-            use_mock = True
-        
-        # ============ 如果加载失败，降级到Mock ============
-        if resume_data is None:
-            use_mock = True
-            resume_data = {
-                "resume_id": "mock_001",
-                "basic_info": {
-                    "name": "张三",
-                    "education": "本科",
-                    "major": "计算机科学与技术"
-                },
-                "skills": ["Python", "Django", "MySQL", "Linux", "Git"],
-                "projects": [
-                    {"project_name": "电商平台开发", "role": "后端开发"},
-                    {"project_name": "数据可视化系统", "role": "全栈"}
-                ],
-                "experience": [
-                    {"company": "ABC科技", "position": "Python开发", "duration": "2024.01-2025.06"}
-                ]
-            }
-        
-        # ============ 适配数据 + 匹配 ============
-        adapted_resume = adapt_resume_to_match(ResumeData(**resume_data))
+        resume_payload = request.resume_data
+        if not resume_payload and request.resume_id:
+            resume_payload = resume_store.load_resume_data(request.resume_id)
+
+        if not resume_payload:
+            raise HTTPException(status_code=400, detail="缺少简历数据，请先上传简历")
+
+        if "resume_id" not in resume_payload and request.resume_id:
+            resume_payload["resume_id"] = request.resume_id
+
+        adapted_resume = adapt_resume_to_match(ResumeData(**resume_payload))
         match_result = match_full(adapted_resume, request.job_text)
         
         return {
@@ -286,8 +255,8 @@ async def match_endpoint(request: MatchRequest):
                 "analysis": match_result.get("analysis"),
                 "radar": match_result.get("radar"),
                 "job_info": match_result.get("job_info"),
-                "_meta": {"use_mock": use_mock}
-            }
+                "_meta": {"use_mock": False},
+            },
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

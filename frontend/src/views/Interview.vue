@@ -15,7 +15,7 @@
         <div class="interview-stats">
           <div class="stat">
             <span class="stat-label">当前轮次</span>
-            <span class="stat-value">{{ currentRound }} / 5</span>
+            <span class="stat-value">{{ currentRound }} / {{ totalRounds }}</span>
           </div>
           <div class="stat">
             <span class="stat-label">平均评分</span>
@@ -218,6 +218,8 @@ import { ref, computed, nextTick, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ChatLineRound, Promotion } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
+import { getInterviewQuestions, scoreInterviewAnswer, summarizeInterview, generateLearningPath } from '../api/offerpilot'
+import { loadSession, saveSession } from '../utils/session'
 
 const router = useRouter()
 const chatContainer = ref(null)
@@ -228,7 +230,7 @@ const interviewStarted = ref(false)
 const interviewEnded = ref(false)
 const isAiTyping = ref(false)
 const currentRound = ref(0)
-const totalRounds = 5
+const totalRounds = computed(() => Math.min(questionBank.value.length || defaultQuestionBank.length, 5))
 
 // 计时器
 const elapsedSeconds = ref(0)
@@ -255,8 +257,8 @@ const formattedTime = computed(() => {
   return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`
 })
 
-// Mock 面试题库
-const questionBank = [
+// 默认面试题库（后端不可用时兜底）
+const defaultQuestionBank = [
   {
     question: '欢迎参加 OfferPilot AI 模拟面试！我是您的 AI 面试官。\n\n首先，<strong>请简要介绍一下您最近的单体项目经验</strong>，包括项目背景、您担任的角色以及使用的核心技术栈。',
     rating: null,
@@ -289,25 +291,49 @@ const questionBank = [
   }
 ]
 
+const questionBank = ref(defaultQuestionBank.slice())
+const interviewRecords = ref([])
+
 // 开始面试
-function startInterview() {
+async function startInterview() {
   interviewStarted.value = true
   interviewEnded.value = false
   messages.value = []
   ratingHistory.value = []
+  interviewRecords.value = []
   summary.value = null
   currentRound.value = 0
   elapsedSeconds.value = 0
   userInput.value = ''
+
+  if (timerInterval) clearInterval(timerInterval)
 
   // 启动计时
   timerInterval = setInterval(() => {
     elapsedSeconds.value++
   }, 1000)
 
+  const session = loadSession()
+  const inferredPosition = session.matchResult?.job_info?.job_title || session.interviewPosition || '后端开发工程师'
+  const inferredTags = session.matchResult?.job_info?.required_skills || session.matchResult?.match?.matched_required || []
+
+  try {
+    const response = await getInterviewQuestions({
+      position: inferredPosition,
+      difficulty: 'medium',
+      tags: inferredTags.slice(0, 5),
+    })
+    const questions = response.data?.questions || []
+    questionBank.value = (questions.length ? questions : defaultQuestionBank).slice(0, 5)
+    saveSession({ interviewQuestions: questionBank.value, interviewPosition: inferredPosition })
+  } catch (error) {
+    console.warn('面试题获取失败，使用本地兜底题库', error)
+    questionBank.value = defaultQuestionBank.slice(0, 5)
+  }
+
   // 发送第一道面试题
   nextTick(() => {
-    sendAiMessage(questionBank[0].question)
+    sendAiMessage(formatQuestion(questionBank.value[0]))
     currentRound.value = 1
   })
 }
@@ -337,8 +363,18 @@ function sendAiMessage(content, rating = null, suggestion = null, improvements =
   }, delay)
 }
 
+function formatQuestion(questionData) {
+  if (!questionData) return '当前没有可用面试题，请稍后重试。'
+  return questionData.interviewer_text || questionData.description || questionData.question || questionData.title || '请回答当前问题。'
+}
+
+function normalizeRating(totalScore) {
+  const score = Number(totalScore) || 0
+  return Math.max(1, Math.min(5, Math.round((score / 20) * 2) / 2))
+}
+
 // 用户发送回答
-function handleSend() {
+async function handleSend() {
   if (!userInput.value.trim() || isAiTyping.value) return
 
   const userMsg = userInput.value.trim()
@@ -354,7 +390,32 @@ function handleSend() {
 
   // AI 点评
   const questionIndex = currentRound.value - 1
-  const { rating, suggestion, improvements } = generateFeedback(questionIndex, userMsg)
+  const questionData = questionBank.value[questionIndex] || defaultQuestionBank[questionIndex]
+
+  let rating = 3
+  let suggestion = ''
+  let improvements = []
+
+  try {
+    const response = await scoreInterviewAnswer(questionData, userMsg)
+    const scoreData = response.data || response
+    rating = normalizeRating(scoreData.total_score || 0)
+    suggestion = scoreData.suggestion || scoreData.summary || '回答已记录'
+    improvements = scoreData.weaknesses || scoreData.improvements || []
+
+    interviewRecords.value.push({
+      question: questionData.title || questionData.question || questionData.interviewer_text || '',
+      question_data: questionData,
+      answer: userMsg,
+      score: scoreData,
+    })
+    saveSession({ interviewRecords: interviewRecords.value })
+  } catch (error) {
+    const fallback = generateFeedback(questionIndex, userMsg)
+    rating = fallback.rating
+    suggestion = fallback.suggestion
+    improvements = fallback.improvements
+  }
 
   // 记录评分
   ratingHistory.value.push(rating)
@@ -364,11 +425,11 @@ function handleSend() {
   sendAiMessage(feedbackText, rating, suggestion, improvements)
 
   // 判断是否继续下一题
-  if (currentRound.value < totalRounds) {
+  if (currentRound.value < totalRounds.value) {
     // 延迟发送下一题
     setTimeout(() => {
       currentRound.value++
-      sendAiMessage(questionBank[currentRound.value - 1].question)
+      sendAiMessage(formatQuestion(questionBank.value[currentRound.value - 1]))
     }, 1500)
   } else {
     // 面试结束
@@ -384,9 +445,9 @@ function skipQuestion() {
 
   ElMessage.info('已跳过当前题目')
 
-  if (currentRound.value < totalRounds) {
+  if (currentRound.value < totalRounds.value) {
     currentRound.value++
-    sendAiMessage(questionBank[currentRound.value - 1].question)
+    sendAiMessage(formatQuestion(questionBank.value[currentRound.value - 1]))
   } else {
     setTimeout(() => {
       endInterview()
@@ -395,10 +456,28 @@ function skipQuestion() {
 }
 
 // 结束面试
-function endInterview() {
+async function endInterview() {
   interviewEnded.value = true
   isAiTyping.value = false
   clearInterval(timerInterval)
+
+  const session = loadSession()
+
+  try {
+    const summaryResponse = await summarizeInterview(interviewRecords.value)
+    const learningResponse = await generateLearningPath({
+      resume_id: session.resumeId || '',
+      job_id: session.jobId || '',
+      position: session.interviewPosition || '后端开发工程师',
+      duration: '14天',
+    })
+    saveSession({
+      interviewSummaryRaw: summaryResponse.data?.summary || summaryResponse.summary || '',
+      learningPlan: learningResponse.data || learningResponse,
+    })
+  } catch (error) {
+    console.warn('生成面试总结或学习路径失败', error)
+  }
 
   // 生成总结
   summary.value = {
@@ -418,6 +497,7 @@ function endInterview() {
       time: getTime()
     })
   }
+  saveSession({ interviewSummary: summary.value })
   scrollToBottom()
 }
 

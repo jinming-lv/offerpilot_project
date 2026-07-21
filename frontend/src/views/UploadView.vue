@@ -27,7 +27,7 @@
           :on-change="handleFileChange"
           :on-remove="handleFileRemove"
           :file-list="fileList"
-          accept=".pdf,.doc,.docx"
+          accept=".pdf,.docx"
         >
           <div class="upload-placeholder">
             <el-icon class="upload-icon"><UploadFilled /></el-icon>
@@ -54,24 +54,20 @@
             <div class="mock-summary">
               <div class="summary-item">
                 <span class="summary-label">姓名</span>
-                <span class="summary-value">张三</span>
+                <span class="summary-value">{{ resumeSummary.name }}</span>
               </div>
               <div class="summary-item">
                 <span class="summary-label">学历</span>
-                <span class="summary-value">本科 · 计算机科学与技术</span>
+                <span class="summary-value">{{ resumeSummary.education }}</span>
               </div>
               <div class="summary-item">
                 <span class="summary-label">工作经验</span>
-                <span class="summary-value">3 年</span>
+                <span class="summary-value">{{ resumeSummary.experience }}</span>
               </div>
               <div class="summary-item">
                 <span class="summary-label">关键技能</span>
                 <div class="skill-tags">
-                  <el-tag size="small" type="info">Python</el-tag>
-                  <el-tag size="small" type="info">Vue.js</el-tag>
-                  <el-tag size="small" type="info">MySQL</el-tag>
-                  <el-tag size="small" type="info">Django</el-tag>
-                  <el-tag size="small" type="info">Git</el-tag>
+                  <el-tag v-for="skill in resumeSummary.skills" :key="skill" size="small" type="info">{{ skill }}</el-tag>
                 </div>
               </div>
             </div>
@@ -188,6 +184,8 @@ import {
   ArrowRight
 } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
+import { analyzeMatch, uploadResume } from '../api/offerpilot'
+import { saveSession } from '../utils/session'
 
 const router = useRouter()
 
@@ -195,6 +193,7 @@ const router = useRouter()
 const uploadRef = ref(null)
 const fileList = ref([])
 const uploadedFile = ref(null)
+const parsedResume = ref(null)
 
 // JD 文本
 const jdText = ref('')
@@ -204,6 +203,18 @@ const analyzing = ref(false)
 const analysisProgress = ref(0)
 const analysisStep = ref(0)
 const analysisResult = ref(null)
+
+const resumeSummary = computed(() => {
+  const basic = parsedResume.value?.basic_info || {}
+  const skills = parsedResume.value?.skills || []
+
+  return {
+    name: basic.name || '待解析',
+    education: [basic.education, basic.major].filter(Boolean).join(' · ') || '待解析',
+    experience: parsedResume.value?.experience?.length ? `${parsedResume.value.experience.length} 段经历` : '待解析',
+    skills: skills.length ? skills.slice(0, 5) : ['Python', 'MySQL', 'Django', 'Linux', 'Git'],
+  }
+})
 
 // 预估关键词数量
 const estimatedKeywords = computed(() => {
@@ -234,6 +245,7 @@ function handleFileChange(file) {
 // 文件移除
 function handleFileRemove() {
   uploadedFile.value = null
+  parsedResume.value = null
   analysisResult.value = null
 }
 
@@ -243,7 +255,7 @@ function formatFileSizeRaw(file) {
 }
 
 // 开始分析
-function startAnalysis() {
+async function startAnalysis() {
   if (!uploadedFile.value || !jdText.value.trim()) {
     ElMessage.warning('请先上传简历并输入岗位 JD')
     return
@@ -254,86 +266,50 @@ function startAnalysis() {
   analysisStep.value = 0
   analysisResult.value = null
 
-  // 模拟进度
-  const steps = [
-    { step: 1, progress: 20, delay: 600 },
-    { step: 2, progress: 45, delay: 900 },
-    { step: 3, progress: 75, delay: 1200 },
-    { step: 4, progress: 95, delay: 800 }
-  ]
+  try {
+    analysisStep.value = 1
+    analysisProgress.value = 20
 
-  let totalDelay = 0
-  steps.forEach(({ step, progress, delay }) => {
-    totalDelay += delay
-    setTimeout(() => {
-      analysisStep.value = step
-      analysisProgress.value = progress
-    }, totalDelay)
-  })
+    const resumeResponse = await uploadResume(uploadedFile.value)
+    parsedResume.value = resumeResponse.data
+    saveSession({
+      resumeId: resumeResponse.resume_id,
+      resumeData: resumeResponse.data,
+      fileName: uploadedFile.value.name,
+      jobText: jdText.value,
+      interviewRecords: [],
+      interviewSummary: null,
+      interviewSummaryRaw: '',
+      learningPlan: null,
+    })
 
-  // 完成分析
-  setTimeout(() => {
-    analysisProgress.value = 100
+    analysisStep.value = 2
+    analysisProgress.value = 45
+
+    const matchResponse = await analyzeMatch({
+      resumeId: resumeResponse.resume_id,
+      resumeData: resumeResponse.data,
+      jobText: jdText.value,
+    })
+
+    analysisStep.value = 3
+    analysisProgress.value = 80
+
+    analysisResult.value = matchResponse.data
+    saveSession({
+      matchResult: matchResponse.data,
+      jobText: jdText.value,
+    })
+
     analysisStep.value = 4
+    analysisProgress.value = 100
 
-    setTimeout(() => {
-      analyzing.value = false
-      analysisResult.value = getMockAnalysisResult()
-      ElMessage.success('分析完成！请查看下方结果或前往报告页查看完整可视化报告')
-    }, 500)
-  }, totalDelay + 300)
-}
-
-// Mock 分析结果
-function getMockAnalysisResult() {
-  return {
-    overall_match: 86,
-    analysis_time: '2026-07-20 15:20:00',
-    candidate: {
-      name: '张三',
-      education: '本科 · 计算机科学与技术',
-      experience_years: 3,
-      skills: ['Python', 'Vue.js', 'MySQL', 'Django', 'Git', 'Linux', 'RESTful API']
-    },
-    job_requirements: {
-      title: 'Python 后端开发工程师',
-      required_skills: ['Python', 'Django/Flask', 'MySQL', 'Redis', 'Docker', 'K8s'],
-      preferred_skills: ['消息队列', '微服务架构', 'CI/CD']
-    },
-    dimension_scores: {
-      core_skills: 88,
-      project_experience: 82,
-      education_background: 90,
-      job_match: 85,
-      interview_performance: 78
-    },
-    strengths: [
-      { skill: 'Python', level: '精通' },
-      { skill: 'MySQL', level: '熟练' },
-      { skill: 'Django', level: '熟练' },
-      { skill: 'Git', level: '熟练' },
-      { skill: 'RESTful API 设计', level: '掌握' }
-    ],
-    weaknesses: [
-      { skill: 'Redis', gap: '缺少缓存中间件实战经验' },
-      { skill: 'Docker', gap: '未掌握容器化部署技术' },
-      { skill: 'K8s', gap: '不了解容器编排' },
-      { skill: '消息队列', gap: '无 RabbitMQ/Kafka 使用经验' }
-    ],
-    study_plan: [
-      { days: 'Day 1-2', topic: 'Redis 核心数据结构与缓存策略', priority: 'high' },
-      { days: 'Day 3-4', topic: 'Docker 容器化基础与镜像构建', priority: 'high' },
-      { days: 'Day 5-6', topic: 'Docker Compose 多容器编排', priority: 'medium' },
-      { days: 'Day 7-8', topic: '消息队列 RabbitMQ 入门与实践', priority: 'medium' },
-      { days: 'Day 9-10', topic: 'Kubernetes 核心概念与 Pod 管理', priority: 'low' },
-      { days: 'Day 11-12', topic: '微服务架构设计模式概览', priority: 'low' },
-      { days: 'Day 13-14', topic: '综合实战：搭建微服务 + 缓存 + 容器化项目', priority: 'high' }
-    ],
-    interview_questions: [
-      '请介绍你最近的项目中，如何设计数据库表结构来支撑高并发场景？',
-      '如果线上服务出现性能瓶颈，你会从哪些维度进行排查和优化？',
-      '谈谈你对 RESTful API 设计的理解，以及你在项目中是如何实践的？'
-    ]
+    ElMessage.success('分析完成，数据已同步到报告页')
+  } catch (error) {
+    console.error(error)
+    ElMessage.error(error?.response?.data?.detail || error.message || '分析失败，请检查后端服务是否已启动')
+  } finally {
+    analyzing.value = false
   }
 }
 
