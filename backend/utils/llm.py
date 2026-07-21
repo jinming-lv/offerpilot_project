@@ -3,12 +3,10 @@ import json
 from typing import Optional, Dict, Any
 from openai import OpenAI
 import logging
-from dotenv import load_dotenv
+from utils.env import load_project_env
 
-# 加载 .env 文件
-backend_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-env_path = os.path.join(backend_dir, '.env')
-load_dotenv(env_path)
+# 加载项目根目录 .env 文件
+env_path = load_project_env()
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -21,10 +19,23 @@ class LLMClient:
     
     def __init__(self):
         self.clients = {}
+        self.primary_model_name = os.getenv("LLM_MODEL", "deepseek-chat")
         self._init_clients()
     
     def _init_clients(self):
         """初始化各个模型的客户端"""
+        # 根目录 .env 的主配置：优先作为统一入口
+        primary_api_key = os.getenv("LLM_API_KEY", "")
+        primary_api_url = os.getenv("LLM_API_URL", "https://api.deepseek.com")
+        if primary_api_key:
+            primary_client = OpenAI(
+                api_key=primary_api_key,
+                base_url=primary_api_url,
+            )
+            self.clients["primary"] = primary_client
+            self.clients["qwen"] = primary_client
+            logger.info("主LLM客户端初始化成功")
+
         # Qwen (通义千问)
         qwen_api_key = os.getenv("DASHSCOPE_API_KEY", "")
         if qwen_api_key:
@@ -107,6 +118,9 @@ class LLMClient:
     
     def _get_model_name(self, model: str) -> str:
         """获取实际的模型名称"""
+        if model in {"primary", "qwen"} and self.clients.get("primary"):
+            return self.primary_model_name
+
         model_map = {
             "qwen": "qwen-plus",
             "deepseek": "deepseek-chat",

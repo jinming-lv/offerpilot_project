@@ -3,31 +3,20 @@ import json
 import re
 import httpx 
 from typing import List, Dict, Optional
-from dotenv import load_dotenv
 from openai import OpenAI
+from utils.env import load_project_env
 
-# 加载环境变量
-load_dotenv()
+# 加载项目根目录环境变量
+load_project_env()
+
+LLM_API_KEY = os.getenv("LLM_API_KEY") or os.getenv("ZHIPU_API_KEY") or os.getenv("OPENROUTER_API_KEY")
+LLM_API_URL = os.getenv("LLM_API_URL", "https://api.deepseek.com")
+MODEL_NAME = os.getenv("LLM_MODEL", "deepseek-chat")
 
 # ============ 配置区（根据你选的模型修改） ============
-# 方式一：通义千问（阿里云百炼）
-# client = OpenAI(
-#    api_key=os.getenv("DASHSCOPE_API_KEY"),
-    #base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
-#)
-#MODEL_NAME = "qwen-plus"
-
-# 方式二：DeepSeek（备选）
-# client = OpenAI(
-#     api_key=os.getenv("DEEPSEEK_API_KEY"),
-#     base_url="https://api.deepseek.com/v1"
-# )
-# MODEL_NAME = "deepseek-chat"
-
-# 方式三：智谱GLM（备选）
 client = OpenAI(
-    api_key=os.getenv("ZHIPU_API_KEY"),
-    base_url="https://open.bigmodel.cn/api/paas/v4/",
+    api_key=LLM_API_KEY,
+    base_url=LLM_API_URL,
     http_client=httpx.Client(
         timeout=httpx.Timeout(
             connect=30.0,
@@ -37,7 +26,6 @@ client = OpenAI(
         )
     )
 )
-MODEL_NAME = "glm-4-flash"
 # =====================================================
 
 

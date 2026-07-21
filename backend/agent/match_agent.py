@@ -3,17 +3,21 @@ import json
 import re
 import httpx 
 from typing import List, Dict, Set, Optional
-from dotenv import load_dotenv
 from zhipuai import ZhipuAI
 from openai import OpenAI
+from utils.env import load_project_env
 
-# 加载环境变量
-load_dotenv()
+# 加载项目根目录环境变量
+load_project_env()
+
+LLM_API_KEY = os.getenv("LLM_API_KEY") or os.getenv("ZHIPU_API_KEY") or os.getenv("OPENROUTER_API_KEY")
+LLM_API_URL = os.getenv("LLM_API_URL", "https://api.deepseek.com")
+MODEL_NAME = os.getenv("LLM_MODEL", "deepseek-chat")
 
 # ============ 配置区（与job_agent保持一致） ============
 client = OpenAI(
-    api_key=os.getenv("ZHIPU_API_KEY"),
-    base_url="https://open.bigmodel.cn/api/paas/v4/",
+    api_key=LLM_API_KEY,
+    base_url=LLM_API_URL,
     http_client=httpx.Client(
         timeout=httpx.Timeout(
             connect=30.0,
@@ -23,7 +27,6 @@ client = OpenAI(
         )
     )
 )
-MODEL_NAME = "glm-4-flash"
 # =====================================================
 
 # 支持相对导入和绝对导入两种方式

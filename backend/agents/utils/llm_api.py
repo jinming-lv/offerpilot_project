@@ -6,14 +6,13 @@ LLM 调用封装 —— 支持 DeepSeek / 智谱 / 任意 OpenAI 兼容 API
 import os
 import sys
 from openai import OpenAI
-from dotenv import load_dotenv
+from utils.env import load_project_env
 
 # 项目根目录
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-# 加载 .env
-env_path = os.path.join(BASE_DIR, ".env")
-load_dotenv(env_path)
+# 加载项目根目录 .env
+env_path = load_project_env()
 
 # ===== 从 .env 读取配置（各人可自定义） =====
 API_KEY = os.getenv("LLM_API_KEY", "")
