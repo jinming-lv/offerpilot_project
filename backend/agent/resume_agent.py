@@ -98,7 +98,7 @@ class ResumeAgent:
         
         # 调用LLM
         logger.info("正在调用LLM提取信息...")
-        response = chat(prompt, model="qwen")  # 使用Qwen模型
+        response = chat(prompt, model="default")  # 使用主LLM模型
         
         # 解析JSON
         try:

@@ -1,0 +1,24 @@
+{
+  "name": "offerpilot_project",
+  "version": "1.0.0",
+  "description": "基于多Agent的大模型智能求职平台\r USTB Production Practice 2026",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jinming-lv/offerpilot_project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jinming-lv/offerpilot_project/issues"
+  },
+  "homepage": "https://github.com/jinming-lv/offerpilot_project#readme"
+}

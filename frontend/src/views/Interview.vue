@@ -220,6 +220,7 @@ import { ChatLineRound, Promotion } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import { getInterviewQuestions, scoreInterviewAnswer, summarizeInterview, generateLearningPath } from '../api/offerpilot'
 import { loadSession, saveSession } from '../utils/session'
+import { handleApiError } from '../utils/request'
 
 const router = useRouter()
 const chatContainer = ref(null)
@@ -326,8 +327,10 @@ async function startInterview() {
     const questions = response.data?.questions || []
     questionBank.value = (questions.length ? questions : defaultQuestionBank).slice(0, 5)
     saveSession({ interviewQuestions: questionBank.value, interviewPosition: inferredPosition })
+    ElMessage.success('面试题目已准备就绪')
   } catch (error) {
-    console.warn('面试题获取失败，使用本地兜底题库', error)
+    handleApiError(error, '获取面试题')
+    ElMessage.warning('使用本地兜底题库，功能不受影响')
     questionBank.value = defaultQuestionBank.slice(0, 5)
   }
 
@@ -411,10 +414,12 @@ async function handleSend() {
     })
     saveSession({ interviewRecords: interviewRecords.value })
   } catch (error) {
+    handleApiError(error, '面试评分')
     const fallback = generateFeedback(questionIndex, userMsg)
     rating = fallback.rating
     suggestion = fallback.suggestion
     improvements = fallback.improvements
+    ElMessage.warning('评分服务暂时不可用，已生成本地模拟评价')
   }
 
   // 记录评分
@@ -476,7 +481,8 @@ async function endInterview() {
       learningPlan: learningResponse.data || learningResponse,
     })
   } catch (error) {
-    console.warn('生成面试总结或学习路径失败', error)
+    handleApiError(error, '面试总结')
+    ElMessage.warning('面试总结生成失败，您仍可手动查看答题记录')
   }
 
   // 生成总结

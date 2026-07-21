@@ -186,6 +186,7 @@ import {
 import { ElMessage } from 'element-plus'
 import { analyzeMatch, uploadResume } from '../api/offerpilot'
 import { saveSession } from '../utils/session'
+import { handleApiError } from '../utils/request'
 
 const router = useRouter()
 
@@ -306,8 +307,11 @@ async function startAnalysis() {
 
     ElMessage.success('分析完成，数据已同步到报告页')
   } catch (error) {
-    console.error(error)
-    ElMessage.error(error?.response?.data?.detail || error.message || '分析失败，请检查后端服务是否已启动')
+    // 统一错误处理（请求内拦截器已弹出 ElMessage.error，
+    // 此处确保用户能感知到分析流程中断）
+    handleApiError(error, '匹配分析')
+    analysisStep.value = 0
+    analysisProgress.value = 0
   } finally {
     analyzing.value = false
   }

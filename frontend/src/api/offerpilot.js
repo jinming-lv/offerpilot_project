@@ -1,49 +1,25 @@
-import axios from 'axios'
+/**
+ * OfferPilot API 统一导出入口
+ *
+ * 各业务域 API 模块：
+ *   - resume.js    简历上传、JD 解析
+ *   - match.js     简历-岗位匹配分析
+ *   - interview.js AI 模拟面试（出题、评分、总结）
+ *   - learning.js  学习路径规划、题库信息
+ */
 
-const api = axios.create({
-  baseURL: '/api',
-  timeout: 120000,
-})
+// -- Resume 域 --
+export { uploadResume, parseJd } from './resume'
 
-export async function uploadResume(file) {
-  const formData = new FormData()
-  formData.append('file', file)
-  const response = await api.post('/resume/upload', formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-  })
-  return response.data
-}
+// -- Match 域 --
+export { analyzeMatch } from './match'
 
-export async function analyzeMatch({ resumeId = '', resumeData = null, jobText }) {
-  const response = await api.post('/match', {
-    resume_id: resumeId,
-    resume_data: resumeData,
-    job_text: jobText,
-  })
-  return response.data
-}
+// -- Interview 域 --
+export {
+  getInterviewQuestions,
+  scoreInterviewAnswer,
+  summarizeInterview,
+} from './interview'
 
-export async function getInterviewQuestions(payload) {
-  const response = await api.post('/interview/questions', payload)
-  return response.data
-}
-
-export async function scoreInterviewAnswer(question, answer) {
-  const response = await api.post('/interview/score', { question, answer })
-  return response.data
-}
-
-export async function summarizeInterview(records) {
-  const response = await api.post('/interview/summary', { records })
-  return response.data
-}
-
-export async function generateLearningPath(payload) {
-  const response = await api.post('/learning/path', payload)
-  return response.data
-}
-
-export async function getQuestionCount() {
-  const response = await api.get('/questions/count')
-  return response.data
-}
+// -- Learning 域 --
+export { generateLearningPath, getQuestionCount } from './learning'
