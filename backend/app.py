@@ -24,9 +24,12 @@ from agents.interview.interview_agent import (
 from agents.learning.learning_planner import generate_learning_plan
 from agents.utils.knowledge_loader import get_question_count
 from api.resume import router as resume_router
+from utils.env import load_project_env
 from utils.logger import get_logger
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+load_project_env()
 
 app = FastAPI(title="CareerPilot - OfferPilot", version="1.0")
 logger = get_logger(__name__)
