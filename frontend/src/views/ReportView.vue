@@ -30,9 +30,7 @@
           <div class="job-title-text">{{ reportData.jobTitle }}</div>
           <div class="job-company">{{ reportData.jobCompany }}</div>
           <div class="job-meta">
-            <el-tag size="small" type="info">3-5年经验</el-tag>
-            <el-tag size="small" type="info">本科及以上</el-tag>
-            <el-tag size="small" type="success">薪资 20-35K</el-tag>
+            <el-tag v-for="tag in reportData.jobTags" :key="tag" size="small" type="info">{{ tag }}</el-tag>
           </div>
         </div>
       </div>
@@ -166,6 +164,7 @@ import { useRouter } from 'vue-router'
 import { PieChart, Download, ChatLineRound } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import * as echarts from 'echarts'
+import { loadSession } from '../utils/session'
 
 const router = useRouter()
 
@@ -187,6 +186,7 @@ const reportData = reactive({
   candidateName: '张三',
   candidateEdu: '本科 · 计算机科学与技术',
   candidateExpYears: 3,
+  jobTags: ['3-5年经验', '本科及以上', '薪资 20-35K'],
   strengths: [
     { skill: 'Python', level: '精通' },
     { skill: 'MySQL', level: '熟练' },
@@ -224,6 +224,92 @@ const reportData = reactive({
     '假如你需要从零搭建一个微服务项目，你会如何选型技术栈？考虑服务发现、配置中心、日志收集等基础设施。'
   ]
 })
+
+function getDefaultScores() {
+  return [
+    { name: '核心技能', value: 88 },
+    { name: '项目经验', value: 82 },
+    { name: '学历背景', value: 90 },
+    { name: '岗位匹配', value: 85 },
+    { name: '面试表现', value: 78 }
+  ]
+}
+
+function inferExperienceYears(experienceList) {
+  if (!Array.isArray(experienceList) || experienceList.length === 0) return 0
+  return Math.min(5, Math.max(1, experienceList.length + 1))
+}
+
+function normalizeStudyPlan(plan) {
+  if (Array.isArray(plan?.roadmap)) {
+    return plan.roadmap.map((item, index) => ({
+      days: item.days || `Day ${item.day || index + 1}`,
+      topic: item.topic || item.content || '学习内容',
+      priority: item.priority || (item.estimated_hours >= 3 ? 'high' : 'medium')
+    }))
+  }
+
+  if (Array.isArray(plan?.studyPlan)) return plan.studyPlan
+
+  return reportData.studyPlan
+}
+
+function hydrateFromSession() {
+  const session = loadSession()
+  const resumeData = session.resumeData || {}
+  const matchResult = session.matchResult || {}
+  const jobInfo = matchResult.job_info || {}
+  const matchData = matchResult.match || {}
+  const radarData = matchResult.radar || {}
+  const interviewSummary = session.interviewSummary || {}
+  const learningPlan = session.learningPlan || {}
+
+  const basicInfo = resumeData.basic_info || {}
+  const matchedSkills = matchData.matched_required || matchData.matched_skills || []
+  const missingSkills = matchData.missing_required || matchData.missing_skills || []
+  const preferredSkills = jobInfo.preferred_skills || []
+
+  reportData.overallMatch = matchData.match_score ?? matchResult.match_score ?? 86
+  reportData.jobTitle = jobInfo.job_title || session.interviewPosition || 'Python 后端开发工程师'
+  reportData.jobCompany = '本地联调岗位'
+  reportData.candidateName = basicInfo.name || '张三'
+  reportData.candidateEdu = [basicInfo.education, basicInfo.major].filter(Boolean).join(' · ') || '本科 · 计算机科学与技术'
+  reportData.candidateExpYears = inferExperienceYears(resumeData.experience)
+  reportData.jobTags = [
+    ...(jobInfo.experience_level ? [jobInfo.experience_level] : ['3-5年经验']),
+    ...(jobInfo.education ? [jobInfo.education] : ['本科及以上']),
+    `匹配度 ${reportData.overallMatch}%`
+  ]
+
+  reportData.strengths = (matchedSkills.length ? matchedSkills : (resumeData.skills || []).slice(0, 5)).map((skill, index) => ({
+    skill,
+    level: index < 2 ? '精通' : '熟练'
+  }))
+
+  reportData.weaknesses = (missingSkills.length ? missingSkills : preferredSkills.slice(0, 4)).map((skill) => ({
+    skill,
+    gap: `建议补充 ${skill} 的实战经验`
+  }))
+
+  if (radarData.dimensions && Array.isArray(radarData.dimensions) && radarData.dimensions.length) {
+    reportData.dimensionScores = radarData.dimensions.map((name, index) => ({
+      name,
+      value: typeof radarData.resume?.[index] === 'number'
+        ? Math.round(radarData.resume[index] * 100)
+        : getDefaultScores()[index % 5].value
+    }))
+  } else {
+    reportData.dimensionScores = getDefaultScores()
+  }
+
+  reportData.studyPlan = normalizeStudyPlan(learningPlan)
+
+  if (Array.isArray(session.interviewQuestions) && session.interviewQuestions.length) {
+    reportData.interviewQuestions = session.interviewQuestions.map((item) => item.title || item.question || item.interviewer_text || item.description || '面试题目')
+  } else if (session.interviewSummaryRaw) {
+    reportData.interviewQuestions = [session.interviewSummaryRaw]
+  }
+}
 
 // 优先级颜色映射
 function getPriorityColor(priority) {
@@ -538,6 +624,7 @@ function goToInterview() {
 }
 
 onMounted(() => {
+  hydrateFromSession()
   nextTick(() => {
     initMatchChart()
     initRadarChart()
