@@ -25,9 +25,8 @@
           :auto-upload="false"
           :limit="1"
           :on-change="handleFileChange"
-          :on-remove="handleFileRemove"
-          :file-list="fileList"
           accept=".pdf,.docx"
+          show-file-list="false"
         >
           <div class="upload-placeholder">
             <el-icon class="upload-icon"><UploadFilled /></el-icon>
@@ -39,7 +38,6 @@
           </div>
         </el-upload>
 
-        <!-- 文件解析预览（Mock 效果） -->
         <transition name="slide-up">
           <div v-if="uploadedFile" class="file-preview">
             <div class="preview-card">
@@ -48,27 +46,18 @@
                 <span class="preview-name">{{ uploadedFile.name }}</span>
                 <span class="preview-size">{{ formatFileSize(uploadedFile.size) }}</span>
               </div>
-              <el-tag type="success" size="small" effect="plain">就绪</el-tag>
-            </div>
-            <!-- Mock 解析结果摘要 -->
-            <div class="mock-summary">
-              <div class="summary-item">
-                <span class="summary-label">姓名</span>
-                <span class="summary-value">{{ resumeSummary.name }}</span>
-              </div>
-              <div class="summary-item">
-                <span class="summary-label">学历</span>
-                <span class="summary-value">{{ resumeSummary.education }}</span>
-              </div>
-              <div class="summary-item">
-                <span class="summary-label">工作经验</span>
-                <span class="summary-value">{{ resumeSummary.experience }}</span>
-              </div>
-              <div class="summary-item">
-                <span class="summary-label">关键技能</span>
-                <div class="skill-tags">
-                  <el-tag v-for="skill in resumeSummary.skills" :key="skill" size="small" type="info">{{ skill }}</el-tag>
-                </div>
+              <div class="preview-actions">
+                <el-tag type="success" size="small" effect="plain">就绪</el-tag>
+                <el-button
+                  type="danger"
+                  size="small"
+                  text
+                  circle
+                  class="preview-delete-btn"
+                  @click="handleFileRemove"
+                >
+                  <el-icon><Close /></el-icon>
+                </el-button>
               </div>
             </div>
           </div>
@@ -88,7 +77,7 @@
           type="textarea"
           class="jd-textarea"
           :rows="12"
-          placeholder="请在此粘贴目标岗位的 JD（职位描述），例如：&#10;&#10;岗位名称：Python 后端开发工程师&#10;岗位职责：&#10;1. 负责公司核心业务系统的后端开发与维护&#10;2. 参与系统架构设计和技术方案评审&#10;3. 编写高质量的 Python 代码，确保系统稳定高效运行&#10;&#10;任职要求：&#10;1. 计算机相关专业本科及以上学历&#10;2. 3年以上 Python 开发经验，熟悉 Django/Flask 框架&#10;3. 熟悉 MySQL、Redis 等常用数据库&#10;4. 了解 Docker、K8s 容器化技术优先&#10;..."
+          placeholder="请在此粘贴目标岗位的 JD（职位描述）&#10;&#10;示例：&#10;岗位名称：数据分析师&#10;岗位职责：&#10;1. 构建数据分析体系，输出分析报告&#10;2. 通过数据驱动业务决策&#10;任职要求：&#10;1. 本科及以上学历，2年以上数据分析经验&#10;2. 熟练掌握 SQL、Python（Pandas/NumPy）&#10;3. 熟悉常见统计学模型和数据分析方法"
         />
 
         <div class="jd-stats" v-if="jdText.length > 0">
@@ -181,7 +170,8 @@ import {
   UploadFilled,
   DocumentChecked,
   MagicStick,
-  ArrowRight
+  ArrowRight,
+  Close
 } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import { analyzeMatch, uploadResume } from '../api/offerpilot'
@@ -241,6 +231,9 @@ function formatFileSize(bytes) {
 // 文件变化
 function handleFileChange(file) {
   uploadedFile.value = file.raw
+  if (uploadRef.value) {
+    uploadRef.value.clearFiles()
+  }
 }
 
 // 文件移除
@@ -248,6 +241,9 @@ function handleFileRemove() {
   uploadedFile.value = null
   parsedResume.value = null
   analysisResult.value = null
+  if (uploadRef.value) {
+    uploadRef.value.clearFiles()
+  }
 }
 
 // 格式化文件大小（用于 file.raw.size）
@@ -266,12 +262,13 @@ async function startAnalysis() {
   analysisProgress.value = 0
   analysisStep.value = 0
   analysisResult.value = null
+  document.body.classList.add('hide-global-loading') // 👉 [新增] 开启分析时屏蔽全局 Loading
 
   try {
     analysisStep.value = 1
     analysisProgress.value = 20
 
-    const resumeResponse = await uploadResume(uploadedFile.value)
+    const resumeResponse = await uploadResume(uploadedFile.value, { showLoading: false })
     parsedResume.value = resumeResponse.data
     saveSession({
       resumeId: resumeResponse.resume_id,
@@ -291,7 +288,7 @@ async function startAnalysis() {
       resumeId: resumeResponse.resume_id,
       resumeData: resumeResponse.data,
       jobText: jdText.value,
-    })
+    }, { showLoading: false })
 
     analysisStep.value = 3
     analysisProgress.value = 80
@@ -314,6 +311,7 @@ async function startAnalysis() {
     analysisProgress.value = 0
   } finally {
     analyzing.value = false
+    document.body.classList.remove('hide-global-loading')
   }
 }
 
@@ -324,32 +322,67 @@ function goToReport() {
 </script>
 
 <style scoped>
+<style scoped>
+:host {
+  /* 升级为更鲜艳的荧光色 */
+  --accent-cyan-bright: #00ffff;
+  --accent-teal-bright: #00ffca;
+  --text-secondary-bright: #a0aec0;
+  /* 定义发光效果 */
+  --glow-cyan: 0 0 15px rgba(0, 255, 255, 0.5);
+  --glow-teal: 0 0 15px rgba(0, 255, 202, 0.4);
+}
+
+/* 关键帧动画：卡片轻微浮动 */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0px); }
+}
+
+/* 关键帧动画：分析按钮呼吸发光 */
+@keyframes btnGlow {
+  0%, 100% { box-shadow: 0 0 10px rgba(0, 212, 255, 0.5); }
+  50% { box-shadow: 0 0 25px rgba(0, 212, 255, 0.8); }
+}
+
+/* 关键帧动画：Step 标签流光 */
+@keyframes stepShine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
 .upload-view {
   max-width: 1200px;
   margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  padding: 20px;
 }
 
 /* 页面标题 */
 .page-header {
-  margin-bottom: 28px;
+  margin-bottom: 32px; /* 稍微增加底部留白 */
 }
 .page-title {
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 28px; /* 从 22px 放大到 28px */
+  font-weight: 800; /* 加粗 */
+  letter-spacing: 1px; /* 增加呼吸感 */
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   color: var(--text-primary);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 .title-icon {
   color: var(--accent-cyan);
-  font-size: 24px;
+  font-size: 28px;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.6));
 }
 .page-desc {
   color: var(--text-secondary);
-  font-size: 14px;
-  margin-left: 34px;
+  font-size: 15px; /* 从 14px 放大到 15px */
+  margin-left: 40px;
+  letter-spacing: 0.5px;
 }
 
 /* 双栏布局 */
@@ -368,25 +401,31 @@ function goToReport() {
   margin-bottom: 12px;
 }
 .panel-header h3 {
-  font-size: 16px;
+  font-size: 18px; /* 从 16px 放大到 18px */
   font-weight: 600;
   color: var(--text-primary);
+  letter-spacing: 0.5px;
 }
 .panel-step {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 24px;
-  background: var(--gradient-accent);
+  width: 54px; /* 稍微加宽 */
+  height: 26px; /* 稍微加高 */
+  /* 升级为更亮的渐变并增加流光背景尺寸 */
+  background: linear-gradient(135deg, #00d4ff, #00ffca, #00d4ff);
+  background-size: 200% 200%;
+  animation: stepShine 3s linear infinite;
   color: #0a1628;
-  font-size: 11px;
-  font-weight: 700;
-  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 800; /* 加粗 */
+  border-radius: 13px;
   letter-spacing: 0.5px;
+  /* 增加发光 */
+  box-shadow: var(--glow-cyan);
 }
 .panel-hint {
-  font-size: 12px;
+  font-size: 13px; /* 从 12px 放大到 13px，提升可读性 */
   color: var(--text-secondary);
   margin-bottom: 16px;
 }
@@ -395,16 +434,29 @@ function goToReport() {
 .resume-uploader :deep(.el-upload) {
   width: 100%;
 }
+/* 修改：上传拖拽区基础样式 */
 .resume-uploader :deep(.el-upload-dragger) {
-  background: rgba(0, 212, 255, 0.03);
+  background: rgba(0, 212, 255, 0.02);
   border: 2px dashed var(--border-glass);
   border-radius: var(--radius-md);
   padding: 36px 24px;
   transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
 }
+
+/* 修改：上传拖拽区悬停效果，改为荧光蓝边框和内发光 */
 .resume-uploader :deep(.el-upload-dragger:hover) {
-  border-color: rgba(0, 212, 255, 0.5);
-  background: rgba(0, 212, 255, 0.06);
+  border-color: var(--accent-cyan-bright);
+  background: rgba(0, 212, 255, 0.08);
+  box-shadow: inset 0 0 15px rgba(0, 255, 255, 0.1);
+}
+
+/* 修改：上传图标增加悬停时的动画 */
+.resume-uploader :deep(.el-upload-dragger:hover .upload-icon) {
+  animation: float 1.5s ease-in-out infinite;
+  color: var(--accent-cyan-bright);
+  opacity: 1;
 }
 .upload-placeholder {
   display: flex;
@@ -423,11 +475,13 @@ function goToReport() {
   gap: 4px;
 }
 .upload-primary {
-  font-size: 15px;
+  font-size: 16px; /* 从 15px 放大 */
+  font-weight: 500;
   color: var(--text-primary);
+  letter-spacing: 0.5px;
 }
 .upload-secondary {
-  font-size: 13px;
+  font-size: 14px; /* 从 13px 放大 */
   color: var(--text-secondary);
 }
 .upload-secondary em {
@@ -450,13 +504,19 @@ function goToReport() {
   align-items: center;
   gap: 12px;
   padding: 14px 16px;
-  background: rgba(0, 229, 160, 0.06);
-  border: 1px solid rgba(0, 229, 160, 0.2);
+  /* 升级：纯色背景改为更亮的渐变内阴影 */
+  background: rgba(0, 229, 160, 0.03);
+  box-shadow: inset 0 0 10px rgba(0, 255, 202, 0.1);
+  /* 升级：荧光绿边框 */
+  border: 1px solid rgba(0, 255, 202, 0.4);
   border-radius: var(--radius-sm);
+  /* 整体加个外发光 */
+  box-shadow: 0 0 15px rgba(0, 255, 202, 0.15);
 }
 .preview-icon {
   font-size: 28px;
-  color: var(--accent-teal);
+  color: var(--accent-teal-bright);
+  filter: drop-shadow(0 0 5px rgba(0, 255, 202, 0.5));
 }
 .preview-info {
   flex: 1;
@@ -508,23 +568,39 @@ function goToReport() {
   border-color: rgba(0, 212, 255, 0.25) !important;
   color: var(--accent-cyan) !important;
 }
-
+.preview-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.preview-delete-btn {
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+.preview-delete-btn:hover {
+  color: #f56c6c;
+  background: rgba(245, 108, 108, 0.1);
+}
 /* JD 输入区 */
 .jd-textarea :deep(.el-textarea__inner) {
   background: rgba(10, 22, 40, 0.6);
   border: 1px solid var(--border-glass);
   color: var(--text-primary);
-  font-size: 13px;
-  line-height: 1.8;
+  font-size: 14px; /* 从 13px 放大到 14px */
+  line-height: 1.8; /* 保持行高，让长文本呼吸更顺畅 */
   border-radius: var(--radius-md);
   resize: none;
+  font-family: inherit; /* 继承外层的现代字体 */
 }
 .jd-textarea :deep(.el-textarea__inner:hover) {
-  border-color: rgba(0, 212, 255, 0.4);
+  border-color: rgba(0, 212, 255, 0.5);
 }
 .jd-textarea :deep(.el-textarea__inner:focus) {
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.2);
+  border-color: var(--accent-cyan-bright);
+  /* 升级：聚焦时增加外发光，更有掌控感 */
+  box-shadow: var(--glow-cyan);
+  background: rgba(10, 22, 40, 0.8); /* 聚焦时背景更实，利于阅读 */
 }
 .jd-textarea :deep(.el-textarea__inner::placeholder) {
   color: var(--text-secondary);
@@ -548,14 +624,15 @@ function goToReport() {
   text-align: center;
   margin-bottom: 28px;
 }
+/* 分析按钮 */
 .analyze-btn {
-  width: 280px;
-  height: 48px;
-  font-size: 16px;
-  letter-spacing: 2px;
+  width: 320px; /* 从 280px 稍微加宽，更有分量 */
+  height: 52px; /* 从 48px 加高 */
+  font-size: 18px; /* 从 16px 放大 */
+  font-weight: 600;
+  letter-spacing: 4px; /* 显著增加按钮文字间距，高级感来源 */
   border-radius: var(--radius-sm);
 }
-
 /* 全屏分析遮罩 */
 .analysis-overlay {
   position: fixed;
@@ -711,5 +788,12 @@ function goToReport() {
   .upload-grid {
     grid-template-columns: 1fr;
   }
+}
+</style>
+<style>
+body.hide-global-loading .el-loading-mask.is-fullscreen {
+  display: none !important;
+  opacity: 0 !important;
+  z-index: -1 !important;
 }
 </style>
