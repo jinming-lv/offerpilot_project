@@ -25,9 +25,8 @@
           :auto-upload="false"
           :limit="1"
           :on-change="handleFileChange"
-          :on-remove="handleFileRemove"
-          :file-list="fileList"
           accept=".pdf,.docx"
+          show-file-list="false"
         >
           <div class="upload-placeholder">
             <el-icon class="upload-icon"><UploadFilled /></el-icon>
@@ -39,7 +38,6 @@
           </div>
         </el-upload>
 
-        <!-- 文件解析预览（Mock 效果） -->
         <transition name="slide-up">
           <div v-if="uploadedFile" class="file-preview">
             <div class="preview-card">
@@ -48,27 +46,18 @@
                 <span class="preview-name">{{ uploadedFile.name }}</span>
                 <span class="preview-size">{{ formatFileSize(uploadedFile.size) }}</span>
               </div>
-              <el-tag type="success" size="small" effect="plain">就绪</el-tag>
-            </div>
-            <!-- Mock 解析结果摘要 -->
-            <div class="mock-summary">
-              <div class="summary-item">
-                <span class="summary-label">姓名</span>
-                <span class="summary-value">{{ resumeSummary.name }}</span>
-              </div>
-              <div class="summary-item">
-                <span class="summary-label">学历</span>
-                <span class="summary-value">{{ resumeSummary.education }}</span>
-              </div>
-              <div class="summary-item">
-                <span class="summary-label">工作经验</span>
-                <span class="summary-value">{{ resumeSummary.experience }}</span>
-              </div>
-              <div class="summary-item">
-                <span class="summary-label">关键技能</span>
-                <div class="skill-tags">
-                  <el-tag v-for="skill in resumeSummary.skills" :key="skill" size="small" type="info">{{ skill }}</el-tag>
-                </div>
+              <div class="preview-actions">
+                <el-tag type="success" size="small" effect="plain">就绪</el-tag>
+                <el-button
+                  type="danger"
+                  size="small"
+                  text
+                  circle
+                  class="preview-delete-btn"
+                  @click="handleFileRemove"
+                >
+                  <el-icon><Close /></el-icon>
+                </el-button>
               </div>
             </div>
           </div>
@@ -181,7 +170,8 @@ import {
   UploadFilled,
   DocumentChecked,
   MagicStick,
-  ArrowRight
+  ArrowRight,
+  Close
 } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import { analyzeMatch, uploadResume } from '../api/offerpilot'
@@ -241,6 +231,9 @@ function formatFileSize(bytes) {
 // 文件变化
 function handleFileChange(file) {
   uploadedFile.value = file.raw
+  if (uploadRef.value) {
+    uploadRef.value.clearFiles()
+  }
 }
 
 // 文件移除
@@ -248,6 +241,9 @@ function handleFileRemove() {
   uploadedFile.value = null
   parsedResume.value = null
   analysisResult.value = null
+  if (uploadRef.value) {
+    uploadRef.value.clearFiles()
+  }
 }
 
 // 格式化文件大小（用于 file.raw.size）
@@ -510,7 +506,20 @@ function goToReport() {
   border-color: rgba(0, 212, 255, 0.25) !important;
   color: var(--accent-cyan) !important;
 }
-
+.preview-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.preview-delete-btn {
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+.preview-delete-btn:hover {
+  color: #f56c6c;
+  background: rgba(245, 108, 108, 0.1);
+}
 /* JD 输入区 */
 .jd-textarea :deep(.el-textarea__inner) {
   background: rgba(10, 22, 40, 0.6);
