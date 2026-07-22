@@ -23,3 +23,6 @@ export {
 
 // -- Learning 域 --
 export { generateLearningPath, getQuestionCount } from './learning'
+
+// -- Auth 域 --
+export { login, checkMembership } from './auth'

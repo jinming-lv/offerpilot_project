@@ -105,6 +105,8 @@ import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { User, Lock } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
+import { login } from '../api/offerpilot'
+import { saveSession } from '../utils/session'
 
 const router = useRouter()
 const formRef = ref(null)
@@ -140,22 +142,33 @@ function getParticleStyle(i) {
 }
 
 // 登录处理
-function handleLogin() {
-  formRef.value?.validate((valid) => {
-    if (!valid) return
-    loading.value = true
+async function handleLogin() {
+    formRef.value?.validate(async (valid) => {
+        if (!valid) return
+        loading.value = true
 
-    // 模拟登录延迟
-    setTimeout(() => {
-      loading.value = false
-      ElMessage({
-        message: '登录成功！欢迎使用 OfferPilot 🚀',
-        type: 'success',
-        duration: 2000
-      })
-      router.push('/')
-    }, 1200)
-  })
+        try {
+            const response = await login(loginForm.username, loginForm.password)
+
+            if (response.success) {
+                saveSession({
+                    token: response.token,
+                    userInfo: response.user,
+                    isPro: response.user.membership === 'pro',
+                })
+                localStorage.setItem('offerpilot_token', response.token)
+
+                ElMessage.success(`欢迎回来，${response.user.name}！`)
+                router.push('/')
+            } else {
+                ElMessage.error(response.message || '登录失败')
+            }
+        } catch (error) {
+            console.error('登录失败:', error)
+        } finally {
+            loading.value = false
+        }
+    })
 }
 </script>
 
