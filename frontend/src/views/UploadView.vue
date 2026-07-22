@@ -266,12 +266,13 @@ async function startAnalysis() {
   analysisProgress.value = 0
   analysisStep.value = 0
   analysisResult.value = null
+  document.body.classList.add('hide-global-loading') // 👉 [新增] 开启分析时屏蔽全局 Loading
 
   try {
     analysisStep.value = 1
     analysisProgress.value = 20
 
-    const resumeResponse = await uploadResume(uploadedFile.value)
+    const resumeResponse = await uploadResume(uploadedFile.value, { showLoading: false })
     parsedResume.value = resumeResponse.data
     saveSession({
       resumeId: resumeResponse.resume_id,
@@ -291,7 +292,7 @@ async function startAnalysis() {
       resumeId: resumeResponse.resume_id,
       resumeData: resumeResponse.data,
       jobText: jdText.value,
-    })
+    }, { showLoading: false })
 
     analysisStep.value = 3
     analysisProgress.value = 80
@@ -314,6 +315,7 @@ async function startAnalysis() {
     analysisProgress.value = 0
   } finally {
     analyzing.value = false
+    document.body.classList.remove('hide-global-loading')
   }
 }
 
@@ -711,5 +713,12 @@ function goToReport() {
   .upload-grid {
     grid-template-columns: 1fr;
   }
+}
+</style>
+<style>
+body.hide-global-loading .el-loading-mask.is-fullscreen {
+  display: none !important;
+  opacity: 0 !important;
+  z-index: -1 !important;
 }
 </style>
