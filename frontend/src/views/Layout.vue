@@ -58,11 +58,13 @@
       <!-- 侧边栏底部用户信息 -->
       <div class="aside-footer">
         <div class="user-info">
-          <el-avatar :size="32" :icon="UserFilled" class="user-avatar" />
+          <el-avatar :size="32" class="user-avatar">
+            {{ userInfo.avatar }}
+          </el-avatar>
           <transition name="fade">
             <div v-show="!isCollapse" class="user-detail">
-              <span class="user-name">求职者</span>
-              <span class="user-role">Pro 会员</span>
+              <span class="user-name">{{ userInfo.name }}</span>
+              <span class="user-role">{{ isPro ? 'Pro 会员' : '普通用户' }}</span>
             </div>
           </transition>
         </div>
@@ -120,10 +122,15 @@ import {
   SwitchButton
 } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
+import { loadSession } from '../utils/session'
 
 const router = useRouter()
 const route = useRoute()
 const isCollapse = ref(false)
+
+const session = loadSession()
+const userInfo = session.userInfo || { name: '求职者', avatar: '👤' }
+const isPro = session.isPro || false
 
 const activeMenu = computed(() => {
   if (route.path.startsWith('/report')) return '/report'
@@ -141,9 +148,14 @@ const currentPageTitle = computed(() => {
 })
 
 function handleLogout() {
+  // 清除登录状态
+  localStorage.removeItem('offerpilot_token')
+  localStorage.removeItem('offerpilot_session_v1')
+
   ElMessage.success('已安全退出')
   router.push('/login')
 }
+
 </script>
 
 <style scoped>

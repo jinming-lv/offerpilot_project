@@ -4,6 +4,7 @@ FastAPI + DeepSeek
 """
 
 import asyncio
+import json
 import os
 import sys
 from typing import List, Optional
@@ -122,6 +123,11 @@ class ReportRequest(BaseModel):
     learning_plan: Optional[dict] = None
 
 
+class LoginRequest(BaseModel):
+    username: str
+    password: str
+
+
 def adapt_resume_to_match(resume_data: ResumeData) -> dict:
     basic = resume_data.basic_info
 
@@ -153,6 +159,25 @@ def adapt_resume_to_match(resume_data: ResumeData) -> dict:
         "projects": project_names,
         "experience": exp_summary,
     }
+
+
+def load_users() -> list:
+    """加载用户数据"""
+    users_file = os.path.join(os.path.dirname(__file__), "users.json")
+    if not os.path.exists(users_file):
+        return []
+    with open(users_file, "r", encoding="utf-8") as f:
+        data = json.load(f)
+        return data.get("users", [])
+
+
+def find_user(username: str) -> dict:
+    """根据用户名查找用户"""
+    users = load_users()
+    for user in users:
+        if user.get("username") == username:
+            return user
+    return None
 
 
 @app.get("/")
@@ -386,6 +411,47 @@ async def full_health_check():
         status["resume_service"] = "unreachable"
 
     return status
+
+
+@app.post("/api/login")
+async def login(req: LoginRequest):
+    """用户登录接口"""
+    user = find_user(req.username)
+
+    if not user:
+        return {"success": False, "message": "用户不存在"}
+
+    if user.get("password") != req.password:
+        return {"success": False, "message": "密码错误"}
+
+    import hashlib
+    import time
+    token = hashlib.md5(f"{req.username}_{time.time()}".encode()).hexdigest()
+
+    user_info = {
+        "id": user.get("id"),
+        "username": user.get("username"),
+        "name": user.get("name"),
+        "membership": user.get("membership", "free"),
+        "avatar": user.get("avatar", "👤"),
+    }
+
+    return {
+        "success": True,
+        "token": token,
+        "user": user_info,
+        "message": "登录成功",
+    }
+
+
+@app.post("/api/check_membership")
+async def check_membership(req: dict):
+    """检查用户是否为会员"""
+    username = req.get("username")
+    user = find_user(username)
+    if not user:
+        return {"success": False, "is_pro": False}
+    return {"success": True, "is_pro": user.get("membership") == "pro"}
 
 
 if __name__ == "__main__":
