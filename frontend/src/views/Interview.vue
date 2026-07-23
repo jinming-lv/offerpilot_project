@@ -33,7 +33,7 @@
       <div class="control-actions">
         <!-- 暂停/继续 -->
         <el-button
-          v-if="interviewStarted && !interviewEnded && !isPaused"
+          v-if="interviewStarted && !interviewEnded"
           :type="isPaused ? 'success' : 'warning'"
           size="small"
           :plain="!isPaused"
@@ -69,7 +69,7 @@
           📊 查看面试分析报告
         </el-button>
         <el-button
-          v-if="interviewStarted && !interviewEnded && !isPaused"
+          v-if="interviewStarted && !interviewEnded"
           type="danger"
           size="small"
           plain
@@ -1048,25 +1048,6 @@ onUnmounted(() => {
   font-weight: 600;
   color: var(--text-primary);
 }
-
-/* 暂停遮罩 */
-.pause-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(10, 22, 40, 0.78);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-radius: var(--radius-lg);
-  z-index: 10;
-}
-.pause-content { text-align: center; }
-.pause-big-icon { font-size: 64px; color: var(--accent-cyan); opacity: 0.6; margin-bottom: 16px; }
-.pause-content h3 { font-size: 20px; color: var(--text-primary); margin-bottom: 8px; }
-.pause-content p { font-size: 14px; color: var(--text-secondary); }
-
 /* 语言选择器 */
 .lang-selector-wrap { text-align: center; padding: 10px 0 6px; margin-bottom: 4px; }
 .lang-selector-hint { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 14px; letter-spacing: 0.5px; }
