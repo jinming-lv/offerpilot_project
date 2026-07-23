@@ -25,7 +25,7 @@ from agents.interview.interview_agent import (
     start_interview,
 )
 from agents.learning.learning_planner import generate_learning_plan
-from agents.utils.knowledge_loader import get_question_count
+from agents.utils.algo_loader import get_question_count
 from api.resume import router as resume_router
 from utils.env import load_project_env
 from utils.logger import get_logger

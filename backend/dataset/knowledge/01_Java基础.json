@@ -1,0 +1,79 @@
+[
+  {
+    "id": "c001",
+    "title": "面向对象三大特性",
+    "difficulty": "Easy",
+    "tags": [
+      "Java",
+      "OOP"
+    ],
+    "description": "请简述面向对象的三大特性：封装、继承、多态，并分别举例说明。",
+    "hints": [
+      "封装：隐藏内部实现，对外提供接口",
+      "继承：子类继承父类属性和方法",
+      "多态：同一接口不同实现"
+    ]
+  },
+  {
+    "id": "c002",
+    "title": "ArrayList vs LinkedList",
+    "difficulty": "Easy",
+    "tags": [
+      "Java",
+      "集合"
+    ],
+    "description": "请比较 ArrayList 和 LinkedList 的区别，各自适用什么场景？",
+    "hints": [
+      "底层数据结构：数组 vs 双向链表",
+      "随机访问效率",
+      "插入删除效率",
+      "内存占用"
+    ]
+  },
+  {
+    "id": "c003",
+    "title": "HashMap底层原理",
+    "difficulty": "Medium",
+    "tags": [
+      "Java",
+      "集合"
+    ],
+    "description": "请解释 HashMap 的底层实现原理，包括 put 和 get 的流程。",
+    "hints": [
+      "数组+链表+红黑树",
+      "hash计算与寻址",
+      "扩容机制",
+      "线程安全问题"
+    ]
+  },
+  {
+    "id": "c004",
+    "title": "JVM内存模型",
+    "difficulty": "Medium",
+    "tags": [
+      "Java",
+      "JVM"
+    ],
+    "description": "请简述 JVM 的内存区域划分，以及各区域的作用。",
+    "hints": [
+      "堆、栈、方法区、程序计数器、本地方法栈",
+      "堆中分代",
+      "栈帧结构"
+    ]
+  },
+  {
+    "id": "c005",
+    "title": "垃圾回收机制",
+    "difficulty": "Medium",
+    "tags": [
+      "Java",
+      "JVM"
+    ],
+    "description": "请介绍 JVM 的垃圾回收算法和常见的垃圾回收器。",
+    "hints": [
+      "标记-清除、标记-复制、标记-整理",
+      "分代收集",
+      "CMS、G1"
+    ]
+  }
+]

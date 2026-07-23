@@ -1,0 +1,82 @@
+[
+  {
+    "id": "c010",
+    "title": "MySQL索引原理",
+    "difficulty": "Medium",
+    "tags": [
+      "数据库",
+      "MySQL"
+    ],
+    "description": "请解释 MySQL 中 B+ 树索引的底层原理，以及为什么使用 B+ 树而不是 B 树或红黑树。",
+    "hints": [
+      "B+树 vs B树：非叶子节点不存数据",
+      "磁盘IO次数",
+      "范围查询优势"
+    ]
+  },
+  {
+    "id": "c011",
+    "title": "事务ACID特性",
+    "difficulty": "Easy",
+    "tags": [
+      "数据库",
+      "MySQL"
+    ],
+    "description": "请解释数据库事务的 ACID 四大特性，以及 MySQL 如何实现这些特性。",
+    "hints": [
+      "原子性：undo log",
+      "一致性：约束+事务",
+      "隔离性：锁+MVCC",
+      "持久性：redo log"
+    ]
+  },
+  {
+    "id": "c012",
+    "title": "MVCC多版本并发控制",
+    "difficulty": "Hard",
+    "tags": [
+      "数据库",
+      "MySQL"
+    ],
+    "description": "请解释 MySQL 的 MVCC 机制是如何工作的，它解决了什么问题？",
+    "hints": [
+      "隐藏字段（DB_TRX_ID, DB_ROLL_PTR）",
+      "Read View",
+      "快照读 vs 当前读"
+    ]
+  },
+  {
+    "id": "c013",
+    "title": "SQL优化经验",
+    "difficulty": "Medium",
+    "tags": [
+      "数据库",
+      "MySQL"
+    ],
+    "description": "请列举你常用的 SQL 优化手段，并说明各自的原理。",
+    "hints": [
+      "explain分析执行计划",
+      "索引下推",
+      "覆盖索引",
+      "避免回表",
+      "小表驱动大表"
+    ]
+  },
+  {
+    "id": "c014",
+    "title": "Redis数据结构与应用",
+    "difficulty": "Easy",
+    "tags": [
+      "数据库",
+      "Redis"
+    ],
+    "description": "请介绍 Redis 支持的主要数据结构及其典型应用场景。",
+    "hints": [
+      "String：缓存、计数器",
+      "Hash：对象存储",
+      "List：消息队列",
+      "Set：去重、交集",
+      "ZSet：排行榜"
+    ]
+  }
+]

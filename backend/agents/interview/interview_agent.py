@@ -8,7 +8,7 @@ import os
 
 
 
-from agents.utils.knowledge_loader import pick_by_difficulty_mix, pick_questions
+from agents.utils.algo_loader import pick_by_difficulty_mix, pick_questions
 from agents.utils.llm_api import chat
 from agents.interview.prompts import (
     SYSTEM_PROMPT,

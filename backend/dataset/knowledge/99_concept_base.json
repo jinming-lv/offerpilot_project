@@ -1,0 +1,308 @@
+[
+  {
+    "id": "c001",
+    "title": "面向对象三大特性",
+    "difficulty": "Easy",
+    "tags": [
+      "Java",
+      "OOP"
+    ],
+    "description": "请简述面向对象的三大特性：封装、继承、多态，并分别举例说明。",
+    "hints": [
+      "封装：隐藏内部实现，对外提供接口",
+      "继承：子类继承父类属性和方法",
+      "多态：同一接口不同实现"
+    ]
+  },
+  {
+    "id": "c002",
+    "title": "ArrayList vs LinkedList",
+    "difficulty": "Easy",
+    "tags": [
+      "Java",
+      "集合"
+    ],
+    "description": "请比较 ArrayList 和 LinkedList 的区别，各自适用什么场景？",
+    "hints": [
+      "底层数据结构：数组 vs 双向链表",
+      "随机访问效率",
+      "插入删除效率",
+      "内存占用"
+    ]
+  },
+  {
+    "id": "c003",
+    "title": "HashMap底层原理",
+    "difficulty": "Medium",
+    "tags": [
+      "Java",
+      "集合"
+    ],
+    "description": "请解释 HashMap 的底层实现原理，包括 put 和 get 的流程。",
+    "hints": [
+      "数组+链表+红黑树",
+      "hash计算与寻址",
+      "扩容机制",
+      "线程安全问题"
+    ]
+  },
+  {
+    "id": "c004",
+    "title": "JVM内存模型",
+    "difficulty": "Medium",
+    "tags": [
+      "Java",
+      "JVM"
+    ],
+    "description": "请简述 JVM 的内存区域划分，以及各区域的作用。",
+    "hints": [
+      "堆、栈、方法区、程序计数器、本地方法栈",
+      "堆中分代",
+      "栈帧结构"
+    ]
+  },
+  {
+    "id": "c005",
+    "title": "垃圾回收机制",
+    "difficulty": "Medium",
+    "tags": [
+      "Java",
+      "JVM"
+    ],
+    "description": "请介绍 JVM 的垃圾回收算法和常见的垃圾回收器。",
+    "hints": [
+      "标记-清除、标记-复制、标记-整理",
+      "分代收集",
+      "CMS、G1"
+    ]
+  },
+  {
+    "id": "c010",
+    "title": "MySQL索引原理",
+    "difficulty": "Medium",
+    "tags": [
+      "数据库",
+      "MySQL"
+    ],
+    "description": "请解释 MySQL 中 B+ 树索引的底层原理，以及为什么使用 B+ 树而不是 B 树或红黑树。",
+    "hints": [
+      "B+树 vs B树：非叶子节点不存数据",
+      "磁盘IO次数",
+      "范围查询优势"
+    ]
+  },
+  {
+    "id": "c011",
+    "title": "事务ACID特性",
+    "difficulty": "Easy",
+    "tags": [
+      "数据库",
+      "MySQL"
+    ],
+    "description": "请解释数据库事务的 ACID 四大特性，以及 MySQL 如何实现这些特性。",
+    "hints": [
+      "原子性：undo log",
+      "一致性：约束+事务",
+      "隔离性：锁+MVCC",
+      "持久性：redo log"
+    ]
+  },
+  {
+    "id": "c012",
+    "title": "MVCC多版本并发控制",
+    "difficulty": "Hard",
+    "tags": [
+      "数据库",
+      "MySQL"
+    ],
+    "description": "请解释 MySQL 的 MVCC 机制是如何工作的，它解决了什么问题？",
+    "hints": [
+      "隐藏字段（DB_TRX_ID, DB_ROLL_PTR）",
+      "Read View",
+      "快照读 vs 当前读"
+    ]
+  },
+  {
+    "id": "c013",
+    "title": "SQL优化经验",
+    "difficulty": "Medium",
+    "tags": [
+      "数据库",
+      "MySQL"
+    ],
+    "description": "请列举你常用的 SQL 优化手段，并说明各自的原理。",
+    "hints": [
+      "explain分析执行计划",
+      "索引下推",
+      "覆盖索引",
+      "避免回表",
+      "小表驱动大表"
+    ]
+  },
+  {
+    "id": "c014",
+    "title": "Redis数据结构与应用",
+    "difficulty": "Easy",
+    "tags": [
+      "数据库",
+      "Redis"
+    ],
+    "description": "请介绍 Redis 支持的主要数据结构及其典型应用场景。",
+    "hints": [
+      "String：缓存、计数器",
+      "Hash：对象存储",
+      "List：消息队列",
+      "Set：去重、交集",
+      "ZSet：排行榜"
+    ]
+  },
+  {
+    "id": "c020",
+    "title": "TCP三次握手与四次挥手",
+    "difficulty": "Easy",
+    "tags": [
+      "网络",
+      "TCP"
+    ],
+    "description": "请详细描述 TCP 三次握手和四次挥手的过程，并说明为什么是三次不是两次。",
+    "hints": [
+      "SYN、SYN-ACK、ACK",
+      "防止已失效的连接请求到达服务器",
+      "TIME_WAIT的作用"
+    ]
+  },
+  {
+    "id": "c021",
+    "title": "HTTP与HTTPS的区别",
+    "difficulty": "Easy",
+    "tags": [
+      "网络",
+      "HTTP"
+    ],
+    "description": "请比较 HTTP 和 HTTPS 的区别，以及 HTTPS 的加密流程。",
+    "hints": [
+      "SSL/TLS协议",
+      "证书验证",
+      "对称+非对称加密",
+      "CA机构"
+    ]
+  },
+  {
+    "id": "c022",
+    "title": "HTTP状态码",
+    "difficulty": "Easy",
+    "tags": [
+      "网络",
+      "HTTP"
+    ],
+    "description": "请列举常见的 HTTP 状态码及其含义。",
+    "hints": [
+      "200、301、302、400、401、403、404、500、502、503"
+    ]
+  },
+  {
+    "id": "c030",
+    "title": "进程与线程的区别",
+    "difficulty": "Easy",
+    "tags": [
+      "OS",
+      "进程线程"
+    ],
+    "description": "请比较进程和线程的区别，以及它们的优缺点。",
+    "hints": [
+      "资源拥有者 vs 调度单位",
+      "切换开销",
+      "通信方式",
+      "安全隔离性"
+    ]
+  },
+  {
+    "id": "c031",
+    "title": "死锁的必要条件",
+    "difficulty": "Easy",
+    "tags": [
+      "OS",
+      "锁"
+    ],
+    "description": "请解释死锁产生的四个必要条件，以及如何预防死锁。",
+    "hints": [
+      "互斥、请求与保持、不可剥夺、循环等待",
+      "破坏任一条件"
+    ]
+  },
+  {
+    "id": "c040",
+    "title": "IoC与DI",
+    "difficulty": "Easy",
+    "tags": [
+      "Spring",
+      "IoC"
+    ],
+    "description": "请解释 Spring 的 IoC（控制反转）和 DI（依赖注入）是什么，以及它们的好处。",
+    "hints": [
+      "对象创建权交给容器",
+      "降低耦合",
+      "构造器注入、Setter注入、字段注入"
+    ]
+  },
+  {
+    "id": "c041",
+    "title": "AOP面向切面编程",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring",
+      "AOP"
+    ],
+    "description": "请解释 Spring AOP 的原理和常见应用场景。",
+    "hints": [
+      "JDK动态代理 vs CGLIB代理",
+      "切点、通知、切面",
+      "日志、事务、权限"
+    ]
+  },
+  {
+    "id": "c042",
+    "title": "Spring Bean生命周期",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring",
+      "Bean"
+    ],
+    "description": "请描述 Spring Bean 的完整生命周期。",
+    "hints": [
+      "实例化→属性赋值→初始化→使用→销毁",
+      "BeanPostProcessor",
+      "InitializingBean"
+    ]
+  },
+  {
+    "id": "c050",
+    "title": "synchronized原理",
+    "difficulty": "Medium",
+    "tags": [
+      "并发",
+      "锁"
+    ],
+    "description": "请解释 synchronized 关键字的底层实现原理，以及锁升级过程。",
+    "hints": [
+      "偏向锁→轻量级锁→重量级锁",
+      "Monitor对象",
+      "对象头Mark Word"
+    ]
+  },
+  {
+    "id": "c051",
+    "title": "线程池原理",
+    "difficulty": "Medium",
+    "tags": [
+      "并发",
+      "线程池"
+    ],
+    "description": "请解释 Java 线程池的工作原理，以及核心参数的含义。",
+    "hints": [
+      "corePoolSize、maximumPoolSize、keepAliveTime、workQueue",
+      "拒绝策略",
+      "ThreadPoolExecutor"
+    ]
+  }
+]

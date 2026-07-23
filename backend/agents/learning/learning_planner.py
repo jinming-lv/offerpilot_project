@@ -8,7 +8,7 @@ import os
 
 
 
-from agents.utils.knowledge_loader import load_all, get_question_count
+from agents.utils.algo_loader import load_all, get_question_count
 from agents.utils.llm_api import chat
 from agents.interview.prompts import LEARNING_PROMPT
 

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "c050",
+    "title": "synchronized原理",
+    "difficulty": "Medium",
+    "tags": [
+      "并发",
+      "锁"
+    ],
+    "description": "请解释 synchronized 关键字的底层实现原理，以及锁升级过程。",
+    "hints": [
+      "偏向锁→轻量级锁→重量级锁",
+      "Monitor对象",
+      "对象头Mark Word"
+    ]
+  },
+  {
+    "id": "c051",
+    "title": "线程池原理",
+    "difficulty": "Medium",
+    "tags": [
+      "并发",
+      "线程池"
+    ],
+    "description": "请解释 Java 线程池的工作原理，以及核心参数的含义。",
+    "hints": [
+      "corePoolSize、maximumPoolSize、keepAliveTime、workQueue",
+      "拒绝策略",
+      "ThreadPoolExecutor"
+    ]
+  }
+]
