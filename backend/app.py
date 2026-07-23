@@ -204,8 +204,8 @@ def interview_questions(req: InterviewRequest):
             tags=req.tags if req.tags else None,
         )
         results = []
-        for q in questions:
-            question_text = generate_question_text(q, position=req.position)
+        for idx, q in enumerate(questions):
+            question_text = generate_question_text(q, position=req.position, round_number=idx+1, total_rounds=len(questions))
             results.append(
                 {
                     "id": q.get("id"),

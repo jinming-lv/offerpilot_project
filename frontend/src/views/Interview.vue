@@ -120,7 +120,7 @@
         class="message-wrapper"
       >
         <!-- AI 消息 -->
-        <div v-if="msg.role === 'ai'" class="message-row ai-row">
+        <div v-if="msg.role == 'ai'" class="message-row ai-row">
           <div class="message-avatar ai-avatar">
             <span>AI</span>
           </div>
@@ -129,7 +129,20 @@
               <span class="bubble-sender">AI 面试官</span>
               <span class="bubble-time">{{ msg.time }}</span>
             </div>
-            <div class="bubble-content" v-html="msg.content" />
+            <!-- 分段卡片渲染 -->
+            <div v-if="msg.isStructured" class="structured-content">
+              <template v-for="(seg, sIdx) in msg.segments" :key="sIdx">
+                <p v-if="seg.type == 'transition'" class="transition-text">{{ seg.text }}</p>
+                <div v-else class="seg-bar" :class="'bar-' + seg.type">
+                  <div class="seg-label-wrap">
+                    <span class="seg-dot" :class="'dot-' + seg.type"></span>
+                    <span class="seg-label">{{ segLabel(seg.type) }}</span>
+                  </div>
+                  <div class="seg-text">{{ seg.text }}</div>
+                </div>
+              </template>
+            </div>
+            <div v-else class="bubble-content" v-html="msg.content" />
             <!-- 评分卡片 -->
             <div v-if="msg.rating" class="rating-card">
               <div class="rating-header">
@@ -364,17 +377,94 @@ function sendAiMessage(content, rating = null, suggestion = null, improvements =
   setTimeout(() => {
     // 移除打字指示器
     messages.value = messages.value.filter(m => !m.typing)
+
+    // 解析分段结构
+    const parsed = parseStructuredContent(content)
+
     messages.value.push({
       role: 'ai',
       content,
       time: getTime(),
       rating,
       suggestion,
-      improvements
+      improvements,
+      isStructured: parsed.isStructured,
+      segments: parsed.segments
     })
     isAiTyping.value = false
     scrollToBottom()
   }, delay)
+}
+
+// 解析 【标签】 分段内容
+function parseStructuredContent(text) {
+  // 检查是否包含 【】
+  if (!text || !text.includes('【')) {
+    return { isStructured: false, segments: [] }
+  }
+
+  const segments = []
+  const regex = /【([^】]+)】\s*([\s\S]*?)(?=【|$)/g
+  let lastEnd = 0
+  let match
+  let hasBracket = false
+
+  while ((match = regex.exec(text)) !== null) {
+    hasBracket = true
+    const label = match[1]
+    const segText = match[2].trim()
+
+    // 标签前的内容作为过渡语
+    const beforeText = text.slice(lastEnd, match.index).trim()
+    if (beforeText) {
+      segments.push({ type: 'transition', text: beforeText })
+    }
+
+    segments.push({ type: getSegmentType(label), text: segText, rawLabel: label })
+    lastEnd = match.index + match[0].length
+  }
+
+  // 如果没有【】标签，返回非结构化
+  if (!hasBracket) {
+    return { isStructured: false, segments: [] }
+  }
+
+  // 最后一段之后的内容
+  const afterText = text.slice(lastEnd).trim()
+  if (afterText) {
+    segments.push({ type: 'transition', text: afterText })
+  }
+
+  return { isStructured: true, segments }
+}
+
+// 分段标签类型（用于 CSS 类名）
+function getSegmentType(label) {
+  const typeMap = {
+    '题目': 'question',
+    '示例': 'example',
+    '要求': 'requirement',
+    '进阶思考': 'advanced',
+    '关注点': 'focus',
+    '场景描述': 'scenario',
+    '问题': 'problem',
+  }
+  return typeMap[label] || 'other'
+}
+
+// 分段标签中文名称
+function segLabel(label) {
+  const labelMap = {
+    'question': '📝 题目',
+    'example': '📌 示例',
+    'requirement': '🎯 要求',
+    'advanced': '💡 进阶思考',
+    'focus': '🔍 关注点',
+    'scenario': '🏗️ 场景描述',
+    'problem': '❓ 问题',
+    'other': '📋 其他',
+  }
+  return labelMap[label] || label
 }
 
 function formatQuestion(questionData) {
@@ -592,7 +682,7 @@ onUnmounted(() => {
 })
 </script>
 
-<style scoped>
+<style>
 .interview-view {
   max-width: 900px;
   margin: 0 auto;
@@ -990,6 +1080,82 @@ onUnmounted(() => {
 /* 气泡标签 */
 .bubble-tag { font-size: 10px; padding: 1px 8px; border-radius: 10px; background: rgba(0,212,255,0.12); color: var(--accent-cyan); border: 1px solid rgba(0,212,255,0.2); }
 
-/* 代码框架复制按钮 */
+/* 结构化分段卡片 */
+/* 结构化分段 — 彩色竖条 */
+.structured-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.transition-text {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.8;
+  margin-bottom: 2px;
+}
+
+/* 彩色竖条容器 */
+.seg-bar {
+  padding: 6px 0 6px 12px;
+  border-left: 3px solid;
+  margin-bottom: 2px;
+}
+.seg-label-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.seg-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.seg-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.seg-text {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  white-space: pre-wrap;
+}
+
+/* 各段颜色 — 竖条 + 圆点 + 标签统一 */
+.bar-question { border-left-color: rgba(0, 212, 255, 0.7); }
+.bar-question .seg-label { color: #00d4ff; }
+.bar-question .seg-dot { background: #00d4ff; }
+
+.bar-example { border-left-color: rgba(0, 229, 160, 0.7); }
+.bar-example .seg-label { color: #00e5a0; }
+.bar-example .seg-dot { background: #00e5a0; }
+
+.bar-requirement { border-left-color: rgba(245, 158, 11, 0.7); }
+.bar-requirement .seg-label { color: #f59e0b; }
+.bar-requirement .seg-dot { background: #f59e0b; }
+
+.bar-advanced { border-left-color: rgba(168, 85, 247, 0.7); }
+.bar-advanced .seg-label { color: #a855f7; }
+.bar-advanced .seg-dot { background: #a855f7; }
+
+.bar-focus { border-left-color: rgba(239, 68, 68, 0.7); }
+.bar-focus .seg-label { color: #ef4444; }
+.bar-focus .seg-dot { background: #ef4444; }
+
+.bar-scenario { border-left-color: rgba(59, 130, 246, 0.7); }
+.bar-scenario .seg-label { color: #3b82f6; }
+.bar-scenario .seg-dot { background: #3b82f6; }
+
+.bar-problem { border-left-color: rgba(236, 72, 153, 0.7); }
+.bar-problem .seg-label { color: #ec4899; }
+.bar-problem .seg-dot { background: #ec4899; }
+
+.bar-other { border-left-color: rgba(148, 163, 184, 0.7); }
+.bar-other .seg-label { color: #94a3b8; }
+.bar-other .seg-dot { background: #94a3b8; }
 .copy-code-btn { color: var(--accent-cyan) !important; font-size: 12px; }
 </style>
