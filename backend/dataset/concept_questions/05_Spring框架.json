@@ -1,0 +1,142 @@
+[
+  {
+    "id": "c080",
+    "title": "IoC与DI",
+    "difficulty": "Easy",
+    "tags": [
+      "Spring",
+      "IoC"
+    ],
+    "description": "请解释IoC和DI的概念及好处。",
+    "hints": [
+      "对象创建权交给容器",
+      "降低耦合",
+      "构造器/Setter/字段注入"
+    ]
+  },
+  {
+    "id": "c081",
+    "title": "AOP原理",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring",
+      "AOP"
+    ],
+    "description": "请解释Spring AOP的原理及应用场景。",
+    "hints": [
+      "JDK动态代理 vs CGLIB",
+      "切点/通知/切面",
+      "日志/事务/权限"
+    ]
+  },
+  {
+    "id": "c082",
+    "title": "Bean生命周期",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring",
+      "Bean"
+    ],
+    "description": "请描述Spring Bean的完整生命周期。",
+    "hints": [
+      "实例化→属性赋值→初始化→使用→销毁",
+      "BeanPostProcessor"
+    ]
+  },
+  {
+    "id": "c083",
+    "title": "自动装配方式",
+    "difficulty": "Easy",
+    "tags": [
+      "Spring",
+      "IoC"
+    ],
+    "description": "请介绍Spring的自动装配方式。",
+    "hints": [
+      "byName/byType/构造器/注解"
+    ]
+  },
+  {
+    "id": "c084",
+    "title": "事务传播行为",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring",
+      "事务"
+    ],
+    "description": "请介绍Spring事务的传播行为。",
+    "hints": [
+      "REQUIRED/REQUIRES_NEW/NESTED/SUPPORTS/MANDATORY/NEVER/NOT_SUPPORTED"
+    ]
+  },
+  {
+    "id": "c085",
+    "title": "SpringMVC流程",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring",
+      "MVC"
+    ],
+    "description": "请描述SpringMVC的请求处理流程。",
+    "hints": [
+      "DispatcherServlet→HandlerMapping→HandlerAdapter→ViewResolver"
+    ]
+  },
+  {
+    "id": "c086",
+    "title": "MyBatis缓存机制",
+    "difficulty": "Easy",
+    "tags": [
+      "Spring",
+      "MyBatis"
+    ],
+    "description": "请介绍MyBatis的一级缓存和二级缓存。",
+    "hints": [
+      "一级缓存：SqlSession级别",
+      "二级缓存：Mapper级别"
+    ]
+  },
+  {
+    "id": "c087",
+    "title": "@Autowired与@Resource",
+    "difficulty": "Easy",
+    "tags": [
+      "Spring",
+      "注解"
+    ],
+    "description": "请比较@Autowired和@Resource的区别。",
+    "hints": [
+      "byType vs byName",
+      "Spring vs Java标准"
+    ]
+  },
+  {
+    "id": "c088",
+    "title": "Spring Boot自动配置",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring",
+      "Boot"
+    ],
+    "description": "请解释Spring Boot自动配置原理。",
+    "hints": [
+      "@EnableAutoConfiguration",
+      "spring.factories",
+      "条件注解"
+    ]
+  },
+  {
+    "id": "c089",
+    "title": "循环依赖",
+    "difficulty": "Hard",
+    "tags": [
+      "Spring",
+      "IoC"
+    ],
+    "description": "请解释Spring如何解决循环依赖问题。",
+    "hints": [
+      "三级缓存",
+      "提前暴露对象引用"
+    ]
+  }
+]

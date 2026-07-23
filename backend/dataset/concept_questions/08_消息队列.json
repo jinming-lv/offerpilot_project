@@ -1,0 +1,107 @@
+[
+  {
+    "id": "c140",
+    "title": "消息队列作用",
+    "difficulty": "Easy",
+    "tags": [
+      "MQ",
+      "基础"
+    ],
+    "description": "请说明消息队列在系统中的作用。",
+    "hints": [
+      "异步解耦",
+      "削峰填谷",
+      "最终一致性"
+    ]
+  },
+  {
+    "id": "c141",
+    "title": "RocketMQ架构",
+    "difficulty": "Medium",
+    "tags": [
+      "MQ",
+      "RocketMQ"
+    ],
+    "description": "请介绍RocketMQ的架构组件。",
+    "hints": [
+      "NameServer/Broker/Producer/Consumer",
+      "Topic/Queue",
+      "CommitLog/ConsumeQueue"
+    ]
+  },
+  {
+    "id": "c142",
+    "title": "Kafka架构",
+    "difficulty": "Medium",
+    "tags": [
+      "MQ",
+      "Kafka"
+    ],
+    "description": "请介绍Kafka的核心概念和架构。",
+    "hints": [
+      "Partition/Replica/ISR",
+      "Leader/Follower",
+      "消费组"
+    ]
+  },
+  {
+    "id": "c143",
+    "title": "消息可靠性",
+    "difficulty": "Medium",
+    "tags": [
+      "MQ",
+      "可靠性"
+    ],
+    "description": "如何保证消息不丢失？请从生产端、服务端、消费端分别说明。",
+    "hints": [
+      "生产端确认",
+      "Broker持久化",
+      "消费端手动ACK"
+    ]
+  },
+  {
+    "id": "c144",
+    "title": "消息顺序性",
+    "difficulty": "Medium",
+    "tags": [
+      "MQ",
+      "顺序"
+    ],
+    "description": "如何保证消息的顺序消费？",
+    "hints": [
+      "单队列/单分区",
+      "顺序消息（RocketMQ）",
+      "一队列一消费者"
+    ]
+  },
+  {
+    "id": "c145",
+    "title": "重复消费",
+    "difficulty": "Easy",
+    "tags": [
+      "MQ",
+      "幂等"
+    ],
+    "description": "如何处理消息重复消费的问题？",
+    "hints": [
+      "业务幂等性",
+      "唯一键去重",
+      "消费端幂等"
+    ]
+  },
+  {
+    "id": "c146",
+    "title": "延迟消息",
+    "difficulty": "Medium",
+    "tags": [
+      "MQ",
+      "延迟"
+    ],
+    "description": "请介绍消息队列的延迟消息实现方式。",
+    "hints": [
+      "RocketMQ延迟级别",
+      "RabbitMQ TTL+死信",
+      "Kafka时间轮"
+    ]
+  }
+]

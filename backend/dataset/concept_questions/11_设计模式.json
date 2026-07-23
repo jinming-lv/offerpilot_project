@@ -1,0 +1,104 @@
+[
+  {
+    "id": "c200",
+    "title": "单例模式",
+    "difficulty": "Easy",
+    "tags": [
+      "设计模式",
+      "创建型"
+    ],
+    "description": "请介绍单例模式的实现方式及线程安全问题。",
+    "hints": [
+      "饿汉/懒汉/DCL/静态内部类/枚举",
+      "volatile+双重检查"
+    ]
+  },
+  {
+    "id": "c201",
+    "title": "工厂模式",
+    "difficulty": "Easy",
+    "tags": [
+      "设计模式",
+      "创建型"
+    ],
+    "description": "请介绍简单工厂、工厂方法和抽象工厂模式的区别。",
+    "hints": [
+      "创建对象复杂度逐步增加",
+      "Spring BeanFactory"
+    ]
+  },
+  {
+    "id": "c202",
+    "title": "代理模式",
+    "difficulty": "Easy",
+    "tags": [
+      "设计模式",
+      "结构型"
+    ],
+    "description": "请介绍静态代理和动态代理的区别及Spring中的应用。",
+    "hints": [
+      "JDK动态代理 vs CGLIB",
+      "AOP实现基础"
+    ]
+  },
+  {
+    "id": "c203",
+    "title": "观察者模式",
+    "difficulty": "Easy",
+    "tags": [
+      "设计模式",
+      "行为型"
+    ],
+    "description": "请介绍观察者模式的原理及实际应用。",
+    "hints": [
+      "发布-订阅",
+      "Spring事件监听",
+      "消息队列"
+    ]
+  },
+  {
+    "id": "c204",
+    "title": "策略模式",
+    "difficulty": "Easy",
+    "tags": [
+      "设计模式",
+      "行为型"
+    ],
+    "description": "请介绍策略模式的原理及应用场景。",
+    "hints": [
+      "封装算法族",
+      "可相互替换",
+      "if-else替代"
+    ]
+  },
+  {
+    "id": "c205",
+    "title": "模板方法模式",
+    "difficulty": "Easy",
+    "tags": [
+      "设计模式",
+      "行为型"
+    ],
+    "description": "请介绍模板方法模式的原理及Spring中的应用。",
+    "hints": [
+      "定义算法骨架",
+      "子类实现步骤",
+      "JdbcTemplate"
+    ]
+  },
+  {
+    "id": "c206",
+    "title": "责任链模式",
+    "difficulty": "Medium",
+    "tags": [
+      "设计模式",
+      "行为型"
+    ],
+    "description": "请介绍责任链模式的原理及实际应用。",
+    "hints": [
+      "请求沿链传递",
+      "Filter/Interceptor",
+      "Netty pipeline"
+    ]
+  }
+]

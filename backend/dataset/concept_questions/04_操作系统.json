@@ -1,0 +1,145 @@
+[
+  {
+    "id": "c060",
+    "title": "进程与线程区别",
+    "difficulty": "Easy",
+    "tags": [
+      "OS",
+      "进程线程"
+    ],
+    "description": "请比较进程和线程的区别。",
+    "hints": [
+      "资源拥有者 vs 调度单位",
+      "切换开销",
+      "通信方式"
+    ]
+  },
+  {
+    "id": "c061",
+    "title": "死锁必要条件",
+    "difficulty": "Easy",
+    "tags": [
+      "OS",
+      "死锁"
+    ],
+    "description": "请解释死锁的四个必要条件及预防方法。",
+    "hints": [
+      "互斥/请求保持/不可剥夺/循环等待",
+      "破坏任一条件"
+    ]
+  },
+  {
+    "id": "c062",
+    "title": "进程调度算法",
+    "difficulty": "Easy",
+    "tags": [
+      "OS",
+      "调度"
+    ],
+    "description": "请介绍常见的进程调度算法。",
+    "hints": [
+      "先来先服务/短作业优先/时间片轮转/优先级/多级反馈队列"
+    ]
+  },
+  {
+    "id": "c063",
+    "title": "虚拟内存与分页",
+    "difficulty": "Medium",
+    "tags": [
+      "OS",
+      "内存"
+    ],
+    "description": "请解释虚拟内存的概念和分页机制。",
+    "hints": [
+      "逻辑地址→物理地址",
+      "页表/MMU",
+      "缺页中断"
+    ]
+  },
+  {
+    "id": "c064",
+    "title": "页面置换算法",
+    "difficulty": "Easy",
+    "tags": [
+      "OS",
+      "内存"
+    ],
+    "description": "请介绍常见的页面置换算法。",
+    "hints": [
+      "FIFO/LRU/CLOCK/OPT"
+    ]
+  },
+  {
+    "id": "c065",
+    "title": "用户态与内核态",
+    "difficulty": "Easy",
+    "tags": [
+      "OS",
+      "基础"
+    ],
+    "description": "请解释用户态和内核态的区别及切换方式。",
+    "hints": [
+      "系统调用",
+      "中断",
+      "权限级别"
+    ]
+  },
+  {
+    "id": "c066",
+    "title": "IO多路复用",
+    "difficulty": "Medium",
+    "tags": [
+      "OS",
+      "IO"
+    ],
+    "description": "请介绍select/poll/epoll的区别。",
+    "hints": [
+      "文件描述符限制",
+      "触发方式",
+      "效率"
+    ]
+  },
+  {
+    "id": "c067",
+    "title": "零拷贝技术",
+    "difficulty": "Medium",
+    "tags": [
+      "OS",
+      "IO"
+    ],
+    "description": "请解释零拷贝技术的原理及在Java中的应用。",
+    "hints": [
+      "减少用户态/内核态拷贝",
+      "sendfile/mmap",
+      "Kafka/Netty中的应用"
+    ]
+  },
+  {
+    "id": "c068",
+    "title": "进程间通信方式",
+    "difficulty": "Easy",
+    "tags": [
+      "OS",
+      "IPC"
+    ],
+    "description": "请列举进程间通信的方式。",
+    "hints": [
+      "管道/消息队列/共享内存/信号量/Socket"
+    ]
+  },
+  {
+    "id": "c069",
+    "title": "Linux文件系统",
+    "difficulty": "Easy",
+    "tags": [
+      "OS",
+      "Linux"
+    ],
+    "description": "请介绍Linux的inode和文件存储机制。",
+    "hints": [
+      "inode存元数据",
+      "数据块存内容",
+      "硬链接与软链接"
+    ]
+  }
+]

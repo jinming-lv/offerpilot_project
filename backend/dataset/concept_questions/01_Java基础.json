@@ -1,0 +1,178 @@
+[
+  {
+    "id": "c001",
+    "title": "面向对象三大特性",
+    "difficulty": "Easy",
+    "tags": [
+      "Java",
+      "OOP"
+    ],
+    "description": "请简述面向对象的三大特性：封装、继承、多态，并分别举例说明。",
+    "hints": [
+      "封装：隐藏内部实现",
+      "继承：子类继承父类",
+      "多态：同一接口不同实现"
+    ]
+  },
+  {
+    "id": "c002",
+    "title": "ArrayList vs LinkedList",
+    "difficulty": "Easy",
+    "tags": [
+      "Java",
+      "集合"
+    ],
+    "description": "请比较 ArrayList 和 LinkedList 的区别及适用场景。",
+    "hints": [
+      "数组 vs 双向链表",
+      "随机访问O(1) vs O(n)"
+    ]
+  },
+  {
+    "id": "c003",
+    "title": "HashMap底层原理",
+    "difficulty": "Medium",
+    "tags": [
+      "Java",
+      "集合"
+    ],
+    "description": "请解释 HashMap 的底层实现原理，包括put/get流程。",
+    "hints": [
+      "数组+链表+红黑树",
+      "hash计算与寻址",
+      "扩容机制"
+    ]
+  },
+  {
+    "id": "c004",
+    "title": "JVM内存区域划分",
+    "difficulty": "Medium",
+    "tags": [
+      "Java",
+      "JVM"
+    ],
+    "description": "请简述JVM内存区域划分及各区域作用。",
+    "hints": [
+      "堆、栈、方法区、程序计数器、本地方法栈"
+    ]
+  },
+  {
+    "id": "c005",
+    "title": "垃圾回收算法",
+    "difficulty": "Medium",
+    "tags": [
+      "Java",
+      "JVM"
+    ],
+    "description": "请介绍JVM的垃圾回收算法及常见回收器。",
+    "hints": [
+      "标记-清除、复制、标记-整理",
+      "CMS、G1"
+    ]
+  },
+  {
+    "id": "c006",
+    "title": "ConcurrentHashMap原理",
+    "difficulty": "Medium",
+    "tags": [
+      "Java",
+      "并发"
+    ],
+    "description": "请解释 ConcurrentHashMap 如何保证线程安全。",
+    "hints": [
+      "CAS+synchronized",
+      "分段锁",
+      "数组+链表+红黑树"
+    ]
+  },
+  {
+    "id": "c007",
+    "title": "String不可变性",
+    "difficulty": "Easy",
+    "tags": [
+      "Java",
+      "基础"
+    ],
+    "description": "为什么String被设计为不可变类？有哪些好处？",
+    "hints": [
+      "常量池安全",
+      "线程安全",
+      "hashCode缓存"
+    ]
+  },
+  {
+    "id": "c008",
+    "title": "Java异常体系",
+    "difficulty": "Easy",
+    "tags": [
+      "Java",
+      "基础"
+    ],
+    "description": "请介绍Java的异常体系结构，以及受检异常和非受检异常的区别。",
+    "hints": [
+      "Throwable→Error/Exception",
+      "RuntimeException"
+    ]
+  },
+  {
+    "id": "c009",
+    "title": "反射机制",
+    "difficulty": "Easy",
+    "tags": [
+      "Java",
+      "基础"
+    ],
+    "description": "请解释Java反射机制的原理和应用场景。",
+    "hints": [
+      "运行时获取类信息",
+      "动态调用方法",
+      "Spring框架基础"
+    ]
+  },
+  {
+    "id": "c010",
+    "title": "泛型擦除",
+    "difficulty": "Easy",
+    "tags": [
+      "Java",
+      "基础"
+    ],
+    "description": "请解释Java泛型的类型擦除机制及其影响。",
+    "hints": [
+      "编译期检查",
+      "运行时无泛型信息",
+      "桥接方法"
+    ]
+  },
+  {
+    "id": "c011",
+    "title": "类加载机制",
+    "difficulty": "Medium",
+    "tags": [
+      "Java",
+      "JVM"
+    ],
+    "description": "请介绍JVM的类加载过程以及双亲委派模型。",
+    "hints": [
+      "加载→验证→准备→解析→初始化",
+      "双亲委派",
+      "打破双亲委派"
+    ]
+  },
+  {
+    "id": "c012",
+    "title": "强软弱虚引用",
+    "difficulty": "Medium",
+    "tags": [
+      "Java",
+      "JVM"
+    ],
+    "description": "请介绍Java的四种引用类型及其用途。",
+    "hints": [
+      "强引用：不回收",
+      "软引用：内存不足时回收",
+      "弱引用：下次GC回收",
+      "虚引用：跟踪对象回收"
+    ]
+  }
+]

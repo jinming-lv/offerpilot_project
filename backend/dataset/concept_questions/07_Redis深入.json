@@ -1,0 +1,107 @@
+[
+  {
+    "id": "c120",
+    "title": "Redis单线程模型",
+    "difficulty": "Easy",
+    "tags": [
+      "Redis",
+      "架构"
+    ],
+    "description": "为什么Redis是单线程的还能这么快？",
+    "hints": [
+      "内存操作",
+      "IO多路复用",
+      "避免上下文切换"
+    ]
+  },
+  {
+    "id": "c121",
+    "title": "Redis数据结构底层",
+    "difficulty": "Medium",
+    "tags": [
+      "Redis",
+      "数据结构"
+    ],
+    "description": "请介绍Redis五种基本数据结构的底层实现。",
+    "hints": [
+      "String→SDS",
+      "List→quicklist",
+      "Hash→ziplist/hashtable"
+    ]
+  },
+  {
+    "id": "c122",
+    "title": "Redis事务",
+    "difficulty": "Easy",
+    "tags": [
+      "Redis",
+      "事务"
+    ],
+    "description": "Redis支持事务吗？和关系型数据库事务有什么区别？",
+    "hints": [
+      "MULTI/EXEC/DISCARD",
+      "不支持回滚",
+      "原子性保证"
+    ]
+  },
+  {
+    "id": "c123",
+    "title": "Redis分布式锁",
+    "difficulty": "Medium",
+    "tags": [
+      "Redis",
+      "分布式锁"
+    ],
+    "description": "如何用Redis实现可靠的分布式锁？",
+    "hints": [
+      "SET NX EX",
+      "Redisson",
+      "Redlock算法"
+    ]
+  },
+  {
+    "id": "c124",
+    "title": "Redis发布订阅",
+    "difficulty": "Easy",
+    "tags": [
+      "Redis",
+      "消息"
+    ],
+    "description": "请介绍Redis的发布订阅模式及其局限性。",
+    "hints": [
+      "PUB/SUB",
+      "消息不持久化",
+      "相比消息队列的劣势"
+    ]
+  },
+  {
+    "id": "c125",
+    "title": "Redis Pipeline",
+    "difficulty": "Easy",
+    "tags": [
+      "Redis",
+      "性能"
+    ],
+    "description": "请介绍Redis Pipeline的作用和原理。",
+    "hints": [
+      "批量发送命令",
+      "减少RTT",
+      "非原子性"
+    ]
+  },
+  {
+    "id": "c126",
+    "title": "Big Key问题",
+    "difficulty": "Easy",
+    "tags": [
+      "Redis",
+      "运维"
+    ],
+    "description": "什么是Redis的Big Key？有什么危害？如何处理？",
+    "hints": [
+      "大value→阻塞IO",
+      "拆分/压缩",
+      "定期扫描"
+    ]
+  }
+]

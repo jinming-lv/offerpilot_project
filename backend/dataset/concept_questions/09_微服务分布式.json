@@ -1,0 +1,121 @@
+[
+  {
+    "id": "c160",
+    "title": "CAP定理",
+    "difficulty": "Easy",
+    "tags": [
+      "分布式",
+      "CAP"
+    ],
+    "description": "请解释CAP定理及其在分布式系统中的应用。",
+    "hints": [
+      "一致性/可用性/分区容错性",
+      "三选二",
+      "BASE理论"
+    ]
+  },
+  {
+    "id": "c161",
+    "title": "服务注册与发现",
+    "difficulty": "Easy",
+    "tags": [
+      "微服务",
+      "注册中心"
+    ],
+    "description": "请介绍服务注册与发现的原理及常见组件。",
+    "hints": [
+      "Nacos/Eureka/Zookeeper/Consul",
+      "心跳检测",
+      "健康检查"
+    ]
+  },
+  {
+    "id": "c162",
+    "title": "负载均衡算法",
+    "difficulty": "Easy",
+    "tags": [
+      "分布式",
+      "负载均衡"
+    ],
+    "description": "请介绍常见的负载均衡算法。",
+    "hints": [
+      "轮询/随机/最小连接/一致性hash"
+    ]
+  },
+  {
+    "id": "c163",
+    "title": "分布式事务",
+    "difficulty": "Hard",
+    "tags": [
+      "分布式",
+      "事务"
+    ],
+    "description": "请介绍分布式事务的常见解决方案。",
+    "hints": [
+      "2PC/3PC",
+      "TCC",
+      "Seata",
+      "可靠消息最终一致性"
+    ]
+  },
+  {
+    "id": "c164",
+    "title": "接口幂等性",
+    "difficulty": "Medium",
+    "tags": [
+      "分布式",
+      "幂等"
+    ],
+    "description": "如何保证接口的幂等性？",
+    "hints": [
+      "幂等key",
+      "数据库唯一约束",
+      "Token机制"
+    ]
+  },
+  {
+    "id": "c165",
+    "title": "限流算法",
+    "difficulty": "Medium",
+    "tags": [
+      "分布式",
+      "限流"
+    ],
+    "description": "请介绍常见的限流算法。",
+    "hints": [
+      "计数器/滑动窗口/漏桶/令牌桶",
+      "Guava RateLimiter",
+      "Sentinel"
+    ]
+  },
+  {
+    "id": "c166",
+    "title": "Feign与Ribbon",
+    "difficulty": "Easy",
+    "tags": [
+      "微服务",
+      "SpringCloud"
+    ],
+    "description": "请介绍Feign和Ribbon在微服务中的作用。",
+    "hints": [
+      "Feign：声明式HTTP客户端",
+      "Ribbon：客户端负载均衡"
+    ]
+  },
+  {
+    "id": "c167",
+    "title": "网关Gateway",
+    "difficulty": "Easy",
+    "tags": [
+      "微服务",
+      "网关"
+    ],
+    "description": "请介绍API网关的作用及常见功能。",
+    "hints": [
+      "路由转发",
+      "统一鉴权",
+      "限流熔断",
+      "协议转换"
+    ]
+  }
+]

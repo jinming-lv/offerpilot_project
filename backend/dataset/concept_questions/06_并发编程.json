@@ -1,0 +1,134 @@
+[
+  {
+    "id": "c100",
+    "title": "synchronized原理",
+    "difficulty": "Medium",
+    "tags": [
+      "并发",
+      "锁"
+    ],
+    "description": "请解释synchronized底层实现及锁升级过程。",
+    "hints": [
+      "偏向锁→轻量级锁→重量级锁",
+      "Monitor",
+      "Mark Word"
+    ]
+  },
+  {
+    "id": "c101",
+    "title": "线程池原理",
+    "difficulty": "Medium",
+    "tags": [
+      "并发",
+      "线程池"
+    ],
+    "description": "请解释Java线程池原理及核心参数。",
+    "hints": [
+      "corePoolSize/maximumPoolSize/keepAliveTime/workQueue",
+      "拒绝策略"
+    ]
+  },
+  {
+    "id": "c102",
+    "title": "volatile关键字",
+    "difficulty": "Easy",
+    "tags": [
+      "并发",
+      "volatile"
+    ],
+    "description": "请解释volatile关键字的作用和原理。",
+    "hints": [
+      "内存可见性",
+      "禁止指令重排",
+      "不保证原子性"
+    ]
+  },
+  {
+    "id": "c103",
+    "title": "CAS原理",
+    "difficulty": "Medium",
+    "tags": [
+      "并发",
+      "CAS"
+    ],
+    "description": "请解释CAS（比较并交换）的原理及ABA问题。",
+    "hints": [
+      "底层cmpxchg指令",
+      "ABA问题→AtomicStampedReference"
+    ]
+  },
+  {
+    "id": "c104",
+    "title": "ReentrantLock与synchronized",
+    "difficulty": "Medium",
+    "tags": [
+      "并发",
+      "锁"
+    ],
+    "description": "请比较ReentrantLock和synchronized的区别。",
+    "hints": [
+      "可中断/可超时/公平锁",
+      "条件变量",
+      "性能对比"
+    ]
+  },
+  {
+    "id": "c105",
+    "title": "ThreadLocal原理",
+    "difficulty": "Medium",
+    "tags": [
+      "并发",
+      "ThreadLocal"
+    ],
+    "description": "请解释ThreadLocal的原理及内存泄漏问题。",
+    "hints": [
+      "每个线程维护副本",
+      "弱引用Entry",
+      "内存泄漏：用完remove"
+    ]
+  },
+  {
+    "id": "c106",
+    "title": "AQS原理",
+    "difficulty": "Hard",
+    "tags": [
+      "并发",
+      "AQS"
+    ],
+    "description": "请解释AQS（AbstractQueuedSynchronizer）的原理。",
+    "hints": [
+      "CLH队列变体",
+      "state状态",
+      "独占/共享模式"
+    ]
+  },
+  {
+    "id": "c107",
+    "title": "CompletableFuture",
+    "difficulty": "Medium",
+    "tags": [
+      "并发",
+      "异步"
+    ],
+    "description": "请介绍CompletableFuture的用法和优势。",
+    "hints": [
+      "异步编排",
+      "thenApply/thenCompose/allOf/anyOf"
+    ]
+  },
+  {
+    "id": "c108",
+    "title": "Fork/Join框架",
+    "difficulty": "Medium",
+    "tags": [
+      "并发",
+      "ForkJoin"
+    ],
+    "description": "请介绍Fork/Join框架的原理及工作窃取算法。",
+    "hints": [
+      "分治思想",
+      "工作窃取队列",
+      "RecursiveTask/RecursiveAction"
+    ]
+  }
+]

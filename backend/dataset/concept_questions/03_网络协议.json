@@ -1,0 +1,146 @@
+[
+  {
+    "id": "c040",
+    "title": "TCP三次握手与四次挥手",
+    "difficulty": "Easy",
+    "tags": [
+      "网络",
+      "TCP"
+    ],
+    "description": "请描述TCP三次握手和四次挥手的过程。",
+    "hints": [
+      "SYN→SYN-ACK→ACK",
+      "FIN→ACK→FIN→ACK",
+      "TIME_WAIT作用"
+    ]
+  },
+  {
+    "id": "c041",
+    "title": "HTTP与HTTPS",
+    "difficulty": "Easy",
+    "tags": [
+      "网络",
+      "HTTP"
+    ],
+    "description": "请比较HTTP和HTTPS的区别及加密流程。",
+    "hints": [
+      "SSL/TLS",
+      "CA证书",
+      "对称+非对称加密"
+    ]
+  },
+  {
+    "id": "c042",
+    "title": "HTTP状态码",
+    "difficulty": "Easy",
+    "tags": [
+      "网络",
+      "HTTP"
+    ],
+    "description": "请列举常见HTTP状态码及其含义。",
+    "hints": [
+      "200/301/302/400/401/403/404/500/502/503"
+    ]
+  },
+  {
+    "id": "c043",
+    "title": "TCP拥塞控制",
+    "difficulty": "Medium",
+    "tags": [
+      "网络",
+      "TCP"
+    ],
+    "description": "请解释TCP拥塞控制的四种算法。",
+    "hints": [
+      "慢启动",
+      "拥塞避免",
+      "快重传",
+      "快恢复"
+    ]
+  },
+  {
+    "id": "c044",
+    "title": "OSI七层模型",
+    "difficulty": "Easy",
+    "tags": [
+      "网络",
+      "OSI"
+    ],
+    "description": "请简述OSI七层模型及各层的作用。",
+    "hints": [
+      "物理层→应用层",
+      "各层协议举例"
+    ]
+  },
+  {
+    "id": "c045",
+    "title": "DNS解析过程",
+    "difficulty": "Easy",
+    "tags": [
+      "网络",
+      "DNS"
+    ],
+    "description": "请描述从浏览器输入网址到获取IP的DNS解析过程。",
+    "hints": [
+      "本地缓存→根DNS→顶级域→权威DNS",
+      "递归/迭代查询"
+    ]
+  },
+  {
+    "id": "c046",
+    "title": "HTTP请求与响应结构",
+    "difficulty": "Easy",
+    "tags": [
+      "网络",
+      "HTTP"
+    ],
+    "description": "请描述HTTP请求和响应报文的结构。",
+    "hints": [
+      "请求行/请求头/空行/请求体",
+      "状态行/响应头/空行/响应体"
+    ]
+  },
+  {
+    "id": "c047",
+    "title": "Session与Cookie",
+    "difficulty": "Easy",
+    "tags": [
+      "网络",
+      "HTTP"
+    ],
+    "description": "请比较Session和Cookie的区别及应用场景。",
+    "hints": [
+      "服务端 vs 客户端",
+      "安全性",
+      "分布式Session问题"
+    ]
+  },
+  {
+    "id": "c048",
+    "title": "HTTPS握手过程",
+    "difficulty": "Medium",
+    "tags": [
+      "网络",
+      "HTTPS"
+    ],
+    "description": "请详细描述TLS/SSL握手过程。",
+    "hints": [
+      "ClientHello→ServerHello→证书→密钥交换→加密通信"
+    ]
+  },
+  {
+    "id": "c049",
+    "title": "WebSocket",
+    "difficulty": "Medium",
+    "tags": [
+      "网络",
+      "WebSocket"
+    ],
+    "description": "请介绍WebSocket协议及其与HTTP的关系。",
+    "hints": [
+      "全双工通信",
+      "Upgrade头部",
+      "适用于实时场景"
+    ]
+  }
+]

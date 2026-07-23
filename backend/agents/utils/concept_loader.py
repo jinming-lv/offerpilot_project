@@ -7,7 +7,7 @@ import os
 import random
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-KB_DIR = os.path.join(BASE_DIR, "dataset", "knowledge")
+KB_DIR = os.path.join(BASE_DIR, "dataset", "concept_questions")
 KB_FILE = os.path.join(KB_DIR, "99_concept_base.json")
 
 

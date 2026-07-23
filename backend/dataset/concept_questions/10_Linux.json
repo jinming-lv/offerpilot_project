@@ -1,0 +1,118 @@
+[
+  {
+    "id": "c180",
+    "title": "常用命令",
+    "difficulty": "Easy",
+    "tags": [
+      "Linux",
+      "命令"
+    ],
+    "description": "请列举你常用的Linux命令。",
+    "hints": [
+      "top/ps/grep/find/sed/awk/tail/netstat/curl"
+    ]
+  },
+  {
+    "id": "c181",
+    "title": "文件权限",
+    "difficulty": "Easy",
+    "tags": [
+      "Linux",
+      "权限"
+    ],
+    "description": "请解释Linux文件权限的rwx表示法及chmod用法。",
+    "hints": [
+      "owner/group/others",
+      "755/644",
+      "chmod u+x"
+    ]
+  },
+  {
+    "id": "c182",
+    "title": "进程查看与管理",
+    "difficulty": "Easy",
+    "tags": [
+      "Linux",
+      "进程"
+    ],
+    "description": "如何在Linux中查看和管理进程？",
+    "hints": [
+      "ps/top/htop",
+      "kill/信号",
+      "nohup"
+    ]
+  },
+  {
+    "id": "c183",
+    "title": "CPU过高排查",
+    "difficulty": "Medium",
+    "tags": [
+      "Linux",
+      "排查"
+    ],
+    "description": "服务器CPU过高时如何排查？",
+    "hints": [
+      "top找到高CPU进程",
+      "ps定位线程",
+      "jstack分析"
+    ]
+  },
+  {
+    "id": "c184",
+    "title": "内存排查",
+    "difficulty": "Medium",
+    "tags": [
+      "Linux",
+      "排查"
+    ],
+    "description": "服务内存溢出时如何排查？",
+    "hints": [
+      "free/jstat/jmap",
+      "MAT分析dump",
+      "OOM日志"
+    ]
+  },
+  {
+    "id": "c185",
+    "title": "磁盘与IO排查",
+    "difficulty": "Easy",
+    "tags": [
+      "Linux",
+      "磁盘"
+    ],
+    "description": "如何排查磁盘IO过高的问题？",
+    "hints": [
+      "iostat/iotop/dstat",
+      "RAID类型",
+      "磁盘容量"
+    ]
+  },
+  {
+    "id": "c186",
+    "title": "Shell脚本基础",
+    "difficulty": "Easy",
+    "tags": [
+      "Linux",
+      "Shell"
+    ],
+    "description": "请介绍Shell脚本中常用的语法。",
+    "hints": [
+      "变量/循环/条件判断/函数/管道"
+    ]
+  },
+  {
+    "id": "c187",
+    "title": "crontab定时任务",
+    "difficulty": "Easy",
+    "tags": [
+      "Linux",
+      "定时"
+    ],
+    "description": "如何使用crontab设置定时任务？",
+    "hints": [
+      "crontab -e",
+      "分时日月周",
+      "日志重定向"
+    ]
+  }
+]

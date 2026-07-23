@@ -1,0 +1,1468 @@
+[
+  {
+    "id": "c001",
+    "title": "面向对象三大特性",
+    "difficulty": "Easy",
+    "tags": [
+      "Java",
+      "OOP"
+    ],
+    "description": "请简述面向对象的三大特性：封装、继承、多态，并分别举例说明。",
+    "hints": [
+      "封装：隐藏内部实现",
+      "继承：子类继承父类",
+      "多态：同一接口不同实现"
+    ]
+  },
+  {
+    "id": "c002",
+    "title": "ArrayList vs LinkedList",
+    "difficulty": "Easy",
+    "tags": [
+      "Java",
+      "集合"
+    ],
+    "description": "请比较 ArrayList 和 LinkedList 的区别及适用场景。",
+    "hints": [
+      "数组 vs 双向链表",
+      "随机访问O(1) vs O(n)"
+    ]
+  },
+  {
+    "id": "c003",
+    "title": "HashMap底层原理",
+    "difficulty": "Medium",
+    "tags": [
+      "Java",
+      "集合"
+    ],
+    "description": "请解释 HashMap 的底层实现原理，包括put/get流程。",
+    "hints": [
+      "数组+链表+红黑树",
+      "hash计算与寻址",
+      "扩容机制"
+    ]
+  },
+  {
+    "id": "c004",
+    "title": "JVM内存区域划分",
+    "difficulty": "Medium",
+    "tags": [
+      "Java",
+      "JVM"
+    ],
+    "description": "请简述JVM内存区域划分及各区域作用。",
+    "hints": [
+      "堆、栈、方法区、程序计数器、本地方法栈"
+    ]
+  },
+  {
+    "id": "c005",
+    "title": "垃圾回收算法",
+    "difficulty": "Medium",
+    "tags": [
+      "Java",
+      "JVM"
+    ],
+    "description": "请介绍JVM的垃圾回收算法及常见回收器。",
+    "hints": [
+      "标记-清除、复制、标记-整理",
+      "CMS、G1"
+    ]
+  },
+  {
+    "id": "c006",
+    "title": "ConcurrentHashMap原理",
+    "difficulty": "Medium",
+    "tags": [
+      "Java",
+      "并发"
+    ],
+    "description": "请解释 ConcurrentHashMap 如何保证线程安全。",
+    "hints": [
+      "CAS+synchronized",
+      "分段锁",
+      "数组+链表+红黑树"
+    ]
+  },
+  {
+    "id": "c007",
+    "title": "String不可变性",
+    "difficulty": "Easy",
+    "tags": [
+      "Java",
+      "基础"
+    ],
+    "description": "为什么String被设计为不可变类？有哪些好处？",
+    "hints": [
+      "常量池安全",
+      "线程安全",
+      "hashCode缓存"
+    ]
+  },
+  {
+    "id": "c008",
+    "title": "Java异常体系",
+    "difficulty": "Easy",
+    "tags": [
+      "Java",
+      "基础"
+    ],
+    "description": "请介绍Java的异常体系结构，以及受检异常和非受检异常的区别。",
+    "hints": [
+      "Throwable→Error/Exception",
+      "RuntimeException"
+    ]
+  },
+  {
+    "id": "c009",
+    "title": "反射机制",
+    "difficulty": "Easy",
+    "tags": [
+      "Java",
+      "基础"
+    ],
+    "description": "请解释Java反射机制的原理和应用场景。",
+    "hints": [
+      "运行时获取类信息",
+      "动态调用方法",
+      "Spring框架基础"
+    ]
+  },
+  {
+    "id": "c010",
+    "title": "泛型擦除",
+    "difficulty": "Easy",
+    "tags": [
+      "Java",
+      "基础"
+    ],
+    "description": "请解释Java泛型的类型擦除机制及其影响。",
+    "hints": [
+      "编译期检查",
+      "运行时无泛型信息",
+      "桥接方法"
+    ]
+  },
+  {
+    "id": "c011",
+    "title": "类加载机制",
+    "difficulty": "Medium",
+    "tags": [
+      "Java",
+      "JVM"
+    ],
+    "description": "请介绍JVM的类加载过程以及双亲委派模型。",
+    "hints": [
+      "加载→验证→准备→解析→初始化",
+      "双亲委派",
+      "打破双亲委派"
+    ]
+  },
+  {
+    "id": "c012",
+    "title": "强软弱虚引用",
+    "difficulty": "Medium",
+    "tags": [
+      "Java",
+      "JVM"
+    ],
+    "description": "请介绍Java的四种引用类型及其用途。",
+    "hints": [
+      "强引用：不回收",
+      "软引用：内存不足时回收",
+      "弱引用：下次GC回收",
+      "虚引用：跟踪对象回收"
+    ]
+  },
+  {
+    "id": "c020",
+    "title": "B+树索引原理",
+    "difficulty": "Medium",
+    "tags": [
+      "数据库",
+      "MySQL"
+    ],
+    "description": "请解释MySQL B+树索引的底层原理。",
+    "hints": [
+      "非叶子节点只存key",
+      "叶子节点存数据+链表",
+      "减少磁盘IO"
+    ]
+  },
+  {
+    "id": "c021",
+    "title": "事务ACID特性",
+    "difficulty": "Easy",
+    "tags": [
+      "数据库",
+      "MySQL"
+    ],
+    "description": "请解释ACID四大特性及MySQL的实现方式。",
+    "hints": [
+      "原子性：undo log",
+      "一致性：约束",
+      "隔离性：锁+MVCC",
+      "持久性：redo log"
+    ]
+  },
+  {
+    "id": "c022",
+    "title": "MVCC原理",
+    "difficulty": "Hard",
+    "tags": [
+      "数据库",
+      "MySQL"
+    ],
+    "description": "请解释MVCC机制的工作原理。",
+    "hints": [
+      "隐藏字段DB_TRX_ID/DB_ROLL_PTR",
+      "Read View",
+      "快照读 vs 当前读"
+    ]
+  },
+  {
+    "id": "c023",
+    "title": "SQL优化手段",
+    "difficulty": "Medium",
+    "tags": [
+      "数据库",
+      "MySQL"
+    ],
+    "description": "请列举常用的SQL优化手段。",
+    "hints": [
+      "explain分析",
+      "索引下推",
+      "覆盖索引",
+      "避免回表"
+    ]
+  },
+  {
+    "id": "c024",
+    "title": "事务隔离级别",
+    "difficulty": "Medium",
+    "tags": [
+      "数据库",
+      "MySQL"
+    ],
+    "description": "请介绍MySQL的四种事务隔离级别及其解决的问题。",
+    "hints": [
+      "读未提交→脏读",
+      "读已提交→不可重复读",
+      "可重复读→幻读（InnoDB已解决）",
+      "串行化"
+    ]
+  },
+  {
+    "id": "c025",
+    "title": "索引失效场景",
+    "difficulty": "Easy",
+    "tags": [
+      "数据库",
+      "MySQL"
+    ],
+    "description": "请列举常见的索引失效场景。",
+    "hints": [
+      "违反最左前缀",
+      "LIKE以%开头",
+      "类型隐式转换",
+      "对索引列使用函数"
+    ]
+  },
+  {
+    "id": "c026",
+    "title": "聚簇索引与非聚簇索引",
+    "difficulty": "Easy",
+    "tags": [
+      "数据库",
+      "MySQL"
+    ],
+    "description": "请比较聚簇索引和非聚簇索引的区别。",
+    "hints": [
+      "数据存放位置",
+      "回表查询",
+      "主键推荐自增"
+    ]
+  },
+  {
+    "id": "c027",
+    "title": "分库分表策略",
+    "difficulty": "Medium",
+    "tags": [
+      "数据库",
+      "分库分表"
+    ],
+    "description": "请介绍分库分表的常见策略和注意事项。",
+    "hints": [
+      "垂直分库/水平分表",
+      "取模/范围/一致性hash",
+      "分布式ID",
+      "跨分片查询"
+    ]
+  },
+  {
+    "id": "c028",
+    "title": "Redis持久化",
+    "difficulty": "Easy",
+    "tags": [
+      "数据库",
+      "Redis"
+    ],
+    "description": "请介绍Redis的持久化方式：RDB和AOF的区别。",
+    "hints": [
+      "RDB：快照",
+      "AOF：追加日志",
+      "混合持久化"
+    ]
+  },
+  {
+    "id": "c029",
+    "title": "Redis缓存雪崩/穿透/击穿",
+    "difficulty": "Medium",
+    "tags": [
+      "数据库",
+      "Redis"
+    ],
+    "description": "请解释缓存雪崩、缓存穿透、缓存击穿的区别及解决方案。",
+    "hints": [
+      "雪崩：大量过期→加随机过期时间",
+      "穿透：不存在key→布隆过滤器",
+      "击穿：热点key过期→互斥锁"
+    ]
+  },
+  {
+    "id": "c030",
+    "title": "Redis集群模式",
+    "difficulty": "Medium",
+    "tags": [
+      "数据库",
+      "Redis"
+    ],
+    "description": "请介绍Redis的主从、哨兵、Cluster三种集群模式。",
+    "hints": [
+      "主从：读写分离",
+      "哨兵：高可用",
+      "Cluster：分片"
+    ]
+  },
+  {
+    "id": "c031",
+    "title": "Redis淘汰策略",
+    "difficulty": "Easy",
+    "tags": [
+      "数据库",
+      "Redis"
+    ],
+    "description": "请介绍Redis的内存淘汰策略有哪些。",
+    "hints": [
+      "LRU/LFU/TTL随机",
+      "noeviction/allkeys-lru/volatile-lru"
+    ]
+  },
+  {
+    "id": "c040",
+    "title": "TCP三次握手与四次挥手",
+    "difficulty": "Easy",
+    "tags": [
+      "网络",
+      "TCP"
+    ],
+    "description": "请描述TCP三次握手和四次挥手的过程。",
+    "hints": [
+      "SYN→SYN-ACK→ACK",
+      "FIN→ACK→FIN→ACK",
+      "TIME_WAIT作用"
+    ]
+  },
+  {
+    "id": "c041",
+    "title": "HTTP与HTTPS",
+    "difficulty": "Easy",
+    "tags": [
+      "网络",
+      "HTTP"
+    ],
+    "description": "请比较HTTP和HTTPS的区别及加密流程。",
+    "hints": [
+      "SSL/TLS",
+      "CA证书",
+      "对称+非对称加密"
+    ]
+  },
+  {
+    "id": "c042",
+    "title": "HTTP状态码",
+    "difficulty": "Easy",
+    "tags": [
+      "网络",
+      "HTTP"
+    ],
+    "description": "请列举常见HTTP状态码及其含义。",
+    "hints": [
+      "200/301/302/400/401/403/404/500/502/503"
+    ]
+  },
+  {
+    "id": "c043",
+    "title": "TCP拥塞控制",
+    "difficulty": "Medium",
+    "tags": [
+      "网络",
+      "TCP"
+    ],
+    "description": "请解释TCP拥塞控制的四种算法。",
+    "hints": [
+      "慢启动",
+      "拥塞避免",
+      "快重传",
+      "快恢复"
+    ]
+  },
+  {
+    "id": "c044",
+    "title": "OSI七层模型",
+    "difficulty": "Easy",
+    "tags": [
+      "网络",
+      "OSI"
+    ],
+    "description": "请简述OSI七层模型及各层的作用。",
+    "hints": [
+      "物理层→应用层",
+      "各层协议举例"
+    ]
+  },
+  {
+    "id": "c045",
+    "title": "DNS解析过程",
+    "difficulty": "Easy",
+    "tags": [
+      "网络",
+      "DNS"
+    ],
+    "description": "请描述从浏览器输入网址到获取IP的DNS解析过程。",
+    "hints": [
+      "本地缓存→根DNS→顶级域→权威DNS",
+      "递归/迭代查询"
+    ]
+  },
+  {
+    "id": "c046",
+    "title": "HTTP请求与响应结构",
+    "difficulty": "Easy",
+    "tags": [
+      "网络",
+      "HTTP"
+    ],
+    "description": "请描述HTTP请求和响应报文的结构。",
+    "hints": [
+      "请求行/请求头/空行/请求体",
+      "状态行/响应头/空行/响应体"
+    ]
+  },
+  {
+    "id": "c047",
+    "title": "Session与Cookie",
+    "difficulty": "Easy",
+    "tags": [
+      "网络",
+      "HTTP"
+    ],
+    "description": "请比较Session和Cookie的区别及应用场景。",
+    "hints": [
+      "服务端 vs 客户端",
+      "安全性",
+      "分布式Session问题"
+    ]
+  },
+  {
+    "id": "c048",
+    "title": "HTTPS握手过程",
+    "difficulty": "Medium",
+    "tags": [
+      "网络",
+      "HTTPS"
+    ],
+    "description": "请详细描述TLS/SSL握手过程。",
+    "hints": [
+      "ClientHello→ServerHello→证书→密钥交换→加密通信"
+    ]
+  },
+  {
+    "id": "c049",
+    "title": "WebSocket",
+    "difficulty": "Medium",
+    "tags": [
+      "网络",
+      "WebSocket"
+    ],
+    "description": "请介绍WebSocket协议及其与HTTP的关系。",
+    "hints": [
+      "全双工通信",
+      "Upgrade头部",
+      "适用于实时场景"
+    ]
+  },
+  {
+    "id": "c060",
+    "title": "进程与线程区别",
+    "difficulty": "Easy",
+    "tags": [
+      "OS",
+      "进程线程"
+    ],
+    "description": "请比较进程和线程的区别。",
+    "hints": [
+      "资源拥有者 vs 调度单位",
+      "切换开销",
+      "通信方式"
+    ]
+  },
+  {
+    "id": "c061",
+    "title": "死锁必要条件",
+    "difficulty": "Easy",
+    "tags": [
+      "OS",
+      "死锁"
+    ],
+    "description": "请解释死锁的四个必要条件及预防方法。",
+    "hints": [
+      "互斥/请求保持/不可剥夺/循环等待",
+      "破坏任一条件"
+    ]
+  },
+  {
+    "id": "c062",
+    "title": "进程调度算法",
+    "difficulty": "Easy",
+    "tags": [
+      "OS",
+      "调度"
+    ],
+    "description": "请介绍常见的进程调度算法。",
+    "hints": [
+      "先来先服务/短作业优先/时间片轮转/优先级/多级反馈队列"
+    ]
+  },
+  {
+    "id": "c063",
+    "title": "虚拟内存与分页",
+    "difficulty": "Medium",
+    "tags": [
+      "OS",
+      "内存"
+    ],
+    "description": "请解释虚拟内存的概念和分页机制。",
+    "hints": [
+      "逻辑地址→物理地址",
+      "页表/MMU",
+      "缺页中断"
+    ]
+  },
+  {
+    "id": "c064",
+    "title": "页面置换算法",
+    "difficulty": "Easy",
+    "tags": [
+      "OS",
+      "内存"
+    ],
+    "description": "请介绍常见的页面置换算法。",
+    "hints": [
+      "FIFO/LRU/CLOCK/OPT"
+    ]
+  },
+  {
+    "id": "c065",
+    "title": "用户态与内核态",
+    "difficulty": "Easy",
+    "tags": [
+      "OS",
+      "基础"
+    ],
+    "description": "请解释用户态和内核态的区别及切换方式。",
+    "hints": [
+      "系统调用",
+      "中断",
+      "权限级别"
+    ]
+  },
+  {
+    "id": "c066",
+    "title": "IO多路复用",
+    "difficulty": "Medium",
+    "tags": [
+      "OS",
+      "IO"
+    ],
+    "description": "请介绍select/poll/epoll的区别。",
+    "hints": [
+      "文件描述符限制",
+      "触发方式",
+      "效率"
+    ]
+  },
+  {
+    "id": "c067",
+    "title": "零拷贝技术",
+    "difficulty": "Medium",
+    "tags": [
+      "OS",
+      "IO"
+    ],
+    "description": "请解释零拷贝技术的原理及在Java中的应用。",
+    "hints": [
+      "减少用户态/内核态拷贝",
+      "sendfile/mmap",
+      "Kafka/Netty中的应用"
+    ]
+  },
+  {
+    "id": "c068",
+    "title": "进程间通信方式",
+    "difficulty": "Easy",
+    "tags": [
+      "OS",
+      "IPC"
+    ],
+    "description": "请列举进程间通信的方式。",
+    "hints": [
+      "管道/消息队列/共享内存/信号量/Socket"
+    ]
+  },
+  {
+    "id": "c069",
+    "title": "Linux文件系统",
+    "difficulty": "Easy",
+    "tags": [
+      "OS",
+      "Linux"
+    ],
+    "description": "请介绍Linux的inode和文件存储机制。",
+    "hints": [
+      "inode存元数据",
+      "数据块存内容",
+      "硬链接与软链接"
+    ]
+  },
+  {
+    "id": "c080",
+    "title": "IoC与DI",
+    "difficulty": "Easy",
+    "tags": [
+      "Spring",
+      "IoC"
+    ],
+    "description": "请解释IoC和DI的概念及好处。",
+    "hints": [
+      "对象创建权交给容器",
+      "降低耦合",
+      "构造器/Setter/字段注入"
+    ]
+  },
+  {
+    "id": "c081",
+    "title": "AOP原理",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring",
+      "AOP"
+    ],
+    "description": "请解释Spring AOP的原理及应用场景。",
+    "hints": [
+      "JDK动态代理 vs CGLIB",
+      "切点/通知/切面",
+      "日志/事务/权限"
+    ]
+  },
+  {
+    "id": "c082",
+    "title": "Bean生命周期",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring",
+      "Bean"
+    ],
+    "description": "请描述Spring Bean的完整生命周期。",
+    "hints": [
+      "实例化→属性赋值→初始化→使用→销毁",
+      "BeanPostProcessor"
+    ]
+  },
+  {
+    "id": "c083",
+    "title": "自动装配方式",
+    "difficulty": "Easy",
+    "tags": [
+      "Spring",
+      "IoC"
+    ],
+    "description": "请介绍Spring的自动装配方式。",
+    "hints": [
+      "byName/byType/构造器/注解"
+    ]
+  },
+  {
+    "id": "c084",
+    "title": "事务传播行为",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring",
+      "事务"
+    ],
+    "description": "请介绍Spring事务的传播行为。",
+    "hints": [
+      "REQUIRED/REQUIRES_NEW/NESTED/SUPPORTS/MANDATORY/NEVER/NOT_SUPPORTED"
+    ]
+  },
+  {
+    "id": "c085",
+    "title": "SpringMVC流程",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring",
+      "MVC"
+    ],
+    "description": "请描述SpringMVC的请求处理流程。",
+    "hints": [
+      "DispatcherServlet→HandlerMapping→HandlerAdapter→ViewResolver"
+    ]
+  },
+  {
+    "id": "c086",
+    "title": "MyBatis缓存机制",
+    "difficulty": "Easy",
+    "tags": [
+      "Spring",
+      "MyBatis"
+    ],
+    "description": "请介绍MyBatis的一级缓存和二级缓存。",
+    "hints": [
+      "一级缓存：SqlSession级别",
+      "二级缓存：Mapper级别"
+    ]
+  },
+  {
+    "id": "c087",
+    "title": "@Autowired与@Resource",
+    "difficulty": "Easy",
+    "tags": [
+      "Spring",
+      "注解"
+    ],
+    "description": "请比较@Autowired和@Resource的区别。",
+    "hints": [
+      "byType vs byName",
+      "Spring vs Java标准"
+    ]
+  },
+  {
+    "id": "c088",
+    "title": "Spring Boot自动配置",
+    "difficulty": "Medium",
+    "tags": [
+      "Spring",
+      "Boot"
+    ],
+    "description": "请解释Spring Boot自动配置原理。",
+    "hints": [
+      "@EnableAutoConfiguration",
+      "spring.factories",
+      "条件注解"
+    ]
+  },
+  {
+    "id": "c089",
+    "title": "循环依赖",
+    "difficulty": "Hard",
+    "tags": [
+      "Spring",
+      "IoC"
+    ],
+    "description": "请解释Spring如何解决循环依赖问题。",
+    "hints": [
+      "三级缓存",
+      "提前暴露对象引用"
+    ]
+  },
+  {
+    "id": "c100",
+    "title": "synchronized原理",
+    "difficulty": "Medium",
+    "tags": [
+      "并发",
+      "锁"
+    ],
+    "description": "请解释synchronized底层实现及锁升级过程。",
+    "hints": [
+      "偏向锁→轻量级锁→重量级锁",
+      "Monitor",
+      "Mark Word"
+    ]
+  },
+  {
+    "id": "c101",
+    "title": "线程池原理",
+    "difficulty": "Medium",
+    "tags": [
+      "并发",
+      "线程池"
+    ],
+    "description": "请解释Java线程池原理及核心参数。",
+    "hints": [
+      "corePoolSize/maximumPoolSize/keepAliveTime/workQueue",
+      "拒绝策略"
+    ]
+  },
+  {
+    "id": "c102",
+    "title": "volatile关键字",
+    "difficulty": "Easy",
+    "tags": [
+      "并发",
+      "volatile"
+    ],
+    "description": "请解释volatile关键字的作用和原理。",
+    "hints": [
+      "内存可见性",
+      "禁止指令重排",
+      "不保证原子性"
+    ]
+  },
+  {
+    "id": "c103",
+    "title": "CAS原理",
+    "difficulty": "Medium",
+    "tags": [
+      "并发",
+      "CAS"
+    ],
+    "description": "请解释CAS（比较并交换）的原理及ABA问题。",
+    "hints": [
+      "底层cmpxchg指令",
+      "ABA问题→AtomicStampedReference"
+    ]
+  },
+  {
+    "id": "c104",
+    "title": "ReentrantLock与synchronized",
+    "difficulty": "Medium",
+    "tags": [
+      "并发",
+      "锁"
+    ],
+    "description": "请比较ReentrantLock和synchronized的区别。",
+    "hints": [
+      "可中断/可超时/公平锁",
+      "条件变量",
+      "性能对比"
+    ]
+  },
+  {
+    "id": "c105",
+    "title": "ThreadLocal原理",
+    "difficulty": "Medium",
+    "tags": [
+      "并发",
+      "ThreadLocal"
+    ],
+    "description": "请解释ThreadLocal的原理及内存泄漏问题。",
+    "hints": [
+      "每个线程维护副本",
+      "弱引用Entry",
+      "内存泄漏：用完remove"
+    ]
+  },
+  {
+    "id": "c106",
+    "title": "AQS原理",
+    "difficulty": "Hard",
+    "tags": [
+      "并发",
+      "AQS"
+    ],
+    "description": "请解释AQS（AbstractQueuedSynchronizer）的原理。",
+    "hints": [
+      "CLH队列变体",
+      "state状态",
+      "独占/共享模式"
+    ]
+  },
+  {
+    "id": "c107",
+    "title": "CompletableFuture",
+    "difficulty": "Medium",
+    "tags": [
+      "并发",
+      "异步"
+    ],
+    "description": "请介绍CompletableFuture的用法和优势。",
+    "hints": [
+      "异步编排",
+      "thenApply/thenCompose/allOf/anyOf"
+    ]
+  },
+  {
+    "id": "c108",
+    "title": "Fork/Join框架",
+    "difficulty": "Medium",
+    "tags": [
+      "并发",
+      "ForkJoin"
+    ],
+    "description": "请介绍Fork/Join框架的原理及工作窃取算法。",
+    "hints": [
+      "分治思想",
+      "工作窃取队列",
+      "RecursiveTask/RecursiveAction"
+    ]
+  },
+  {
+    "id": "c120",
+    "title": "Redis单线程模型",
+    "difficulty": "Easy",
+    "tags": [
+      "Redis",
+      "架构"
+    ],
+    "description": "为什么Redis是单线程的还能这么快？",
+    "hints": [
+      "内存操作",
+      "IO多路复用",
+      "避免上下文切换"
+    ]
+  },
+  {
+    "id": "c121",
+    "title": "Redis数据结构底层",
+    "difficulty": "Medium",
+    "tags": [
+      "Redis",
+      "数据结构"
+    ],
+    "description": "请介绍Redis五种基本数据结构的底层实现。",
+    "hints": [
+      "String→SDS",
+      "List→quicklist",
+      "Hash→ziplist/hashtable"
+    ]
+  },
+  {
+    "id": "c122",
+    "title": "Redis事务",
+    "difficulty": "Easy",
+    "tags": [
+      "Redis",
+      "事务"
+    ],
+    "description": "Redis支持事务吗？和关系型数据库事务有什么区别？",
+    "hints": [
+      "MULTI/EXEC/DISCARD",
+      "不支持回滚",
+      "原子性保证"
+    ]
+  },
+  {
+    "id": "c123",
+    "title": "Redis分布式锁",
+    "difficulty": "Medium",
+    "tags": [
+      "Redis",
+      "分布式锁"
+    ],
+    "description": "如何用Redis实现可靠的分布式锁？",
+    "hints": [
+      "SET NX EX",
+      "Redisson",
+      "Redlock算法"
+    ]
+  },
+  {
+    "id": "c124",
+    "title": "Redis发布订阅",
+    "difficulty": "Easy",
+    "tags": [
+      "Redis",
+      "消息"
+    ],
+    "description": "请介绍Redis的发布订阅模式及其局限性。",
+    "hints": [
+      "PUB/SUB",
+      "消息不持久化",
+      "相比消息队列的劣势"
+    ]
+  },
+  {
+    "id": "c125",
+    "title": "Redis Pipeline",
+    "difficulty": "Easy",
+    "tags": [
+      "Redis",
+      "性能"
+    ],
+    "description": "请介绍Redis Pipeline的作用和原理。",
+    "hints": [
+      "批量发送命令",
+      "减少RTT",
+      "非原子性"
+    ]
+  },
+  {
+    "id": "c126",
+    "title": "Big Key问题",
+    "difficulty": "Easy",
+    "tags": [
+      "Redis",
+      "运维"
+    ],
+    "description": "什么是Redis的Big Key？有什么危害？如何处理？",
+    "hints": [
+      "大value→阻塞IO",
+      "拆分/压缩",
+      "定期扫描"
+    ]
+  },
+  {
+    "id": "c140",
+    "title": "消息队列作用",
+    "difficulty": "Easy",
+    "tags": [
+      "MQ",
+      "基础"
+    ],
+    "description": "请说明消息队列在系统中的作用。",
+    "hints": [
+      "异步解耦",
+      "削峰填谷",
+      "最终一致性"
+    ]
+  },
+  {
+    "id": "c141",
+    "title": "RocketMQ架构",
+    "difficulty": "Medium",
+    "tags": [
+      "MQ",
+      "RocketMQ"
+    ],
+    "description": "请介绍RocketMQ的架构组件。",
+    "hints": [
+      "NameServer/Broker/Producer/Consumer",
+      "Topic/Queue",
+      "CommitLog/ConsumeQueue"
+    ]
+  },
+  {
+    "id": "c142",
+    "title": "Kafka架构",
+    "difficulty": "Medium",
+    "tags": [
+      "MQ",
+      "Kafka"
+    ],
+    "description": "请介绍Kafka的核心概念和架构。",
+    "hints": [
+      "Partition/Replica/ISR",
+      "Leader/Follower",
+      "消费组"
+    ]
+  },
+  {
+    "id": "c143",
+    "title": "消息可靠性",
+    "difficulty": "Medium",
+    "tags": [
+      "MQ",
+      "可靠性"
+    ],
+    "description": "如何保证消息不丢失？请从生产端、服务端、消费端分别说明。",
+    "hints": [
+      "生产端确认",
+      "Broker持久化",
+      "消费端手动ACK"
+    ]
+  },
+  {
+    "id": "c144",
+    "title": "消息顺序性",
+    "difficulty": "Medium",
+    "tags": [
+      "MQ",
+      "顺序"
+    ],
+    "description": "如何保证消息的顺序消费？",
+    "hints": [
+      "单队列/单分区",
+      "顺序消息（RocketMQ）",
+      "一队列一消费者"
+    ]
+  },
+  {
+    "id": "c145",
+    "title": "重复消费",
+    "difficulty": "Easy",
+    "tags": [
+      "MQ",
+      "幂等"
+    ],
+    "description": "如何处理消息重复消费的问题？",
+    "hints": [
+      "业务幂等性",
+      "唯一键去重",
+      "消费端幂等"
+    ]
+  },
+  {
+    "id": "c146",
+    "title": "延迟消息",
+    "difficulty": "Medium",
+    "tags": [
+      "MQ",
+      "延迟"
+    ],
+    "description": "请介绍消息队列的延迟消息实现方式。",
+    "hints": [
+      "RocketMQ延迟级别",
+      "RabbitMQ TTL+死信",
+      "Kafka时间轮"
+    ]
+  },
+  {
+    "id": "c160",
+    "title": "CAP定理",
+    "difficulty": "Easy",
+    "tags": [
+      "分布式",
+      "CAP"
+    ],
+    "description": "请解释CAP定理及其在分布式系统中的应用。",
+    "hints": [
+      "一致性/可用性/分区容错性",
+      "三选二",
+      "BASE理论"
+    ]
+  },
+  {
+    "id": "c161",
+    "title": "服务注册与发现",
+    "difficulty": "Easy",
+    "tags": [
+      "微服务",
+      "注册中心"
+    ],
+    "description": "请介绍服务注册与发现的原理及常见组件。",
+    "hints": [
+      "Nacos/Eureka/Zookeeper/Consul",
+      "心跳检测",
+      "健康检查"
+    ]
+  },
+  {
+    "id": "c162",
+    "title": "负载均衡算法",
+    "difficulty": "Easy",
+    "tags": [
+      "分布式",
+      "负载均衡"
+    ],
+    "description": "请介绍常见的负载均衡算法。",
+    "hints": [
+      "轮询/随机/最小连接/一致性hash"
+    ]
+  },
+  {
+    "id": "c163",
+    "title": "分布式事务",
+    "difficulty": "Hard",
+    "tags": [
+      "分布式",
+      "事务"
+    ],
+    "description": "请介绍分布式事务的常见解决方案。",
+    "hints": [
+      "2PC/3PC",
+      "TCC",
+      "Seata",
+      "可靠消息最终一致性"
+    ]
+  },
+  {
+    "id": "c164",
+    "title": "接口幂等性",
+    "difficulty": "Medium",
+    "tags": [
+      "分布式",
+      "幂等"
+    ],
+    "description": "如何保证接口的幂等性？",
+    "hints": [
+      "幂等key",
+      "数据库唯一约束",
+      "Token机制"
+    ]
+  },
+  {
+    "id": "c165",
+    "title": "限流算法",
+    "difficulty": "Medium",
+    "tags": [
+      "分布式",
+      "限流"
+    ],
+    "description": "请介绍常见的限流算法。",
+    "hints": [
+      "计数器/滑动窗口/漏桶/令牌桶",
+      "Guava RateLimiter",
+      "Sentinel"
+    ]
+  },
+  {
+    "id": "c166",
+    "title": "Feign与Ribbon",
+    "difficulty": "Easy",
+    "tags": [
+      "微服务",
+      "SpringCloud"
+    ],
+    "description": "请介绍Feign和Ribbon在微服务中的作用。",
+    "hints": [
+      "Feign：声明式HTTP客户端",
+      "Ribbon：客户端负载均衡"
+    ]
+  },
+  {
+    "id": "c167",
+    "title": "网关Gateway",
+    "difficulty": "Easy",
+    "tags": [
+      "微服务",
+      "网关"
+    ],
+    "description": "请介绍API网关的作用及常见功能。",
+    "hints": [
+      "路由转发",
+      "统一鉴权",
+      "限流熔断",
+      "协议转换"
+    ]
+  },
+  {
+    "id": "c180",
+    "title": "常用命令",
+    "difficulty": "Easy",
+    "tags": [
+      "Linux",
+      "命令"
+    ],
+    "description": "请列举你常用的Linux命令。",
+    "hints": [
+      "top/ps/grep/find/sed/awk/tail/netstat/curl"
+    ]
+  },
+  {
+    "id": "c181",
+    "title": "文件权限",
+    "difficulty": "Easy",
+    "tags": [
+      "Linux",
+      "权限"
+    ],
+    "description": "请解释Linux文件权限的rwx表示法及chmod用法。",
+    "hints": [
+      "owner/group/others",
+      "755/644",
+      "chmod u+x"
+    ]
+  },
+  {
+    "id": "c182",
+    "title": "进程查看与管理",
+    "difficulty": "Easy",
+    "tags": [
+      "Linux",
+      "进程"
+    ],
+    "description": "如何在Linux中查看和管理进程？",
+    "hints": [
+      "ps/top/htop",
+      "kill/信号",
+      "nohup"
+    ]
+  },
+  {
+    "id": "c183",
+    "title": "CPU过高排查",
+    "difficulty": "Medium",
+    "tags": [
+      "Linux",
+      "排查"
+    ],
+    "description": "服务器CPU过高时如何排查？",
+    "hints": [
+      "top找到高CPU进程",
+      "ps定位线程",
+      "jstack分析"
+    ]
+  },
+  {
+    "id": "c184",
+    "title": "内存排查",
+    "difficulty": "Medium",
+    "tags": [
+      "Linux",
+      "排查"
+    ],
+    "description": "服务内存溢出时如何排查？",
+    "hints": [
+      "free/jstat/jmap",
+      "MAT分析dump",
+      "OOM日志"
+    ]
+  },
+  {
+    "id": "c185",
+    "title": "磁盘与IO排查",
+    "difficulty": "Easy",
+    "tags": [
+      "Linux",
+      "磁盘"
+    ],
+    "description": "如何排查磁盘IO过高的问题？",
+    "hints": [
+      "iostat/iotop/dstat",
+      "RAID类型",
+      "磁盘容量"
+    ]
+  },
+  {
+    "id": "c186",
+    "title": "Shell脚本基础",
+    "difficulty": "Easy",
+    "tags": [
+      "Linux",
+      "Shell"
+    ],
+    "description": "请介绍Shell脚本中常用的语法。",
+    "hints": [
+      "变量/循环/条件判断/函数/管道"
+    ]
+  },
+  {
+    "id": "c187",
+    "title": "crontab定时任务",
+    "difficulty": "Easy",
+    "tags": [
+      "Linux",
+      "定时"
+    ],
+    "description": "如何使用crontab设置定时任务？",
+    "hints": [
+      "crontab -e",
+      "分时日月周",
+      "日志重定向"
+    ]
+  },
+  {
+    "id": "c200",
+    "title": "单例模式",
+    "difficulty": "Easy",
+    "tags": [
+      "设计模式",
+      "创建型"
+    ],
+    "description": "请介绍单例模式的实现方式及线程安全问题。",
+    "hints": [
+      "饿汉/懒汉/DCL/静态内部类/枚举",
+      "volatile+双重检查"
+    ]
+  },
+  {
+    "id": "c201",
+    "title": "工厂模式",
+    "difficulty": "Easy",
+    "tags": [
+      "设计模式",
+      "创建型"
+    ],
+    "description": "请介绍简单工厂、工厂方法和抽象工厂模式的区别。",
+    "hints": [
+      "创建对象复杂度逐步增加",
+      "Spring BeanFactory"
+    ]
+  },
+  {
+    "id": "c202",
+    "title": "代理模式",
+    "difficulty": "Easy",
+    "tags": [
+      "设计模式",
+      "结构型"
+    ],
+    "description": "请介绍静态代理和动态代理的区别及Spring中的应用。",
+    "hints": [
+      "JDK动态代理 vs CGLIB",
+      "AOP实现基础"
+    ]
+  },
+  {
+    "id": "c203",
+    "title": "观察者模式",
+    "difficulty": "Easy",
+    "tags": [
+      "设计模式",
+      "行为型"
+    ],
+    "description": "请介绍观察者模式的原理及实际应用。",
+    "hints": [
+      "发布-订阅",
+      "Spring事件监听",
+      "消息队列"
+    ]
+  },
+  {
+    "id": "c204",
+    "title": "策略模式",
+    "difficulty": "Easy",
+    "tags": [
+      "设计模式",
+      "行为型"
+    ],
+    "description": "请介绍策略模式的原理及应用场景。",
+    "hints": [
+      "封装算法族",
+      "可相互替换",
+      "if-else替代"
+    ]
+  },
+  {
+    "id": "c205",
+    "title": "模板方法模式",
+    "difficulty": "Easy",
+    "tags": [
+      "设计模式",
+      "行为型"
+    ],
+    "description": "请介绍模板方法模式的原理及Spring中的应用。",
+    "hints": [
+      "定义算法骨架",
+      "子类实现步骤",
+      "JdbcTemplate"
+    ]
+  },
+  {
+    "id": "c206",
+    "title": "责任链模式",
+    "difficulty": "Medium",
+    "tags": [
+      "设计模式",
+      "行为型"
+    ],
+    "description": "请介绍责任链模式的原理及实际应用。",
+    "hints": [
+      "请求沿链传递",
+      "Filter/Interceptor",
+      "Netty pipeline"
+    ]
+  }
+]
