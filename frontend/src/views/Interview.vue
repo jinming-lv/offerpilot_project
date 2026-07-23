@@ -31,6 +31,16 @@
         </div>
       </div>
       <div class="control-actions">
+        <!-- 暂停/继续 -->
+        <el-button
+          v-if="interviewStarted && !interviewEnded && !isPaused"
+          :type="isPaused ? 'success' : 'warning'"
+          size="small"
+          :plain="!isPaused"
+          @click="togglePause"
+        >
+          {{ isPaused ? '继续面试' : '暂停面试' }}
+        </el-button>
         <el-button
           v-if="!interviewStarted"
           type="primary"
@@ -41,8 +51,8 @@
           🎙️ 进入模拟面试
         </el-button>
         <el-button
-          v-else-if="!interviewEnded"
-          type="warning"
+          v-else-if="!interviewEnded && !isPaused"
+          type=""
           size="small"
           plain
           @click="skipQuestion"
@@ -59,7 +69,7 @@
           📊 查看面试分析报告
         </el-button>
         <el-button
-          v-if="interviewStarted && !interviewEnded"
+          v-if="interviewStarted && !interviewEnded && !isPaused"
           type="danger"
           size="small"
           plain
@@ -72,6 +82,23 @@
 
     <!-- 聊天区域 -->
     <div class="tech-card chat-container" ref="chatContainer">
+      <!-- 语言选择器 -->
+      <div v-if="!interviewStarted" class="lang-selector-wrap">
+        <div class="lang-selector-hint">选择编程语言</div>
+        <div class="lang-options-row">
+          <div
+            v-for="lang in LANGUAGES"
+            :key="lang.key"
+            class="lang-pill"
+            :class="{ active: selectedLang === lang.key }"
+            @click="selectedLang = lang.key"
+          >
+            <span class="lang-pill-icon">{{ lang.icon }}</span>
+            <span class="lang-pill-label">{{ lang.label }}</span>
+          </div>
+        </div>
+      </div>
+
       <!-- 空状态 -->
       <div v-if="messages.length === 0" class="chat-empty">
         <div class="empty-icon">
@@ -159,7 +186,7 @@
     </div>
 
     <!-- 输入区域 -->
-    <div class="tech-card input-bar" v-if="interviewStarted && !interviewEnded">
+    <div class="tech-card input-bar" v-if="interviewStarted && !interviewEnded && !isPaused">
       <el-input
         v-model="userInput"
         type="textarea"
@@ -216,7 +243,7 @@
 <script setup>
 import { ref, computed, nextTick, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { ChatLineRound, Promotion } from '@element-plus/icons-vue'
+import { ChatLineRound, Select, VideoPause, VideoPlay, Monitor, Check, CopyDocument } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import { getInterviewQuestions, scoreInterviewAnswer, summarizeInterview, generateLearningPath } from '../api/offerpilot'
 import { loadSession, saveSession } from '../utils/session'
@@ -230,8 +257,13 @@ const userInput = ref('')
 const interviewStarted = ref(false)
 const interviewEnded = ref(false)
 const isAiTyping = ref(false)
+const isPaused = ref(false)
+const isScoring = ref(false)
+const answerSubmitted = ref(false)
 const currentRound = ref(0)
-const totalRounds = computed(() => Math.min(questionBank.value.length || defaultQuestionBank.length, 5))
+const selectedLang = ref('Python')
+const currentQuestionData = ref(null)
+const totalRounds = 6
 
 // 计时器
 const elapsedSeconds = ref(0)
@@ -258,41 +290,17 @@ const formattedTime = computed(() => {
   return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`
 })
 
-// 默认面试题库（后端不可用时兜底）
-const defaultQuestionBank = [
-  {
-    question: '欢迎参加 OfferPilot AI 模拟面试！我是您的 AI 面试官。\n\n首先，<strong>请简要介绍一下您最近的单体项目经验</strong>，包括项目背景、您担任的角色以及使用的核心技术栈。',
-    rating: null,
-    suggestion: null,
-    improvements: null
-  },
-  {
-    question: '<strong>在您的项目中，您是如何设计数据库表结构来支撑高并发场景的？</strong>请举例说明您对索引优化、SQL 调优或分库分表的实践经验。',
-    rating: null,
-    suggestion: null,
-    improvements: null
-  },
-  {
-    question: '<strong>请谈谈您在项目中使用过的缓存策略和技术选型。</strong>比如 Redis 在什么场景下使用？遇到过哪些缓存穿透/雪崩问题，又是如何解决的？',
-    rating: null,
-    suggestion: null,
-    improvements: null
-  },
-  {
-    question: '<strong>如果线上服务突然出现性能瓶颈（QPS 骤降、延迟飙升），您会从哪些维度进行排查和优化？</strong>请描述您的排查思路和工具链。',
-    rating: null,
-    suggestion: null,
-    improvements: null
-  },
-  {
-    question: '最后一道题：<strong>请谈谈您对容器化技术（Docker/K8s）的理解，以及您在实际项目中是否有过使用经验？</strong>如果没有，请分享您的学习计划或看法。',
-    rating: null,
-    suggestion: null,
-    improvements: null
-  }
+const LANGUAGES = [
+  { key: 'Python', label: 'Python', icon: '🐍' },
+  { key: 'Java', label: 'Java', icon: '☕' },
+  { key: 'C++', label: 'C++', icon: '⚡' },
+  { key: 'JavaScript', label: 'JavaScript', icon: '🟨' },
+  { key: 'Go', label: 'Go', icon: '🔵' },
+  { key: 'C', label: 'C', icon: '🔧' },
 ]
 
-const questionBank = ref(defaultQuestionBank.slice())
+
+const questions = ref([])
 const interviewRecords = ref([])
 
 // 开始面试
@@ -322,21 +330,24 @@ async function startInterview() {
     const response = await getInterviewQuestions({
       position: inferredPosition,
       difficulty: 'medium',
-      tags: inferredTags.slice(0, 5),
+      tags: inferredTags,
     })
-    const questions = response.data?.questions || []
-    questionBank.value = (questions.length ? questions : defaultQuestionBank).slice(0, 5)
-    saveSession({ interviewQuestions: questionBank.value, interviewPosition: inferredPosition })
-    ElMessage.success('面试题目已准备就绪')
+    questions.value = response.data?.questions || []
+    saveSession({ interviewQuestions: questions.value, interviewPosition: inferredPosition })
   } catch (error) {
     handleApiError(error, '获取面试题')
-    ElMessage.warning('使用本地兜底题库，功能不受影响')
-    questionBank.value = defaultQuestionBank.slice(0, 5)
+    interviewStarted.value = false
+    return
   }
 
   // 发送第一道面试题
+  if (questions.value.length === 0) {
+    ElMessage.error('暂无可用面试题，请稍后重试')
+    interviewStarted.value = false
+    return
+  }
   nextTick(() => {
-    sendAiMessage(formatQuestion(questionBank.value[0]))
+    sendAiMessage(formatQuestion(questions.value[0]))
     currentRound.value = 1
   })
 }
@@ -393,7 +404,7 @@ async function handleSend() {
 
   // AI 点评
   const questionIndex = currentRound.value - 1
-  const questionData = questionBank.value[questionIndex] || defaultQuestionBank[questionIndex]
+  const questionData = questions.value[questionIndex]
 
   let rating = 3
   let suggestion = ''
@@ -419,7 +430,7 @@ async function handleSend() {
     rating = fallback.rating
     suggestion = fallback.suggestion
     improvements = fallback.improvements
-    ElMessage.warning('评分服务暂时不可用，已生成本地模拟评价')
+
   }
 
   // 记录评分
@@ -430,11 +441,11 @@ async function handleSend() {
   sendAiMessage(feedbackText, rating, suggestion, improvements)
 
   // 判断是否继续下一题
-  if (currentRound.value < totalRounds.value) {
+  if (currentRound.value < totalRounds) {
     // 延迟发送下一题
     setTimeout(() => {
       currentRound.value++
-      sendAiMessage(formatQuestion(questionBank.value[currentRound.value - 1]))
+      sendAiMessage(formatQuestion(questions.value[currentRound.value - 1]))
     }, 1500)
   } else {
     // 面试结束
@@ -444,15 +455,25 @@ async function handleSend() {
   }
 }
 
+// 暂停/继续
+function togglePause() {
+  isPaused.value = !isPaused.value
+  if (isPaused.value) {
+    ElMessage({ message: '面试已暂停', type: 'success', icon: '', duration: 2000 })
+  } else {
+    ElMessage({ message: '面试已继续', type: 'success', icon: '', duration: 2000 })
+  }
+}
+
 // 跳过当前题
 function skipQuestion() {
-  if (isAiTyping.value || interviewEnded.value) return
+  if (isAiTyping.value || interviewEnded.value || isPaused.value) return
 
   ElMessage.info('已跳过当前题目')
 
-  if (currentRound.value < totalRounds.value) {
+  if (currentRound.value < totalRounds) {
     currentRound.value++
-    sendAiMessage(formatQuestion(questionBank.value[currentRound.value - 1]))
+    sendAiMessage(formatQuestion(questions.value[currentRound.value - 1]))
   } else {
     setTimeout(() => {
       endInterview()
@@ -464,6 +485,7 @@ function skipQuestion() {
 async function endInterview() {
   interviewEnded.value = true
   isAiTyping.value = false
+  isPaused.value = false
   clearInterval(timerInterval)
 
   const session = loadSession()
@@ -666,6 +688,7 @@ onUnmounted(() => {
   padding: 20px;
   margin-bottom: 16px;
   min-height: 300px;
+  position: relative;
 }
 
 /* 空状态 */
@@ -935,4 +958,38 @@ onUnmounted(() => {
   font-weight: 600;
   color: var(--text-primary);
 }
+
+/* 暂停遮罩 */
+.pause-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 22, 40, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: var(--radius-lg);
+  z-index: 10;
+}
+.pause-content { text-align: center; }
+.pause-big-icon { font-size: 64px; color: var(--accent-cyan); opacity: 0.6; margin-bottom: 16px; }
+.pause-content h3 { font-size: 20px; color: var(--text-primary); margin-bottom: 8px; }
+.pause-content p { font-size: 14px; color: var(--text-secondary); }
+
+/* 语言选择器 */
+.lang-selector-wrap { text-align: center; padding: 10px 0 6px; margin-bottom: 4px; }
+.lang-selector-hint { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 14px; letter-spacing: 0.5px; }
+.lang-options-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.lang-pill { display: flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: 20px; border: 1px solid var(--border-glass); background: rgba(10,22,40,0.4); cursor: pointer; transition: all 0.25s ease; }
+.lang-pill:hover { border-color: rgba(0,212,255,0.4); background: rgba(0,212,255,0.08); transform: translateY(-1px); }
+.lang-pill.active { border-color: var(--accent-cyan); background: rgba(0,212,255,0.12); box-shadow: 0 0 10px rgba(0,212,255,0.15); }
+.lang-pill-icon { font-size: 16px; }
+.lang-pill-label { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+
+/* 气泡标签 */
+.bubble-tag { font-size: 10px; padding: 1px 8px; border-radius: 10px; background: rgba(0,212,255,0.12); color: var(--accent-cyan); border: 1px solid rgba(0,212,255,0.2); }
+
+/* 代码框架复制按钮 */
+.copy-code-btn { color: var(--accent-cyan) !important; font-size: 12px; }
 </style>
