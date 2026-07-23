@@ -20,8 +20,8 @@
           <div class="stat">
             <span class="stat-label">平均评分</span>
             <span class="stat-value rating-stars">
-              <span v-for="i in 5" :key="i" class="star" :class="{ filled: i <= avgRating }">★</span>
-              <span class="rating-num">{{ avgRating.toFixed(1) }}</span>
+              <span v-for="i in 5" :key="i" class="star" :class="{ filled: i <= Math.round(currentAvg) }">★</span>
+              <span class="rating-num">{{ currentAvg.toFixed(1) }}/5</span>
             </span>
           </div>
           <div class="stat">
@@ -245,8 +245,8 @@ const ratingHistory = ref([])
 const summary = ref(null)
 
 // 平均评分
-const avgRating = computed(() => {
-  if (ratingHistory.value.length === 0) return 3.0
+const currentAvg = computed(() => {
+  if (ratingHistory.value.length === 0) return 0
   const sum = ratingHistory.value.reduce((a, b) => a + b, 0)
   return sum / ratingHistory.value.length
 })
@@ -487,9 +487,9 @@ async function endInterview() {
 
   // 生成总结
   summary.value = {
-    overallRating: avgRating.value.toFixed(1),
+    overallRating: currentAvg.value.toFixed(1),
     totalRounds: ratingHistory.value.length,
-    strength: ratingHistory.value.length > 0 && avgRating.value >= 3.5
+    strength: ratingHistory.value.length > 0 && currentAvg.value >= 3.5
       ? '项目经验表述、技术广度'
       : '基础扎实，态度认真',
     improvement: '微服务架构设计、容器化技术、高并发场景经验'
@@ -499,7 +499,7 @@ async function endInterview() {
   if (!messages.value.some(m => m.role === 'ai' && m.content.includes('面试结束'))) {
     messages.value.push({
       role: 'ai',
-      content: `🎉 <strong>模拟面试结束！</strong><br><br>感谢您的参与。您的综合评分为 <strong style="color: var(--accent-cyan);">${avgRating.value.toFixed(1)} / 5.0</strong>。<br><br>建议您查看完整的<strong>求职分析报告</strong>，获取详细的能力画像和学习规划。`,
+      content: `🎉 <strong>模拟面试结束！</strong><br><br>感谢您的参与。您的综合评分为 <strong style="color: var(--accent-cyan);">${currentAvg.value.toFixed(1)} / 5.0</strong>。<br><br>建议您查看完整的<strong>求职分析报告</strong>，获取详细的能力画像和学习规划。`,
       time: getTime()
     })
   }
